@@ -1,5 +1,5 @@
 ---
-title: "My Website"
+title: "Biostatistics 2021: partim Univariate Statistics"
 output:
     html_document:
         code_download: false
@@ -8,16 +8,24 @@ output:
         code_folding: "none"
 ---
 
-Hello, Website!
+## Course Description
 
-For more information about simple R Markdown websites, please read the documentation at https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html.
+Deze cursus bouwt verder op de basis cursus statistiek die werd gedoceerd in 2de bachelor biologie aan de Universiteit Gent. 
+De cursus focust op essentiële statistische concepten en methoden om inzicht te verwerven uit empirische data uit de levenswetenschappen. 
+Het is een toegepaste cursus statistiek waarin de data centraal staan. 
+We starten hierbij steeds bij het design van de studie en een data exploratie. 
+Vervolgens worden de data statistisch gemodelleerd. 
+Hierbij ligt de focus op de link tussen lineaire regressie en variantie analyse. Deze technieken kunnen worden samengebracht in het algemene lineaire model. 
+De concepten en methoden worden via case-studies aangebracht. 
+Hierbij zullen we steeds focussen op de concrete onderzoeksvraag en hoe we deze kunnen vertalen in hypotheses met betrekking tot lineaire combinanties van de parameters in het model. 
+Na de introductie van het algemene lineaire model zullen we dieper ingaan op belangrijke concepten van experimenteel design. 
 
-Please also note that simple R Markdown sites are _not_ based on **blogdown**. They are probably good for websites with only a few Rmd documents. For larger-scale and more sophisticated websites (such as blogs), you may want to use **blogdown** instead: https://github.com/rstudio/blogdown.
+## Inhoud 
 
-***
+- Introductie
+- Algemeen lineair model
 
-### Contents
+## Licentie 
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 
-<!-- Placeholder of Table of Contents on the homepage, with links to the actual page and PDF version -->
-
-- [Example](./example.html) ([PDF](./example.pdf))
+Deze pagina is deel van de cursus [Biostatistiek 2021](https://statomics.github.io/biostatistics21/)
