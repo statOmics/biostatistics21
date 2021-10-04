@@ -458,16 +458,10 @@
     },
     "googlesheets4": {
       "Package": "googlesheets4",
-      "Version": "0.3.0.9000",
-      "Source": "GitHub",
-      "Remotes": "r-lib/cli, tidyverse/googledrive, r-lib/rlang",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "googlesheets4",
-      "RemoteUsername": "tidyverse",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "a291cf33bd4ba5fbd6f9272034a18fb714a9385a",
-      "Hash": "be40332a301b420db06ffd9b47c237c9"
+      "Version": "1.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "9a6564184dc4a81daea4f1d7ce357c6a"
     },
     "gtable": {
       "Package": "gtable",
