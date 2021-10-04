@@ -1,5 +1,5 @@
 ---
-title: "General Linear Model - Factorial Designs"
+title: "10. Algemeen Lineair Model - Factoriële Designs"
 author: "Lieven Clement"
 date: "statOmics, Ghent University (https://statomics.github.io)"
 output:
@@ -20,64 +20,67 @@ library(tidyverse)
 
 # Introduction
 
-In this section we will illustrate how factorial designs
-can be analysed using the general linear model. 
+In deze sectie illustreren we hoe experimenten met een factoriële proefopzet geanalyseerd kunnen worden met het algemeen lineair model. 
 
-We will focus on a two-way anova design where we will model a continous response with two factors. 
+We focussen hierbij op een two-way anova design waarbij we een continue response modelleren in functie van twee categorische predictor variabelen (factoren). 
 
 
 # Data 
 
 
-48 rats were allocated to 
+48 ratten werden at random toegewezen aan
 
-- 3 poisons (I,II,III) and 
-- 4 treatments (A,B,C,D). 
+- 3 giffen (I,II,III) and 
+- 4 behandelingen (A,B,C,D), 
+
+en, 
+
+- de overlevingstijd werd opgemeten (eenheid: 10 h)
+
+We transformeren de data eerst naar uren
 
 ```{r}
 library(faraway)
 data(rats)
 
+rats <- rats %>% 
+  mutate(time=time * 10)
+
 library(GGally)
-rats %>%
+rats %>% 
   ggpairs()
 ```
 
-
-We have a design with a continuous response time (survival) and two factors: 
-
-- Poison: I, II, III
-- Treatment: A, B, C, D
-
-The data exploration indicates that there seems to be an effect of both treatment and poison. 
-
+De data exploratie suggereert een effect van beide factoren. 
 
 ```{r}
 rats %>%
   ggplot(aes(x=treat,y=time)) + 
   geom_boxplot(outlier.shape=NA) + 
   geom_jitter() +
-  facet_wrap(~poison)
+  facet_wrap(~poison) +
+  ylab("time (h)")
 ```
 
-- There might be an interaction, i.e. the effect of the treatment might be different according to the poison that has been adopted. 
-- The boxplots also indicate that the data are heteroscedastic. 
+- Er zou een interactie kunnen zijn tussen behandeling en gif, het effect van het gif op de overlevingstijd hangt dan af van de behandeling en vice versa. 
+- De boxplots geven ook aan dat de data heteroscedastisch zijn. 
 
 # Model 
 
-We will model the data with a main effect for poison and treatment and an poison $\times$ treatment interaction. 
+We modelleren de data met een hoofdeffect voor gif en behandeling en een gif $\times$ behandeling interactie. 
 
 $$
 \begin{array}{lcl}
-y_i &=& \beta_0  + 
-\beta_{II} x_{iII} + \beta_{III} x_{iIII} + \\
+y_i &=& \beta_0  + \\
+&&\beta_{II} x_{iII} + \beta_{III} x_{iIII} + \\
 && \beta_{B} x_{iB}  + \beta_{C} x_{iC} + \beta_{D} x_{iD} + \\
 &&\beta_{II:B}x_{iII}x_{iB} + \beta_{II:C}x_{iII}x_{iC}  + \beta_{II:D}x_{iII}x_{iD} + \\
 &&\beta_{III:B}x_{iIII}x_{iB} + \beta_{III:C}x_{iIII}x_{iC}  + \beta_{III:D}x_{iIII}x_{iD} +
 \epsilon_i
 \end{array}
 $$
-with $i = 1, \ldots, n$, $n=48$, $x_{iII}$, $x_{iIII}$, $x_{iB}$, $x_{iC}$ and $x_{iD}$ dummy variables for poison II, III,  treatment B, C, and D, respectively.
+
+met $i = 1, \ldots, n$, $n=48$, en, $x_{iII}$, $x_{iIII}$, $x_{iB}$, $x_{iC}$ en $x_{iD}$ dummy variabelen voor respectievelijk gif II, III, behandeling B, C, en D.
 
 ```{r}
 rats1 <- lm(time~poison*treat, rats)
@@ -85,12 +88,12 @@ summary(rats1)
 plot(rats1)
 ```
 
-The errors, however, seem to be heteroscedastic and there seems to be a mean - variance relationship and they are also appear to be distributed with broader tails than the normal distribution. 
+De errors zijn heteroscedastisch. De residu plot suggereert een relatie tussen gemiddelde en variantie. De QQ-plot suggereert dat de verdeling mogelijks bredere staarten heeft dan de normale verdeling. 
 
 
-## Transformations 
+## Transformaties 
 
-### log transformation 
+### Logaritmische transformatie 
 
 ```{r}
 rats %>%
@@ -103,49 +106,58 @@ rats2 <- lm(time %>% log2~poison*treat, rats)
 plot(rats2)
 ```
 
-Log transformation does not remove the heteroscedasticity completely. 
+Log transformatie verwijdert heteroscedasticiteit niet volledig. 
 
-### Reciprocal transformation 
+### Reciproke transformatie
 
 ```{r}
 rats %>%
   ggplot(aes(x=treat,y=1/time)) + 
   geom_boxplot(outlier.shape=NA) + 
   geom_jitter() +
-  facet_wrap(~poison)
+  facet_wrap(~poison) + 
+  ylab ("rate of dying (1/h)")
 
 rats3 <- lm(1/time~poison*treat, rats)
-plot(rats3)
+plot(rats3) 
 ```
 
-The reciprocal transformation seems to do perform better and can be interpreted as the rate of dying. 
+De reciproke transformatie lijkt beter. 
+Transformaties bemoeilijken soms de interpretatie. 
+Hier kan de reciproke transformatie echter worden geïnterpreteerd als de "snelheid van sterven" (rate of dying). 
 
-# Inference 
+# Inferentie 
 
-There are multiple interaction terms involved in the factorial design. 
-We will first assess them together, which can be done using the anova table.
+Er zijn meerdere interactie termen in het model. 
+We kunnen deze eerst samen testen a.d.h.v. van de resultaten uit de anova tabel. 
 
 ```{r}
 library(car)
 Anova(rats3, type="III")
 ```
 
-## Removing the non-significant interaction term
+## Verwijderen van niet-significante interactie. 
 
-The interaction appears to be not significant at the 5% level.
+De interactie tussen gif en behandeling is niet significant op het 5% niveau. 
 
-A common practice is to remove the interaction from the analysis. 
-We then obtain an additive model and the effects of the two treatments can be assessed separately.
+Een veelgebruikte methode is om de niet-significante interactie te verwijderen uit het model. 
+
+We verkrijgen dan een additief model wat toelaat om de effecten van de twee factoren afzonderlijk te bestuderen. 
 
 ```{r}
 rats4 <- lm(1/time~poison + treat, rats)
 plot(rats4)
+```
+
+We zien wel iets meer afwijkingen in de residu plot.
+
+```{r}
 Anova(rats4, type="III")
 ```
 
-The anova table shows that the effect of the poison and the treatment are both extremely significant ($p<< 0.001$).
+De anova tabel toont dat het effect van gif en behandeling beiden extreem siginficant zijn (beide $p<< 0.001$).
 
-In the additive model we can assess the effect of the poison type and the treatments, separately in a post-hoc analysis. 
+Het additieve model laat toe om de effecten van het type gif en de behandeling afzonderlijke te bestuderen via een post-hoc analyse. 
 
 ```{r}
 library(multcomp)
@@ -157,48 +169,48 @@ contrastNames <- c("II-I","III-I","III-II","B-A","C-A","D-A","C-B","D-B","D-C")
 axis(2,at=c(length(contrastNames):1), labels=contrastNames,las=2)
 ```
 
-## Keeping the non-significant interaction term
+## Niet-significante interactie term in het model weerhouden
 
-We know that accepting the null hypothesis that there is no interaction is a weak conclusion. 
-It is possible that the experiment was simply underpowered to pick up the interaction. 
-We can choose to keep the interaction in the model. 
+Het aanvaarden van de null hypothese dat er geen interactie is, is een zwakke conclusie. 
+Het zou immers kunnen dat de power van het experiment te klein is om de interactie op te pikken.
+We kunnen er ook voor kiezen om de niet significante interactie term in het model te laten. 
 
-If the interaction were to be significant, this would mean that the effect of the poison changes according to the treatment and vice versa. 
-Then, we cannot study the poison effects and treatment effects separately. 
+Als de interactie significant zou zijn geweest, betekent dit dat het effect van het gif op de snelheid van sterven afhangt van de behandeling en vice versa. 
+Dan kunnen we het effect van het type gif en de behandeling op de overlevingstijd niet afzonderlijk bestuderen. 
 
 ```{r} 
 ExploreModelMatrix::VisualizeDesign(rats,~poison*treat)$plot
 ```
 
-Hence, in case of a significant interaction we should study the effect of the poison for each treatment separately: 
+We zouden dan het effect van het type gif afzonderlijk moeten bestuderen voor elke behandeling: 
 
-1. For treatment A we would have to assess the following comparisons:
+1. Voor behandeling A moeten we dan volgende nulhypotheses toetsen:
 
 - II-I: $H_0: \beta_{II}=0$
 - III-I: $H_0: \beta_{III}=0$
 - III-II: $H_0: \beta_{III}-\beta_{II}=0$
 
-2. For treatment B we would have to assess the following comparisons:
+2. Voor behandeling B:
 
 - II-I: $H_0: \beta_{II}+\beta_{II:B}=0$
 - III-I: $H_0: \beta_{III}+\beta_{III:B}=0$
 - III-II: $H_0: \beta_{III}+\beta_{III:B}-\beta_{II}-\beta_{II:B}=0$
 
-3. For treatment C we would have to assess the following comparisons:
+3. Voor behandeling C:
 
 - II-I: $H_0: \beta_{II}+\beta_{II:C}=0$
 - III-I: $H_0: \beta_{III}+\beta_{III:C}=0$
 - III-II: $H_0: \beta_{III}+\beta_{III:C}-\beta_{II}-\beta_{II:C}=0$
 
-4. For treatment C we would have to assess the following comparisons:
+4. Voor behandeling D:
 
 - II-I: $H_0: \beta_{II}+\beta_{II:D}=0$
 - III-I: $H_0: \beta_{III}+\beta_{III:D}=0$
 - III-II: $H_0: \beta_{III}+\beta_{III:D}-\beta_{II}-\beta_{II:D}=0$
 
-The same holds for assessing the effect of the treatment, which should be done for each poison separately: 
+Het zelfde geldt wanneer we het effect van de behandeling bestuderen: 
 
-1. Poison I
+1. Voor gif I toetsen we dan nulhypothese
 
 - B-A: $H_0: \beta_{B}=0$
 - C-A: $H_0: \beta_{C}=0$
@@ -207,7 +219,7 @@ The same holds for assessing the effect of the treatment, which should be done f
 - D-B: $H_0: \beta_{D}-\beta_{B}=0$
 - D-C: $H_0: \beta_{D}-\beta_{C}=0$
 
-2. Poison II
+2. Gif II
 
 - B-A: $H_0: \beta_{B}+\beta_{II:B}=0$
 - C-A: $H_0: \beta_{C}+\beta_{II:C}=0$
@@ -216,7 +228,7 @@ The same holds for assessing the effect of the treatment, which should be done f
 - D-B: $H_0: \beta_{D}+\beta_{II:D}-\beta_{B}-\beta_{II:B}=0$
 - D-C: $H_0: \beta_{D}+\beta_{II:D}-\beta_{C}-\beta_{II:C}=0$
 
-3. Poison III
+3. Gif III
 
 - B-A: $H_0: \beta_{B}+\beta_{III:B}=0$
 - C-A: $H_0: \beta_{C}+\beta_{III:C}=0$
@@ -267,25 +279,31 @@ plot(comparisonsInt,yaxt="none")
 axis(2,at=c(length(contrastNames):1), labels=contrastNames,las=2)
 ```
 
-Here, the interaction was not significant suggesting that the effect if the poison does not change according to the treatment and vice versa. In this case, it would make sense to estimate 
+In onze studie was de interactie echter niet significant. Het effect van het gif (II-I, III-I en III- II) verandert dus niet significant volgens de behandeling (A, B, C, en D) en vice versa. Voor onze dataset lijkt het dus zinvol om 
 
-1. the effect size for each pairwise comparison of poisons by averaging it over all treatments and 
-2. the effect size for each pairwise comparison of treatments by averaging it over all different poisons. 
+1. de effectgrootte voor de pairsgewijze vergelijkingen tussen de verschillende giffen (II-I, III-I en III- II) te schatten door ze uit te middelen over alle behandelingen (A, B, C, en D), en, 
+2.  de effectgrootte voor de pairsgewijze vergelijkingen tussen de verschillende behandelingen (B-A, C-A, D-A, C-B, D-B en D-C) te schatten door ze uit te middelen over alle giffen (I, II, III). 
 
-This should give us similar estimates as those obtained upon removing the interaction from the model. 
+Dat zou ons gelijkaardige schattingen van de effectgroottes moeten geven als deze voor het additieve model waarbij we de interactie term uit het model hadden geweerd. 
 
-e.g. for poison III vs poison II that would result in 
+
+B.v. voor gif III vs gif II zou dat in volgende contrast resulteren: 
 
 - III-II: 
 $$H_0: 
-\frac{(\beta_{III}-\beta_{II}) + (\beta_{III} + \beta_{III:B}-\beta_{II} - \beta_{II:B}) + (\beta_{III} + \beta_{III:C}-\beta_{II} - \beta_{II:C} + + (\beta_{III} + \beta_{III:D}-\beta_{II} - \beta_{II:D}) ) }{4}=0
+\begin{array}{l}
+\frac{\beta_{III}-\beta_{II}}{4} + \\
+\quad \frac{\beta_{III} + \beta_{III:B}-\beta_{II} - \beta_{II:B}}{4} + \\
+\quad \quad \frac{\beta_{III} + \beta_{III:C}-\beta_{II} - \beta_{II:C}}{4} + \\
+\quad \quad \quad \frac{\beta_{III} + \beta_{III:D}-\beta_{II} - \beta_{II:D}}{4}=0
+\end{array}
 $$
 $$
 H_0:\beta_{III} + \frac{1}{4} \times \beta_{III:B} +  \frac{1}{4} \times\beta_{III:C} +  \frac{1}{4} \times\beta_{III:D}
 -\beta_{II} - \frac{1}{4} \times\beta_{II:B} -  \frac{1}{4} \times\beta_{II:C}  - \frac{1}{4} \times\beta_{II:D}=0
 $$
 
-We can calculate the average contrast for each comparison of interest. 
+We schatten met onderstaande code alle gemiddelde contrasten a.d.h.v. het model met interactie.
 
 ```{r}
 contrasts <- c(
@@ -307,26 +325,26 @@ contrastNames <- c("II-I","III-I","III-II","B-A","C-A","D-A","C-B","D-B","D-C")
 axis(2,at=c(length(contrastNames):1), labels=contrastNames,las=2)
 ```
 
-Indeed, the effect sizes are exactly the same because the experiment is balanced. 
+De geschatte effectgroottes zijn inderdaad exact gelijk als bij het model zonder interactie omdat het experiment gebalanceerd is. 
 
-Note, that the standard errors differ slightly. 
-Indeed the errors of both models will differ as well as the remaining degrees of freedom of the errors $n-p$. 
+De standaard errors verschillen wel lichtjes. 
+Dat is het gevolg van de errors die verschillen tussen beiden modellen alsook het aantal vrijheidsgraden van de errors (n-p). 
 
 ```{r}
 data.frame(Additive_coef=summary(comparisons)$test$coef,Additive_se=summary(comparisons)$test$sigma,Int_coef=summary(comparisonsInt2)$test$coef,int_se=summary(comparisonsInt2)$test$sigma) %>% round(3)
 ```
 
-# Conclusion
+# Conclusie
 
-There is an extremely significant effect of the Poison and Treatment on the dying rate of the rats (p << 0.001).
+Er is een extreem significant effect van het type gif en de behandeling op de snelheid van sterven bij ratten (p << 0.001).
 
-The effect of the poison does not significantly differ according to the treatment and vice versa (p = `r  Anova(rats3,type="III")["poison:treat","Pr(>F)"] %>% round(3)`). 
+De interactie tussen gif en behandeling is niet significant (p = `r  Anova(rats3,type="III")["poison:treat","Pr(>F)"] %>% round(3)`). 
 
-The dying rate is on average `r confint(comparisonsInt2)$confint[contrastNames=="III-I",1] %>% round(2)`  and `r confint(comparisonsInt2)$confint[contrastNames=="III-II",1] %>% round(2)` higher for rats that are exposed to poison III that those exposed to poison I and II, respectively (both p << 0.001, 95% CI III-I: [`r paste(round(confint(comparisonsInt2)$confint[contrastNames=="III-I",-1],2),collapse=", ")`], 95% CI III-II: [`r paste(round(confint(comparisonsInt2)$confint[contrastNames=="III-II",-1],2),collapse=", ")`])
-The average dying rate was not significantly different between rats exposed to poison I and poison II (p=`r round(summary(comparisonsInt2)$test$pvalues[contrastNames=="II-I"],3)`).
+De snelheid van sterven is gemiddeld `r confint(comparisonsInt2)$confint[contrastNames=="III-I",1] %>% round(2)`h$^{-1}$  en `r confint(comparisonsInt2)$confint[contrastNames=="III-II",1] %>% round(2)`h$^{-1}$ hoger voor ratten die blootgesteld worden aan gif III dan aan respectievelijk gif I en II (beide p << 0.001, 95% BI III-I: [`r paste(round(confint(comparisonsInt2)$confint[contrastNames=="III-I",-1],2),collapse=", ")`]h$^{-1}$, 95% BI III-II: [`r paste(round(confint(comparisonsInt2)$confint[contrastNames=="III-II",-1],2),collapse=", ")`]h$^{-1}$)
+De gemiddelde snelheid van sterven was niet significant verschillend tussen ratten die werden blootgesteld aan gif I en gif II (p=`r round(summary(comparisonsInt2)$test$pvalues[contrastNames=="II-I"],3)`).
 
-The dying rate is on average `r confint(comparisonsInt2)$confint[contrastNames=="B-A",1] %>% round(2) %>% abs` and `r confint(comparisonsInt2)$confint[contrastNames=="D-A",1] %>% round(2)%>% abs` lower upon treatment A than upon treatment B and D, respectively (p << 0.001, 95% CI B-A: [`r paste(round(confint(comparisonsInt2)$confint[contrastNames=="B-A",-1],2),collapse=", ")`], 95% CI D-A: [`r paste(round(confint(comparisonsInt2)$confint[contrastNames=="D-A",-1],2),collapse=", ")`]. 
-The dying rate is on average `r confint(comparisonsInt2)$confint[contrastNames=="C-B",1] %>% round(2)` and `r confint(comparisonsInt2)$confint[contrastNames=="D-C",1] %>% round(2) %>% abs` higher upon treatment C than upon treatment B and D, respectively (C-B: p << 0.001, 95% CI [`r paste(round(confint(comparisonsInt2)$confint[contrastNames=="C-B",-1],2),collapse=", ")`] , D-C: p = `r summary(comparisonsInt2)$test$pvalues[contrastNames=="D-C"] %>% round(3)`, 95% CI [`r paste(round(confint(comparisonsInt2)$confint[contrastNames=="D-C",-1],2),collapse=", ")`]). 
-The average dying rate was not significantly different between treatment C and A (p = `r summary(comparisonsInt2)$test$pvalues[contrastNames=="C-A"] %>% round(3)`), and, between treatment B and D (p = `r summary(comparisonsInt2)$test$pvalues[contrastNames=="D-B"] %>% round(3)`).
+De snelheid van sterven is gemiddeld `r confint(comparisonsInt2)$confint[contrastNames=="B-A",1] %>% round(2) %>% abs`h$^{-1}$ en `r confint(comparisonsInt2)$confint[contrastNames=="D-A",1] %>% round(2)%>% abs`h$^{-1}$ hoger na behandeling A dan na behandeling B en D (p << 0.001, 95% BI B-A: [`r paste(round(confint(comparisonsInt2)$confint[contrastNames=="B-A",-1],2),collapse=", ")`]h$^{-1}$, 95% BI D-A: [`r paste(round(confint(comparisonsInt2)$confint[contrastNames=="D-A",-1],2),collapse=", ")`]h$^{-1}$). 
+De snelheid van sterven is gemiddeld `r confint(comparisonsInt2)$confint[contrastNames=="C-B",1] %>% round(2)`h$^{-1}$ en `r confint(comparisonsInt2)$confint[contrastNames=="D-C",1] %>% round(2) %>% abs`h$^{-1}$ hoger na behandeling C dan respectievelijk na behandeling B en D (C-B: p << 0.001, 95% CI [`r paste(round(confint(comparisonsInt2)$confint[contrastNames=="C-B",-1],2),collapse=", ")`]h$^{-1}$ , D-C: p = `r summary(comparisonsInt2)$test$pvalues[contrastNames=="D-C"] %>% round(3)`, 95% CI [`r paste(round(confint(comparisonsInt2)$confint[contrastNames=="D-C",-1],2),collapse=", ")`]h$^{-1}$). 
+De gemiddelde snelheid van sterven is niet significant verschillend tussen ratten behandeld met behandeling C vs A, en D vs B (p- waarden respectievelijk p = `r summary(comparisonsInt2)$test$pvalues[contrastNames=="C-A"] %>% round(3)` en p = `r summary(comparisonsInt2)$test$pvalues[contrastNames=="D-B"] %>% round(3)`).
 
-All p-values are corrected for multiple testing. 
+Alle p-waarden werden gecorrigeerd voor meervoudig testen. 
