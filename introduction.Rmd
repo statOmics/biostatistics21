@@ -1,15 +1,15 @@
 ---
-title: "Introduction"
+title: "Introductie"
 author: "Lieven Clement"
 date: "statOmics, Ghent University (https://statomics.github.io)"
 output:
-    html_document:
-      code_download: true
-      theme: cosmo
-      toc: true
-      toc_float: true
-      highlight: tango
-      number_sections: true
+  html_document:
+    code_download: yes
+    theme: cosmo
+    toc: yes
+    toc_float: yes
+    highlight: tango
+    number_sections: yes
 ---
 
 
@@ -21,6 +21,7 @@ output:
 ```{r echo=FALSE}
 knitr::include_graphics("./figs/fevMeasurement.jpg")
 ```
+
 ## Importeer data
 
 ```{r}
@@ -53,9 +54,9 @@ head(fev)
 - Een  **experimentele eenheid** (experimental unit) is de eenheid (subject, plant, pot, proefdier) dat at random aan de behandeling wordt toegewezen. 
 **Experimentele eenheden in fev example?** 
 
-- Een **response variabele** is a characteristiek van de experimentele eenheid die wordt gemeten en geanalyseerd om het effect van de behandeling na te gaan.  **Response variable in fev example?**
+- Een **response variabele** is a karakteristiek van de experimentele eenheid die wordt gemeten en geanalyseerd om het effect van de behandeling na te gaan.  **Response variable in fev example?**
 
-- Een \textbf{observationele eenheid} is de eenheid waarop de response variabele wordt gemeten. Veelal is er een één-op-één overeenkomst tussen experimentele en observationele eenheden. Maar dat is niet altijd zo: b.v. pseudoreplicatie zoals wanneer men technische herhalingen heeft voor elke gemeten karakteristiek bij een subject. **Observationele eenheid in fev example?** 
+- Een **observationele eenheid** is de eenheid waarop de response variabele wordt gemeten. Veelal is er een één-op-één overeenkomst tussen experimentele en observationele eenheden. Maar dat is niet altijd zo: b.v. pseudoreplicatie zoals wanneer men technische herhalingen heeft voor elke gemeten karakteristiek bij een subject. **Observationele eenheid in fev voorbeeld?** 
 
 - Een **factor** is een verklarende variabele die twee of meer niveaus aan kan nemen. Voorbeelden in de fev studie?  
 
@@ -121,24 +122,36 @@ text(7.5,.5,"DATA EXPLORATIE &\nBESCHRIJVENDE STATISTIEK (2)",col="black",cex=1.
 ```{r}
 fevSum <- fev %>%
   group_by(smoking) %>%
-  summarize(mean = mean(fev),
-            sd = sd(fev),
-            n=length(fev)
-            ) %>%
+  summarize_at("fev", 
+               list(mean = mean,
+                    sd = sd,
+                    n = length)
+                ) %>%
   mutate(se = sd/sqrt(n))
 fevSum
 ```
 
-- Let op dat deze code niet werkt als er missing data is. 
+- Let op dat deze code niet werkt als er ontbrekende data zijn.
+- In dat geval gebruik je onderstaande code
 
+
+```{r}
+fevSum <- fev %>%
+  group_by(smoking) %>%
+    summarize_at("fev",list(mean=~mean(.,na.rm=TRUE),
+                    sd=~sd(.,na.rm=TRUE),
+                    n=function(x) x%>%is.na%>%`!`%>%sum)) %>%
+  mutate(se=sd/sqrt(n))
+fevSum
+```
 
 ## Visualisatie
 
 ```{r}
 fev %>%
-  ggplot(aes(x=smoking,y=fev)) +
-  geom_boxplot(outlier.shape=NA) +
-  geom_jitter(alpha=.2)
+  ggplot(aes(x = smoking, y = fev)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(alpha = .2)
 ```
 
 - Effect grootte? 
@@ -153,20 +166,13 @@ p1 <- fev %>%
   geom_jitter(alpha=.2)
 
 p2 <- fev %>%
-  filter(smoking==0) %>%
   ggplot(aes(sample=fev)) +
   geom_qq() +
-  geom_qq_line()
-
-p3 <- fev %>%
-  filter(smoking==1) %>%
-  ggplot(aes(sample=fev)) +
-  geom_qq() +
-  geom_qq_line()
+  geom_qq_line() +
+  facet_wrap(~smoking)
 
 p1
 p2
-p3
 ```
 
 
@@ -201,6 +207,7 @@ explMx <- VisualizeDesign(fev,designFormula = ~smoking)
 explMx$plotlist
 
 ```
+
 - Vertaal de onderzoeksvraag naar een parameter in het model. 
 
 - Effectgrootte: 
@@ -216,9 +223,9 @@ summary(lm1)
 
 ## Statistische Inferentie?
 
-### Null en alternatieve hypothese? 
+### Nul en alternatieve hypothese? 
 
-We wensen de \alertBold{alternatieve hypothese} $H_1$ aan te tonen: er is een effect van roken op de longcapaciteit van jongeren. We vertalen dit naar ons model:
+We wensen de **alternatieve hypothese** $H_1$ aan te tonen: er is een effect van roken op de longcapaciteit van jongeren. We vertalen dit naar ons model:
 
 - $H_1$: Gemiddeld is de longcapaciteit van niet-rokende en rokende jongeren verschillend
 \[\beta \neq 0\] 
@@ -248,9 +255,8 @@ summary(lm1)
 - De p-value is enkel correct als de onderliggende aannames geldig zijn. 
 
 ```{r}
-library(gridExtra)
 p1
-grid.arrange(p2,p3,ncol=2)
+p2
 ```
 
 - Biologische metingen zijn dikwijls niet normaal verdeeld. 
@@ -274,19 +280,12 @@ p1 <- fev %>%
   geom_jitter(alpha=.2)
 
 p2 <- fev %>%
-  filter(smoking==0) %>%
   ggplot(aes(sample=log2(fev))) +
   geom_qq() +
-  geom_qq_line()
-
-p3 <- fev %>%
-  filter(smoking==1) %>%
-  ggplot(aes(sample=log2(fev))) +
-  geom_qq() +
-  geom_qq_line()
-
+  geom_qq_line() +
+  facet_wrap(~smoking)
 p1
-grid.arrange(p2,p3,ncol=2)
+p2
 
 lm1 <- lm(log2(fev)~smoking,fev)
 summary(lm1)
@@ -301,7 +300,7 @@ fevttest <- t.test(log2(fev)~smoking,fev)
 2^-fevttest$conf.int %>% sort
 ```
 
-## Conclusion
+## Conclusie
 
 - Er is een extreem significant verschil in gemiddelde longinhoud tussen rokende en niet-rokende jongeren ($p << 0.001$). 
 
@@ -321,6 +320,7 @@ arrows(x0=0.1,x1=.9,y0=1.8,y1=0.1,lwd=4)
 arrows(x0=0.1,x1=.9,y0=-1.8,y1=-0.2,lwd=4)
 arrows(x0=0,x1=0,y0=-1.4,y1=1.4,lwd=4)
 ```
+
 - Leeftijd (L) is heeft een invloed op het rookgedrag (R) en op de longinhoud (V)!
 - Als we leeftijd niet meenemen in de analyse dan kan het zijn dat de associatie tussen rookgedrag en de longinhoud vertekend is omdat rokers en niet-rokers niet alleen in rookgedrag maar ook in leeftijd verschillen!
 - Confounding is een probleem die typisch optreedt in observationele studies!
@@ -360,7 +360,6 @@ lm2 <- fev %>%
   lm(log2(fev)~age,.)
 
 summary(lm2)
-par(mfrow=c(2,2))
 plot(lm2)
 
 fev %>% 
@@ -379,7 +378,6 @@ lm3 <- fev %>%
   lm(log2(fev)~age + I(age ^2),.)
 
 summary(lm3)
-par(mfrow=c(2,2))
 plot(lm3)
 ```
 
@@ -393,16 +391,17 @@ fev %>%
 
 
 
-# General Linear Model
+# Algemeen Linear Model
 
-How can we integrate multiple factors and continuous covariates in linear model?
+Hoe kunnen we meerdere factoren en continue predictoren combineren in een lineair model?
 
 \[
 y_i= \beta_0 + \beta_S x_{i,S} + \beta_A x_{i,A}  +\epsilon_i,
 \]
-with
 
-- $x_{i,S}$ een dummy variabele for rokerstatus: $x_{i,1}=\begin{cases}
+emt
+
+- $x_{i,S}$ een dummy variabele voor rokerstatus: $x_{i,1}=\begin{cases}
 0& \text{niet-roker}\\
 1& \text{roker}
 \end{cases}$
@@ -411,7 +410,7 @@ with
 
 ---
 
-## Implementation in R
+## Implementatie in R
 
 - We doen dit nu enkel voor de meisjes omdat er ook effecten van geslacht zijn. Later leren we hoe we daarmee om kunnen gaan.  
 

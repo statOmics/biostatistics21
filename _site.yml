@@ -1,26 +1,25 @@
-name: "my-website"
+name: "Biostatistiek 2021 (biostatistics21)"
 navbar:
-  title: "My Website"
+  title: "Biostatistiek 2021"
   left:
     - icon: fa-home
       href: index.html
     - text: "About"
       href: about.html
-    - text: "Lectures"
+    - text: "Hoorcolleges"
       icon: fa-chalkboard-teacher
       menu:
-        - text: "Example"
-          href: example.html
+        - text: "Introductie"
+          href: introduction.html
+        - text: "Algemene Lineaire Model"
+          href: 10-MultipleRegression.html
     - text: "Labs"
       icon: fa-laptop
       menu:
-      - text: "Lab 1"
-        href:
-      - text: "Lab 2"
-        href:
+
   right:
     - icon: fab fa-github
-      href: https://github.com/statOmics/Rmd-website
+      href: https://github.com/statOmics/biostatistics21
     - text: "statOmics"
       href: http://statomics.github.io/
 output:
