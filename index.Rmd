@@ -22,12 +22,18 @@ Na de introductie van het algemene lineaire model zullen we dieper ingaan op bel
 
 ## Inhoud 
 
+### Hoorcolleges
+
 - Introductie: [html](./introduction.html), [[PDF](./introduction.pdf)]
 
 - Algemeen lineair model: 
     
     - Lecture 2-3 : [html](./10-MultipleRegression.html), [[PDF](./10-MultipleRegression.pdf)]
     - Lecture 4 factoriële designs: [html](./10-MultipleRegression-FactorialDesigns.html), [[PF](10-MultipleRegression-FactorialDesigns.pdf)]
+
+### Werkcolleges
+
+
 
 ## Licentie 
 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>

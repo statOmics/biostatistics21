@@ -19,7 +19,7 @@ output:
 - Ze meten hierbij de longcapaciteit (in l) bij rokende en niet-rokende leerlingen (forced expiratory volume).
 
 ```{r echo=FALSE}
-knitr::include_graphics("./figs/fevMeasurement.jpg")
+knitr::include_graphics("https://raw.githubusercontent.com/statOmics/biostatistics21/master/figs/fevMeasurement.jpg")
 ```
 
 ## Importeer data

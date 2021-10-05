@@ -4,19 +4,20 @@ navbar:
   left:
     - icon: fa-home
       href: index.html
-    - text: "About"
-      href: about.html
     - text: "Hoorcolleges"
       icon: fa-chalkboard-teacher
       menu:
         - text: "Introductie"
           href: introduction.html
-        - text: "Algemene Lineaire Model"
+        - text: "Algemeen Lineair Model"
           href: 10-MultipleRegression.html
+        - text: "Factoriële Designs"
+          href: 10-MultipleRegression-FactorialDesigns.html
     - text: "Labs"
       icon: fa-laptop
       menu:
-
+        -text: "Lab1"
+         href: lab1.html
   right:
     - icon: fab fa-github
       href: https://github.com/statOmics/biostatistics21
