@@ -16,8 +16,8 @@ navbar:
     - text: "Labs"
       icon: fa-laptop
       menu:
-        -text: "Lab1"
-         href: lab1.html
+        - text: "Lab1"
+          href: lab1.html
   right:
     - icon: fab fa-github
       href: https://github.com/statOmics/biostatistics21

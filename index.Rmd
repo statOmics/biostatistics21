@@ -32,6 +32,8 @@ Na de introductie van het algemene lineaire model zullen we dieper ingaan op bel
     - Lecture 4 factoriële designs: [html](./10-MultipleRegression-FactorialDesigns.html), [[PF](10-MultipleRegression-FactorialDesigns.pdf)]
 
 ### Werkcolleges
+    
+- Lab 1: [html](./lab1.html)
 
 
 
