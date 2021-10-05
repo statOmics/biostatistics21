@@ -9,14 +9,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Lieven Clement" />
 
 
-<title>Organisatie cursus Biostatistiek</title>
+<title>Two-sample t-test</title>
 
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -35,7 +34,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script src="site_libs/navigation-1.1/sourceembed.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -50,6 +50,16 @@
   ul.task-list{list-style: none;}
     </style>
 
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
 
 
 
@@ -391,66 +401,59 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Organisatie cursus Biostatistiek</h1>
-<h4 class="author">Lieven Clement</h4>
-<h4 class="date">statOmics, Ghent University (<a href="https://statomics.github.io" class="uri">https://statomics.github.io</a>)</h4>
+<h1 class="title toc-ignore">Two-sample t-test</h1>
 
 </div>
 
 
-<div id="organisatie" class="section level1">
-<h1><span class="header-section-number">1</span> Organisatie</h1>
-<div id="lesgevers" class="section level2">
-<h2><span class="header-section-number">1.1</span> Lesgevers</h2>
-<ul>
-<li>Week 1-7: Univariate statistiek. Prof. Lieven Clement</li>
-<li>Week 9-12: Multivariate statistiek. Prof. Koen Sabbe</li>
-</ul>
+<div id="two-sample-t-test-plantgroei" class="section level1">
+<h1><span class="header-section-number">1</span> Two-sample t-test: Plantgroei</h1>
+<p>Deze studie vergelijkt het droog gewicht van planten tussen een controle behandeling en twee verschillende behandelingen. We willen weten of het gemiddeld gewicht van planten bij behandeling twee (de data van behandeling één gaan we niet gebruiken) verschilt tegenover de controle groep.</p>
+<div id="libraries-laden" class="section level3">
+<h3><span class="header-section-number">1.0.1</span> Libraries laden</h3>
+<pre class="r"><code>suppressPackageStartupMessages({
+  library(tidyverse)
+  library(ggplot2)})</code></pre>
 </div>
-<div id="partim-univariate-statistiek" class="section level2">
-<h2><span class="header-section-number">1.2</span> Partim univariate statistiek</h2>
-<ul>
-<li>Week 1: Introductie (On campus)</li>
-<li>Week 2-4: Algemeen Lineair model. Kennis clips op Dodona. (<a href="https://dodona.ugent.be/nl/courses/805/" class="uri">https://dodona.ugent.be/nl/courses/805/</a>). Leerpad met deadlines</li>
-<li>Week 5: Boostersessie meervoudige regressie (On campus)</li>
-<li>Week 6-7: Experimental design (On campus)</li>
-</ul>
+<div id="data-inlezen" class="section level3">
+<h3><span class="header-section-number">1.0.2</span> Data inlezen</h3>
+<pre class="r"><code>data(&quot;PlantGrowth&quot;)</code></pre>
 </div>
-<div id="werkcolleges-univariate-statistiek" class="section level2">
-<h2><span class="header-section-number">1.3</span> Werkcolleges Univariate Statistiek</h2>
-<ul>
-<li>Begeleiding Alexandre Seghers (email: <a href="mailto:Alexandre.Segers@UGent.be" class="email">Alexandre.Segers@UGent.be</a>)</li>
-<li>Week 1-3: heropfrissen R via Dodona</li>
-<li>Week 4-8 en Week 10</li>
-</ul>
+<div id="dataset-bekijken" class="section level3">
+<h3><span class="header-section-number">1.0.3</span> Dataset bekijken</h3>
+<pre class="r"><code>#Bekijk hoe de dataset PlantGrowth eruit ziet</code></pre>
+</div>
+<div id="data-filteren" class="section level3">
+<h3><span class="header-section-number">1.0.4</span> Data filteren</h3>
+<p>We gaan eerst de data filteren zodat enkel de controle- (ctrl) en tweede behandelingsgroep (trt2) gebruikt worden.</p>
+<pre class="r"><code>#Filter de data zodat enkel data van de controle- (ctrl) en tweede behandelingsgroep (trt2) gebruikt worden.</code></pre>
 </div>
 </div>
-<div id="examen" class="section level1">
-<h1><span class="header-section-number">2</span> Examen</h1>
-<ul>
-<li>Univariate statistiek 8/20</li>
-<li>Multivariate statistiek 7/20</li>
-<li>Examentaak in R 5/20</li>
-</ul>
-<div id="examenvorm-partim-univariate" class="section level2">
-<h2><span class="header-section-number">2.1</span> Examenvorm Partim Univariate</h2>
-<ul>
-<li>Openboek examen met open vragen</li>
-<li>Test op inzicht en logisch redeneren</li>
-<li>Kritische analyse van de statistische output en resultaten in een wetenschappelijke publicatie</li>
-<li>Grotere klemtoon op interpretatie dan berekening</li>
-</ul>
+<div id="data-exploratie" class="section level1">
+<h1><span class="header-section-number">2</span> Data exploratie</h1>
+<p>We gaan de gewichten (weight) van de planten per groep (group) plotten door middel van een boxplot om te zien hoe onze distributie eruit ziet.</p>
+<pre class="r"><code>#Maak een boxplot voor elke groep (group) van het gewicht (weight) van de planten </code></pre>
+<div id="welke-test-kan-men-uitvoeren-om-het-gemiddeld-gewicht-te-vergelijken-tussen-twee-groepen-wat-is-de-link-met-het-lineair-model" class="section level3">
+<h3><span class="header-section-number">2.0.1</span> Welke test kan men uitvoeren om het gemiddeld gewicht te vergelijken tussen twee groepen? Wat is de link met het lineair model?</h3>
 </div>
-<div id="feedback-partim-univariate" class="section level2">
-<h2><span class="header-section-number">2.2</span> Feedback Partim Univariate</h2>
-<ul>
-<li>Enkel na inschrijving</li>
-<li>Precieze datum wordt nog meegegeven</li>
-</ul>
+<div id="geef-de-nul--en-alternatieve-hypothese-voor-de-two-sample-t-test.-hoe-zit-dit-bij-het-lineare-model" class="section level3">
+<h3><span class="header-section-number">2.0.2</span> Geef de nul- en alternatieve hypothese voor de two-sample t-test. Hoe zit dit bij het lineare model?</h3>
+</div>
+<div id="geef-de-assumpties-van-de-two-sample-t-test-en-ga-deze-na." class="section level3">
+<h3><span class="header-section-number">2.0.3</span> Geef de assumpties van de two-sample t-test en ga deze na.</h3>
+</div>
+<div id="voer-de-two-sample-t-test-uit.-wat-kan-je-hieruit-concluderen-op-vlak-van-hypothesetest-en-betrouwbaarheidsinterval" class="section level3">
+<h3><span class="header-section-number">2.0.4</span> Voer de two-sample t-test uit. Wat kan je hieruit concluderen op vlak van hypothesetest en betrouwbaarheidsinterval?</h3>
+<pre class="r"><code># Voer de two-sample t-test uit om de nulhypothese van gelijk gemiddeld gewicht tussen de controlebehandeling en behandeling 2 na te gaan.</code></pre>
+</div>
+<div id="modelleer-de-data-via-een-lineaire-regressie-en-ga-na-of-de-nulhypothese-van-gelijk-gemiddeld-gewicht-verworpen-wordt.-wat-kan-je-zeggen-over-de-betrouwbaarheidsintervallen-wat-betekenen-de-verschillende-parameters" class="section level3">
+<h3><span class="header-section-number">2.0.5</span> Modelleer de data via een lineaire regressie en ga na of de nulhypothese van gelijk gemiddeld gewicht verworpen wordt. Wat kan je zeggen over de betrouwbaarheidsintervallen? Wat betekenen de verschillende parameters?</h3>
+<pre class="r"><code># Voer een lineare regressie toe van het gewicht in functie van de behandelingsgroep.</code></pre>
+<pre class="r"><code># Geef de 95% confidence intervals van de geschatte parameters.</code></pre>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiT3JnYW5pc2F0aWUgY3Vyc3VzIEJpb3N0YXRpc3RpZWsiCmF1dGhvcjogIkxpZXZlbiBDbGVtZW50IgpkYXRlOiAic3RhdE9taWNzLCBHaGVudCBVbml2ZXJzaXR5IChodHRwczovL3N0YXRvbWljcy5naXRodWIuaW8pIgpvdXRwdXQ6CiAgICBodG1sX2RvY3VtZW50OgogICAgICBjb2RlX2Rvd25sb2FkOiB0cnVlICAgIAogICAgICB0aGVtZTogY29zbW8KICAgICAgdG9jOiB0cnVlCiAgICAgIHRvY19mbG9hdDogdHJ1ZQogICAgICBoaWdobGlnaHQ6IHRhbmdvCiAgICAgIG51bWJlcl9zZWN0aW9uczogdHJ1ZQotLS0KCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IEZBTFNFKQpgYGAKCiMgT3JnYW5pc2F0aWUKCiMjIExlc2dldmVycwoKLSBXZWVrIDEtNzogVW5pdmFyaWF0ZSBzdGF0aXN0aWVrLiBQcm9mLiBMaWV2ZW4gQ2xlbWVudCAKLSBXZWVrIDktMTI6IE11bHRpdmFyaWF0ZSBzdGF0aXN0aWVrLiBQcm9mLiBLb2VuIFNhYmJlCgojIyBQYXJ0aW0gdW5pdmFyaWF0ZSBzdGF0aXN0aWVrCgotIFdlZWsgMTogSW50cm9kdWN0aWUgKE9uIGNhbXB1cykKLSBXZWVrIDItNDogIEFsZ2VtZWVuIExpbmVhaXIgbW9kZWwuIEtlbm5pcyBjbGlwcyBvcCBEb2RvbmEuIChodHRwczovL2RvZG9uYS51Z2VudC5iZS9ubC9jb3Vyc2VzLzgwNS8pLiBMZWVycGFkIG1ldCBkZWFkbGluZXMKLSBXZWVrIDU6IEJvb3N0ZXJzZXNzaWUgbWVlcnZvdWRpZ2UgcmVncmVzc2llIChPbiBjYW1wdXMpCi0gV2VlayA2LTc6IEV4cGVyaW1lbnRhbCBkZXNpZ24gKE9uIGNhbXB1cykKCiMjIFdlcmtjb2xsZWdlcyBVbml2YXJpYXRlIFN0YXRpc3RpZWsKCi0gQmVnZWxlaWRpbmcgQWxleGFuZHJlIFNlZ2hlcnMgKGVtYWlsOiBBbGV4YW5kcmUuU2VnZXJzQFVHZW50LmJlKQotIFdlZWsgMS0zOiBoZXJvcGZyaXNzZW4gUiB2aWEgRG9kb25hCi0gV2VlayA0LTggZW4gV2VlayAxMCAKCiMgRXhhbWVuIAoKLSBVbml2YXJpYXRlIHN0YXRpc3RpZWsgOC8yMAotIE11bHRpdmFyaWF0ZSBzdGF0aXN0aWVrIDcvMjAKLSBFeGFtZW50YWFrIGluIFIgNS8yMAoKIyMgRXhhbWVudm9ybSBQYXJ0aW0gVW5pdmFyaWF0ZQoKLSBPcGVuYm9layBleGFtZW4gbWV0IG9wZW4gdnJhZ2VuCi0gVGVzdCBvcCBpbnppY2h0IGVuIGxvZ2lzY2ggcmVkZW5lcmVuCi0gS3JpdGlzY2hlIGFuYWx5c2UgdmFuIGRlIHN0YXRpc3Rpc2NoZSBvdXRwdXQgZW4gcmVzdWx0YXRlbiBpbiBlZW4gd2V0ZW5zY2hhcHBlbGlqa2UgcHVibGljYXRpZQotIEdyb3RlcmUga2xlbXRvb24gb3AgaW50ZXJwcmV0YXRpZSBkYW4gYmVyZWtlbmluZwoKCiAgICAgIAojIyBGZWVkYmFjayBQYXJ0aW0gVW5pdmFyaWF0ZQoKICAtIEVua2VsIG5hIGluc2NocmlqdmluZwogIC0gUHJlY2llemUgZGF0dW0gd29yZHQgbm9nIG1lZWdlZ2V2ZW4K</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiVHdvLXNhbXBsZSB0LXRlc3QiCm91dHB1dDogaHRtbF9kb2N1bWVudAotLS0KCiMgVHdvLXNhbXBsZSB0LXRlc3Q6IFBsYW50Z3JvZWkKRGV6ZSBzdHVkaWUgdmVyZ2VsaWprdCBoZXQgZHJvb2cgZ2V3aWNodCB2YW4gcGxhbnRlbiB0dXNzZW4gZWVuIGNvbnRyb2xlIGJlaGFuZGVsaW5nIGVuIHR3ZWUgdmVyc2NoaWxsZW5kZSBiZWhhbmRlbGluZ2VuLiBXZSB3aWxsZW4gd2V0ZW4gb2YgaGV0IGdlbWlkZGVsZCBnZXdpY2h0IHZhbiBwbGFudGVuIGJpaiBiZWhhbmRlbGluZyB0d2VlIChkZSBkYXRhIHZhbiBiZWhhbmRlbGluZyDDqcOpbiBnYWFuIHdlIG5pZXQgZ2VicnVpa2VuKSB2ZXJzY2hpbHQgdGVnZW5vdmVyIGRlIGNvbnRyb2xlIGdyb2VwLgoKCiMjIyBMaWJyYXJpZXMgbGFkZW4KYGBge3J9CnN1cHByZXNzUGFja2FnZVN0YXJ0dXBNZXNzYWdlcyh7CiAgbGlicmFyeSh0aWR5dmVyc2UpCiAgbGlicmFyeShnZ3Bsb3QyKX0pCmBgYAoKCiMjIyBEYXRhIGlubGV6ZW4KYGBge3J9CmRhdGEoIlBsYW50R3Jvd3RoIikKYGBgCgojIyMgRGF0YXNldCBiZWtpamtlbgpgYGB7cn0KI0Jla2lqayBob2UgZGUgZGF0YXNldCBQbGFudEdyb3d0aCBlcnVpdCB6aWV0CgpgYGAKIyMjIERhdGEgZmlsdGVyZW4KV2UgZ2FhbiBlZXJzdCBkZSBkYXRhIGZpbHRlcmVuIHpvZGF0IGVua2VsIGRlIGNvbnRyb2xlLSAoY3RybCkgZW4gdHdlZWRlIGJlaGFuZGVsaW5nc2dyb2VwICh0cnQyKSBnZWJydWlrdCB3b3JkZW4uCmBgYHtyfQojRmlsdGVyIGRlIGRhdGEgem9kYXQgZW5rZWwgZGF0YSB2YW4gZGUgY29udHJvbGUtIChjdHJsKSBlbiB0d2VlZGUgYmVoYW5kZWxpbmdzZ3JvZXAgKHRydDIpIGdlYnJ1aWt0IHdvcmRlbi4KCmBgYAoKCiMgRGF0YSBleHBsb3JhdGllCldlIGdhYW4gZGUgZ2V3aWNodGVuICh3ZWlnaHQpIHZhbiBkZSBwbGFudGVuIHBlciBncm9lcCAoZ3JvdXApIHBsb3R0ZW4gZG9vciBtaWRkZWwgdmFuIGVlbiBib3hwbG90IG9tIHRlIHppZW4gaG9lIG9uemUgZGlzdHJpYnV0aWUgZXJ1aXQgemlldC4KYGBge3J9CiNNYWFrIGVlbiBib3hwbG90IHZvb3IgZWxrZSBncm9lcCAoZ3JvdXApIHZhbiBoZXQgZ2V3aWNodCAod2VpZ2h0KSB2YW4gZGUgcGxhbnRlbiAKCgoKCmBgYAoKCiMjIyBXZWxrZSB0ZXN0IGthbiBtZW4gdWl0dm9lcmVuIG9tIGhldCBnZW1pZGRlbGQgZ2V3aWNodCB0ZSB2ZXJnZWxpamtlbiB0dXNzZW4gdHdlZSBncm9lcGVuPyBXYXQgaXMgZGUgbGluayBtZXQgaGV0IGxpbmVhaXIgbW9kZWw/CgoKCgoKCgojIyMgR2VlZiBkZSBudWwtIGVuIGFsdGVybmF0aWV2ZSBoeXBvdGhlc2Ugdm9vciBkZSB0d28tc2FtcGxlIHQtdGVzdC4gSG9lIHppdCBkaXQgYmlqIGhldCBsaW5lYXJlIG1vZGVsPwoKCiMjIyBHZWVmIGRlIGFzc3VtcHRpZXMgdmFuIGRlIHR3by1zYW1wbGUgdC10ZXN0IGVuIGdhIGRlemUgbmEuCgoKCgoKCgoKCgoKIyMjIFZvZXIgZGUgdHdvLXNhbXBsZSB0LXRlc3QgdWl0LiBXYXQga2FuIGplIGhpZXJ1aXQgY29uY2x1ZGVyZW4gb3AgdmxhayB2YW4gaHlwb3RoZXNldGVzdCBlbiBiZXRyb3V3YmFhcmhlaWRzaW50ZXJ2YWw/CgpgYGB7cn0KIyBWb2VyIGRlIHR3by1zYW1wbGUgdC10ZXN0IHVpdCBvbSBkZSBudWxoeXBvdGhlc2UgdmFuIGdlbGlqayBnZW1pZGRlbGQgZ2V3aWNodCB0dXNzZW4gZGUgY29udHJvbGViZWhhbmRlbGluZyBlbiBiZWhhbmRlbGluZyAyIG5hIHRlIGdhYW4uCgoKYGBgCgoKCgoKCgoKIyMjIE1vZGVsbGVlciBkZSBkYXRhIHZpYSBlZW4gbGluZWFpcmUgcmVncmVzc2llIGVuIGdhIG5hIG9mIGRlIG51bGh5cG90aGVzZSB2YW4gZ2VsaWprIGdlbWlkZGVsZCBnZXdpY2h0IHZlcndvcnBlbiB3b3JkdC4gV2F0IGthbiBqZSB6ZWdnZW4gb3ZlciBkZSBiZXRyb3V3YmFhcmhlaWRzaW50ZXJ2YWxsZW4/IFdhdCBiZXRla2VuZW4gZGUgdmVyc2NoaWxsZW5kZSBwYXJhbWV0ZXJzPwoKYGBge3J9CiMgVm9lciBlZW4gbGluZWFyZSByZWdyZXNzaWUgdG9lIHZhbiBoZXQgZ2V3aWNodCBpbiBmdW5jdGllIHZhbiBkZSBiZWhhbmRlbGluZ3Nncm9lcC4KCgpgYGAKCmBgYHtyfQojIEdlZWYgZGUgOTUlIGNvbmZpZGVuY2UgaW50ZXJ2YWxzIHZhbiBkZSBnZXNjaGF0dGUgcGFyYW1ldGVycy4KYGBgCgo=</div>
 <div class="footer">
     <hr>
     This work is licensed under the <a href= "https://creativecommons.org/licenses/by-nc-sa/4.0">
@@ -493,7 +496,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("afspraken_ufora.Rmd");
+  window.initializeSourceEmbed("Practicum_1_Voorbereiding_Two-sample_t-test.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
