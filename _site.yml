@@ -16,8 +16,8 @@ navbar:
     - text: "Labs"
       icon: fa-laptop
       menu:
-        - text: "Lab1"
-          href: lab1.html
+        - text: "Practicum 1: Voorbereiding Two-sample t-test"
+          href: Practicum_1_Voorbereiding_Two-sample_t-test.html
   right:
     - icon: fab fa-github
       href: https://github.com/statOmics/biostatistics21

@@ -33,7 +33,8 @@ Na de introductie van het algemene lineaire model zullen we dieper ingaan op bel
 
 ### Werkcolleges
     
-- Lab 1: [html](./lab1.html)
+- Practicum 1: 
+    - Voorbereiding two-sample t-test : [html](./Practicum_1_Voorbereiding_Two-sample_t-test.html)
 
 
 
