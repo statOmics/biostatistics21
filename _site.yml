@@ -21,11 +21,11 @@ navbar:
         - text: "Practicum 1: Voorbeeld anova"
           href: anova_example.html
         - text: "Practicum 1: Voorbereiding 1"
-          href: Practicum_1_Voorbereiding_Two-sample_t-test.html
+          href: Practicum_1_Voorbereiding_1.html
         - text: "Practicum 1: Voorbereiding 2"
-          href: Practicum_1_Voorbereiding_Anova.html
+          href: Practicum_1_Voorbereiding_2.html
         - text: "Practicum 1: Voorbereiding 3"
-          href: Practicum_1_Voorbereiding_Niet_parametrische_test.html
+          href: Practicum_1_Voorbereiding_3.html
 
   right:
     - icon: fab fa-github
