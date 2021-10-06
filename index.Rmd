@@ -35,10 +35,10 @@ Na de introductie van het algemene lineaire model zullen we dieper ingaan op bel
     
 - Practicum 1: 
     - Voorbeeld two-sample t-test: [html](./ttest_example.html)
-    - Voorbereiding two-sample t-test: [html](./Practicum_1_Voorbereiding_Two-sample_t-test.html)
     - Voorbeeld anova: [html](./anova_example.html)
-    - Voorbereiding anova: [html](./Practicum_1_Voorbereiding_Anova.html)
-    - Voorbereiding niet-parametrische test: [html](./Practicum_1_Voorbereiding_Niet_parametrische_test.html)
+    - Voorbereiding 1: [html](./Practicum_1_Voorbereiding_Two-sample_t-test.html)
+    - Voorbereiding 2: [html](./Practicum_1_Voorbereiding_Anova.html)
+    - Voorbereiding 3: [html](./Practicum_1_Voorbereiding_Niet_parametrische_test.html)
 
 ## Licentie 
 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>

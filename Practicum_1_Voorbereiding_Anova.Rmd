@@ -1,5 +1,5 @@
 ---
-title: "Voorbereiding Practicum 1: Variantie analyse"
+title: "Practicum 1: Voorbereiding 2"
 output: html_document
 ---
 

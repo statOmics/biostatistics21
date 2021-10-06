@@ -1,5 +1,5 @@
 ---
-title: "Voorbereiding Practicum 1: Niet-parametrische test"
+title: "Practicum 1: Voorbereiding 3"
 output: html_document
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Voorbereiding Practicum 1: T-test"
+title: "Practicum 1: Voorbereiding 1"
 output: html_document
 ---
 

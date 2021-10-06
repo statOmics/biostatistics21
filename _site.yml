@@ -18,13 +18,13 @@ navbar:
       menu:
         - text: "Practicum 1: Voorbeeld two-sample t-test"
           href: ttest_example.html
-        - text: "Practicum 1: Voorbereiding two-sample t-test"
-          href: Practicum_1_Voorbereiding_Two-sample_t-test.html
         - text: "Practicum 1: Voorbeeld anova"
           href: anova_example.html
-        - text: "Practicum 1: Voorbereiding anova"
+        - text: "Practicum 1: Voorbereiding 1"
+          href: Practicum_1_Voorbereiding_Two-sample_t-test.html
+        - text: "Practicum 1: Voorbereiding 2"
           href: Practicum_1_Voorbereiding_Anova.html
-        - text: "Practicum 1: Voorbereiding niet-parametrische test"
+        - text: "Practicum 1: Voorbereiding 3"
           href: Practicum_1_Voorbereiding_Niet_parametrische_test.html
 
   right:
