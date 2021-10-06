@@ -30,7 +30,7 @@ De data is beschikbaar in het bestand wbcon.dat. Dit bestand bevat twee variabel
 - 1: de rat behoort tot de behandelde groep
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
