@@ -23,4 +23,4 @@ library(ggplot2)})
 knaagdieren <- data.frame(weight=c(11,33,48,34,112,369,64,44,177,80,141,332),group=as.factor(c(rep("treat",8),rep("ctrl",4))))
 ```
 
-# Analyseer of er een verschil is in de gemiddelde hoeveelheid appels die gegeten worden in beide groepen appels.
+# Analyseer of er een verschil is in de gemiddelde hoeveelheid appels die gegeten worden in beide groepen appels. Noteer de verschillende analysestappen en schrijf een conclusie.
