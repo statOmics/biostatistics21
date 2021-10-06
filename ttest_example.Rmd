@@ -138,7 +138,7 @@ De t-test heeft een p-waarde van `r format(test$p.value,digits=2)`. Deze p-waard
 
 De t-test geeft ook een 95% betrouwbaarheidsinterval weer van `r format(test$conf.int[1],digits=3)` tot `r format(test$conf.int[2],digits=3)`. 
 
-**We hebben dus geschat dat het werkelijke gemiddelde verschil in concentratie witte bloedcellen tussen de controle groep en de behandelde groep met 95% kans tussen `r format(test$conf.int[2],digits=3)` bloedcellen/mm$^3$ en `r format(test$conf.int[2],digits=3)` ligt.**
+**We hebben dus geschat dat het werkelijke gemiddelde verschil in concentratie witte bloedcellen tussen de controle groep en de behandelde groep met 95% kans tussen `r format(test$conf.int[1],digits=3)` bloedcellen/mm$^3$ en `r format(test$conf.int[2],digits=3)` ligt.**
 
 
 # Conclusie
