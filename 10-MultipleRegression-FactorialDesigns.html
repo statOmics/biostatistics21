@@ -671,15 +671,15 @@ Fit: lm(formula = 1/time ~ poison + treat, data = rats)
 
 Linear Hypotheses:
                       Estimate Std. Error t value Pr(&gt;|t|)    
-poison: II - I == 0    0.04686    0.01744   2.688  0.07349 .  
-poison: III - I == 0   0.19964    0.01744  11.451  &lt; 1e-04 ***
-poison: III - II == 0  0.15278    0.01744   8.763  &lt; 1e-04 ***
-treat: B - A == 0     -0.16574    0.02013  -8.233  &lt; 1e-04 ***
-treat: C - A == 0     -0.05721    0.02013  -2.842  0.05088 .  
-treat: D - A == 0     -0.13583    0.02013  -6.747  &lt; 1e-04 ***
-treat: C - B == 0      0.10853    0.02013   5.391  &lt; 1e-04 ***
-treat: D - B == 0      0.02991    0.02013   1.485  0.61545    
-treat: D - C == 0     -0.07862    0.02013  -3.905  0.00283 ** 
+poison: II - I == 0    0.04686    0.01744   2.688  0.07348 .  
+poison: III - I == 0   0.19964    0.01744  11.451  &lt; 0.001 ***
+poison: III - II == 0  0.15278    0.01744   8.763  &lt; 0.001 ***
+treat: B - A == 0     -0.16574    0.02013  -8.233  &lt; 0.001 ***
+treat: C - A == 0     -0.05721    0.02013  -2.842  0.05093 .  
+treat: D - A == 0     -0.13583    0.02013  -6.747  &lt; 0.001 ***
+treat: C - B == 0      0.10853    0.02013   5.391  &lt; 0.001 ***
+treat: D - B == 0      0.02991    0.02013   1.485  0.61543    
+treat: D - C == 0     -0.07862    0.02013  -3.905  0.00274 ** 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 (Adjusted p values reported -- single-step method)</code></pre>
@@ -692,21 +692,21 @@ Multiple Comparisons of Means: Tukey Contrasts
 
 Fit: lm(formula = 1/time ~ poison + treat, data = rats)
 
-Quantile = 2.8491
+Quantile = 2.8495
 95% family-wise confidence level
  
 
 Linear Hypotheses:
-                      Estimate   lwr        upr       
-poison: II - I == 0    0.0468641 -0.0028108  0.0965390
-poison: III - I == 0   0.1996425  0.1499676  0.2493174
-poison: III - II == 0  0.1527784  0.1031035  0.2024532
-treat: B - A == 0     -0.1657402 -0.2230999 -0.1083806
-treat: C - A == 0     -0.0572135 -0.1145732  0.0001461
-treat: D - A == 0     -0.1358338 -0.1931934 -0.0784742
-treat: C - B == 0      0.1085267  0.0511671  0.1658863
-treat: D - B == 0      0.0299064 -0.0274532  0.0872660
-treat: D - C == 0     -0.0786203 -0.1359799 -0.0212607</code></pre>
+                      Estimate  lwr       upr      
+poison: II - I == 0    0.046864 -0.002818  0.096546
+poison: III - I == 0   0.199642  0.149961  0.249324
+poison: III - II == 0  0.152778  0.103097  0.202460
+treat: B - A == 0     -0.165740 -0.223108 -0.108373
+treat: C - A == 0     -0.057214 -0.114581  0.000154
+treat: D - A == 0     -0.135834 -0.193201 -0.078466
+treat: C - B == 0      0.108527  0.051159  0.165894
+treat: D - B == 0      0.029906 -0.027461  0.087274
+treat: D - C == 0     -0.078620 -0.135988 -0.021253</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">plot</span>(comparisons,<span class="dt">yaxt=</span><span class="st">&quot;none&quot;</span>)</span>
 <span id="cb17-2"><a href="#cb17-2"></a>contrastNames &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;II-I&quot;</span>,<span class="st">&quot;III-I&quot;</span>,<span class="st">&quot;III-II&quot;</span>,<span class="st">&quot;B-A&quot;</span>,<span class="st">&quot;C-A&quot;</span>,<span class="st">&quot;D-A&quot;</span>,<span class="st">&quot;C-B&quot;</span>,<span class="st">&quot;D-B&quot;</span>,<span class="st">&quot;D-C&quot;</span>)</span>
 <span id="cb17-3"><a href="#cb17-3"></a><span class="kw">axis</span>(<span class="dv">2</span>,<span class="dt">at=</span><span class="kw">c</span>(<span class="kw">length</span>(contrastNames)<span class="op">:</span><span class="dv">1</span>), <span class="dt">labels=</span>contrastNames,<span class="dt">las=</span><span class="dv">2</span>)</span></code></pre></div>
@@ -879,7 +879,7 @@ H_0:\beta_{III} + \frac{1}{4} \times \beta_{III:B} +  \frac{1}{4} \times\beta_{I
 <h1><span class="header-section-number">5</span> Conclusie</h1>
 <p>Er is een extreem significant effect van het type gif en de behandeling op de snelheid van sterven bij ratten (p &lt;&lt; 0.001).</p>
 <p>De interactie tussen gif en behandeling is niet significant (p = 0.387).</p>
-<p>De snelheid van sterven is gemiddeld 0.2h<span class="math inline">\(^{-1}\)</span> en 0.15h<span class="math inline">\(^{-1}\)</span> hoger voor ratten die blootgesteld worden aan gif III dan aan respectievelijk gif I en II (beide p &lt;&lt; 0.001, 95% BI III-I: [0.15, 0.25]h<span class="math inline">\(^{-1}\)</span>, 95% BI III-II: [0.1, 0.2]h<span class="math inline">\(^{-1}\)</span>) De gemiddelde snelheid van sterven was niet significant verschillend tussen ratten die werden blootgesteld aan gif I en gif II (p=0.074).</p>
+<p>De snelheid van sterven is gemiddeld 0.2h<span class="math inline">\(^{-1}\)</span> en 0.15h<span class="math inline">\(^{-1}\)</span> hoger voor ratten die blootgesteld worden aan gif III dan aan respectievelijk gif I en II (beide p &lt;&lt; 0.001, 95% BI III-I: [0.15, 0.25]h<span class="math inline">\(^{-1}\)</span>, 95% BI III-II: [0.1, 0.2]h<span class="math inline">\(^{-1}\)</span>) De gemiddelde snelheid van sterven was niet significant verschillend tussen ratten die werden blootgesteld aan gif I en gif II (p=0.073).</p>
 <p>De snelheid van sterven is gemiddeld 0.17h<span class="math inline">\(^{-1}\)</span> en 0.14h<span class="math inline">\(^{-1}\)</span> hoger na behandeling A dan na behandeling B en D (p &lt;&lt; 0.001, 95% BI B-A: [-0.22, -0.11]h<span class="math inline">\(^{-1}\)</span>, 95% BI D-A: [-0.19, -0.08]h<span class="math inline">\(^{-1}\)</span>). De snelheid van sterven is gemiddeld 0.11h<span class="math inline">\(^{-1}\)</span> en 0.08h<span class="math inline">\(^{-1}\)</span> hoger na behandeling C dan respectievelijk na behandeling B en D (C-B: p &lt;&lt; 0.001, 95% CI [0.05, 0.17]h<span class="math inline">\(^{-1}\)</span> , D-C: p = 0.003, 95% CI [-0.14, -0.02]h<span class="math inline">\(^{-1}\)</span>). De gemiddelde snelheid van sterven is niet significant verschillend tussen ratten behandeld met behandeling C vs A, en D vs B (p- waarden respectievelijk p = 0.051 en p = 0.61).</p>
 <p>Alle p-waarden werden gecorrigeerd voor meervoudig testen.</p>
 </div>
