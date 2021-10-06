@@ -29,6 +29,10 @@ De data is beschikbaar in het bestand wbcon.dat. Dit bestand bevat twee variabel
 - 0: de rat behoort tot de controlegroep
 - 1: de rat behoort tot de behandelde groep
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
 ```{r}
 library(ggplot2)
 library(dplyr)
