@@ -20,6 +20,11 @@ library(tidyverse)
 
 # Introduction
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/V1QAv2_oYBs
+" frameborder="0" style="display: block; margin: auto;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+
 In deze sectie illustreren we hoe experimenten met een factoriële proefopzet geanalyseerd kunnen worden met het algemeen lineair model. 
 
 We focussen hierbij op een two-way anova design waarbij we een continue response modelleren in functie van twee categorische predictor variabelen (factoren). 
@@ -66,6 +71,10 @@ rats %>%
 - De boxplots geven ook aan dat de data heteroscedastisch zijn. 
 
 # Model 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UxHKF0fgwkY
+" frameborder="0" style="display: block; margin: auto;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 
 We modelleren de data met een hoofdeffect voor gif en behandeling en een gif $\times$ behandeling interactie. 
 
@@ -127,6 +136,14 @@ Transformaties bemoeilijken soms de interpretatie.
 Hier kan de reciproke transformatie echter worden geïnterpreteerd als de "snelheid van sterven" (rate of dying). 
 
 # Inferentie 
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Dy3SyyamlHg
+" frameborder="0" style="display: block; margin: auto;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GtGKActzZT0
+" frameborder="0" style="display: block; margin: auto;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 Er zijn meerdere interactie termen in het model. 
 We kunnen deze eerst samen testen a.d.h.v. van de resultaten uit de anova tabel. 
@@ -335,6 +352,9 @@ data.frame(Additive_coef=summary(comparisons)$test$coef,Additive_se=summary(comp
 ```
 
 # Conclusie
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/95DvzLFe3yk
+" frameborder="0" style="display: block; margin: auto;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 Er is een extreem significant effect van het type gif en de behandeling op de snelheid van sterven bij ratten (p << 0.001).
 

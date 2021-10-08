@@ -18,8 +18,19 @@ knitr::opts_chunk$set(include = TRUE, comment = NA, echo = TRUE,
 library(tidyverse)
 ```
 
+Link naar webpage/script die wordt gebruik in de kennisclips:
+
+- [script Hoofdstuk 10](https://statomics.github.io/sbc21/rmd/10-MultipleRegression.html)
+
 
 # Inleiding
+
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/3ltCTl4stEI"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 - Tot nu toe: één uitkomst $Y$ en één predictor $X$.
 - Vaak handig om meerdere predictors te gebruiken om de respons te modelleren. bijv
@@ -33,6 +44,14 @@ $\rightarrow$ Uitbreiden van enkelvoudige lineaire regressie naar meerdere predi
 ---
 
 ## Prostaatkanker voorbeeld
+
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/ZdZ5XLaDZi0"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 - Prostaat specific antigen (PSA) en een aantal klinische metingen bij 97 mannen waarvan de prostaat werd verwijderd.
 - Associatie van PSA i.f.v.
 
@@ -66,6 +85,12 @@ prostate %>%
 
 # Additief meervoudig lineaire regressie model
 
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/vATACtD6kpU"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 Afzonderlijke lineaire regressiemodellen, zoals
 
@@ -131,6 +156,14 @@ of
 
 ### Prostate voorbeeld
 
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/5Im-lIB4jGs"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
 ```{r}
 lmV <- lm(lpsa ~ lcavol, prostate)
 summary(lmV)
@@ -183,6 +216,12 @@ surf3D(x.pred3D,y.pred3D,z2.pred3D,col="red",facets=NA,add=TRUE)
 
 # Besluitvorming in algemeen lineair regressiemodellen
 
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/6AbrMvfGXVw"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 Als gegevens representatief zijn dan zijn kleinste kwadraten schatters voor het intercept en de hellingen onvertekend.
 $$E[\hat \beta_j]=\beta_j,\quad j=0,\ldots,p-1.$$
@@ -261,6 +300,11 @@ plot(lmVWS)
 
 ## Het niet-additieve meervoudig lineair regressiemodel
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/gdm0_Hh7Abc"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ### Interactie tussen een continue variabele en een factor variabele
 
@@ -373,6 +417,13 @@ surf3D(x.pred3D,y.pred3D,z2.pred3D,col="orange",facets=NA,add=TRUE)
 ### Interactie tussen twee continue variabelen
 
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/LWBXS4mYbMI"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
 - Het zou nu echter kunnen zijn dat de associatie tussen lpsa en lcavol afhangt van het prostaatgewicht.
 - De gemiddelde toename in lpsa tussen patiënten die één eenheid van log-tumorvolume verschillen zou bijvoorbeeld lager kunnen zijn voor patiënten met een hoog prostaatgewicht dan bij patiënten met een laag prostaatgewicht.
 - Het effect van het tumorvolume op de prostaat antigeen concentratie hangt in dit geval af van het prostaatgewicht.
@@ -469,11 +520,18 @@ surf3D(x.pred3D,y.pred3D,z.pred3D,col="blue",facets=NA,add=TRUE)
 
 ### Interactie tussen twee factor variabelen
 
-We gaan hier in het werkcollege dieper op in.
+Zie aparte presentatie over factoriële designs
 
 ---
 
 # ANOVA Tabel
+
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/Y4klT3eXJwI"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 De totale kwadratensom SSTot is opnieuw
@@ -523,6 +581,12 @@ summary(lmVWS)
 
 ## Extra Kwadratensommen
 
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/LXgh32U9Dq4"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 Beschouw de volgende twee regressiemodellen voor regressoren $x_1$ en $x_2$:
 $$
@@ -657,6 +721,14 @@ Merk echter op dat alle dummy's voor factoren met meerdere niveaus in één keer
 ---
 
 # Diagnostiek
+
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/6t84tO2zOcs"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 ## Multicollineariteit
 
 ```{r echo=FALSE}
@@ -771,6 +843,13 @@ vif(lmVWS_IntVW)
 ## Invloedrijke Observaties
 
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/CcZE9mRUSTE"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
 ```{r echo=FALSE}
 set.seed(112358)
 nobs<-20
@@ -856,6 +935,13 @@ boxplot(exp(prostate$lweight),ylab="Prostate Weight (g)")
 ---
 
 # Constrasten
+
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/TXuXuve20wM"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 - Bij meer complexe algemene lineaire modellen wenst men dikwijls meerdere hypothesen te toetsen.
 - Bovendien vertalen de onderzoekshypotheses zich hierbij niet steeds in één parameter, maar in een lineaire combinatie van modelparameters.
@@ -953,6 +1039,12 @@ data.frame(scaled_residuals = mBp3$residuals/mSd$fitted, fit = mBp3$fitted) %>%
 ```
 
 ### Besluitvorming
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/GLan10H4kuk"
+frameborder="0"
+style="display: block; margin: auto;"
+allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ```{r}
 summary(mBp3)
