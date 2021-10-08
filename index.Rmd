@@ -81,7 +81,7 @@ Na de introductie van het algemene lineaire model zullen we dieper ingaan op bel
 
 ### Werkcolleges
     
-- Practicum 1: 
+- Practicum 1: Deadline voorbereiding 20 oktober 23:59
     - Voorbeeld two-sample t-test: [html](./ttest_example.html)
     - Voorbeeld anova: [html](./anova_example.html)
     - Voorbereiding 1: [html](./Practicum_1_Voorbereiding_1.html)
