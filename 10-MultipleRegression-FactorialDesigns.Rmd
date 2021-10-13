@@ -18,7 +18,7 @@ knitr::opts_chunk$set(include = TRUE, comment = NA, echo = TRUE,
 library(tidyverse)
 ```
 
-# Introduction
+# Introductie
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/V1QAv2_oYBs
 " frameborder="0" style="display: block; margin: auto;" allow="autoplay; encrypted-media" allowfullscreen></iframe>

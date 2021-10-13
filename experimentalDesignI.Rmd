@@ -1,5 +1,5 @@
 ---
-title: "Experimental Design I: replicatie en power"
+title: "Experimenteel Design I: replicatie en power"
 author: "Lieven Clement"
 date: "statOmics, Ghent University (https://statomics.github.io)"
 output:
@@ -19,27 +19,26 @@ output:
 library(tidyverse)
 ```
 
-# Concepts
+# Concepten
 
-- Experimental units representative for population: Randomisation 
-- Replication: technical vs biological, sample size - power
-- Sources of variation: technical, biological, within subject, between subject
+- Experimentele eenheden zijn representatief voor populatie: Randomisatie
+- Replicatie: technisch vs biologisch, steekproefgrootte - power
+- Bronnen van variabiliteit: technisch, biologisch, binnen en tussen subjecten. 
 
 # Replicatie 
 
-Two pager on Replication in nature methods [[PDF](https://www.nature.com/articles/nmeth.3091.pdf)]
+Paper over replicatie in Nature Methods (2 pagina's) [[PDF](https://www.nature.com/articles/nmeth.3091.pdf)]
 ![](https://www.nature.com/articles/nmeth.3091.pdf){ width=100% }
 
-## Example
+## Voorbeeld
 
-Consider a single cell RNA-seq experiment where researchers want to assess the effect of drug treatment on gene expression
+In een RNA-seq experiment willen de onderzoekers het effect nagaan van een medicijn op de gen expressie. 
 
-Potential research questions
+Mogelijkse onderzoeksvraag
 
-- Is there a difference in average gene expression between treated and non treated samples
-- Is there a difference in variability of gene expression between treated and non treated samples 
+- Is er een verschil in gemiddelde gen expressie tussen behandelde en niet behandelde samples
 
-## Sources of variation
+## Bronnen van variabiliteit
 
 TABLE 1 NATURE METHODS | VOL.11 NO.9 | SEPTEMBER 2014 | 879 - 880
 
@@ -53,7 +52,7 @@ TABLE 1 NATURE METHODS | VOL.11 NO.9 | SEPTEMBER 2014 | 879 - 880
 | | | |
 | | Organs from sacrificed animals | B |
 | | Methods for dissociating cells from tissue | T |
-| Sample preparation | Dissociation runs from given tissue sample | T |
+| Sample prepamuision | Dissociation runs from given tissue sample | T |
 | | Individual cells | B |
 | | | |
 | | RNA-seq library construction | T |
@@ -66,7 +65,7 @@ TABLE 1 NATURE METHODS | VOL.11 NO.9 | SEPTEMBER 2014 | 879 - 880
 
 ---
 
-## At which level should we replicate?
+## Op welk niveau moeten we repliceren?
 
 - $\text{var}(X)=\sigma^2_A+\sigma^2_C+\sigma^2_M=\sigma^2_{TOT}$
 - $\text{var}(\bar{X})=\frac{\sigma^2_A}{n_A}+\frac{\sigma^2_C}{n_A n_C} + \frac{\sigma^2_M}{n_A n_C n_M}$
@@ -74,53 +73,52 @@ TABLE 1 NATURE METHODS | VOL.11 NO.9 | SEPTEMBER 2014 | 879 - 880
 ![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnmeth.3091/MediaObjects/41592_2014_Article_BFnmeth3091_Fig1_HTML.jpg)
 Figure 1 NATURE METHODS | VOL.11 NO.9 | SEPTEMBER 2014 | 879 - 880
 
-(a) Three levels of replication (two biological, one technical) with animal, cell and measurement replicates normally distributed with a mean across animals of 10 and ratio of variances 1:2:0.5. Solid green (biological) and blue (technical) dots show how a measurement of the expression (X = 12) samples from all three sources of variation. Distribution s.d. is shown as horizontal lines. 
-(b) Expression variance, Var(X), and variance of expression mean, Var($\bar X$), computed across 10,000 simulations of nAnCnM = 48 measurements for unique combinations of the number of animals (nA = 1 to 48), cells per animal (nC = 1 to 48) and technical replicate measurements per cell (nM = 1 and 3). The ratio of Var(X) and Var($\bar X$) is the effective sample size, n, which corresponds to the equivalent number of statistically independent measurements. Horizontal dashed lines correspond to biological and total variation. Error bars on Var(X) show s.d. from the 10,000 simulated samples (nM = 1).
+(a) Three levels of replication (two biological, one technical) with animal, cell and measurement replicates normally distributed with a mean across animals of 10 and muisio of variances 1:2:0.5. Solid green (biological) and blue (technical) dots show how a measurement of the expression (X = 12) samples from all three sources of variation. Distribution s.d. is shown as horizontal lines. 
+(b) Expression variance, Var(X), and variance of expression mean, Var($\bar X$), computed across 10,000 simulations of nAnCnM = 48 measurements for unique combinations of the number of animals (nA = 1 to 48), cells per animal (nC = 1 to 48) and technical replicate measurements per cell (nM = 1 and 3). The muisio of Var(X) and Var($\bar X$) is the effective sample size, n, which corresponds to the equivalent number of statistically independent measurements. Horizontal dashed lines correspond to biological and total variation. Error bars on Var(X) show s.d. from the 10,000 simulated samples (nM = 1).
 
 ---
 
-- Cost benefit trade-off: cost difference between biological and technical replicates 
-- Typically, biological variability is substantially larger than technical variability
+Waar ligt interesse? 
 
-$\rightarrow$ commit resources to sampling biologically relevant variables 
+- Karakteriseren van bronnen van variabiliteit in experiment ==> technische en biologische repeats zijn nodig
+- Voornamelijke interesse in schatten van effect van behandeling ==> focus op biologische repeats
+- Extra biologische repeats lumpen alle bronnen van variabiliteit: biologische + technische variabiliteit. 
 
-$\rightarrow$ unless measures of technical variability are of interest then increasing number of technical measurements is valuable.
+- Goed experimenteel design vereist na denken over replicatie 
 
-- Good experimental design practice includes planning for replication. 
-
-  1. Identify the research questions to be answered with experiments. 
-  2. Determine proportion of variability induced by each step.
-  3. Be aware for pseudoreplication and aim for statistically independent replicates.
+  1. Identificeer onderzoeksvragen die men wenst te beantwoorden. 
+  2. Breng bronnen van variabiliteit in kaart in elke stap van het experiment
+  3. Let op voor pseudoreplicatie, beoog zoveel mogelijk onafhankelijke repeats. 
 
 --- 
 
-# Power, sample size and other design aspects
+# Power, steekproefgrootte en andere design aspecten. 
 
 Reading materials: 
 [Nature Methods (2013), 10(12), 1139–1140](https://www.nature.com/articles/nmeth.2738.pdf)
 
-## Intermezzo linear regression in matrix form 
+## Intermezzo lineare regression in matrix vorm 
 
-- Linear regression is a very important statistical tool to study the association between variables and to build prediction models.
+- Lineaire regressie is een belangrijke methode in statistische data analyse.
 
-### Scalar form
+### Scalaire vorm
 
-- Consider a vector of predictors $\mathbf{x}=(x_1,\ldots,x_p)$ and
-- a real-valued response $Y$
-- then the linear regression model can be written as
+- Stel dat men voor elke experimentele eenheid $p$ predictoren meet $\mathbf{x}=(x_1,\ldots,x_p)$ en
+- continue respons $Y$
+- het linear regressiemodel kan dan worden geschreven als: 
 \[
 Y=f(\mathbf{x}) +\epsilon=\beta_0+\sum\limits_{j=1}^p x_j\beta_j + \epsilon
 \]
-with i.i.d. $\epsilon\sim N(0,\sigma^2)$
+met i.i.d. $\epsilon\sim N(0,\sigma^2)$
 
 
 
-### Vector/Matrix form
+### Vector/Matrix vorm
 
-- $n$ observations $(\mathbf{x}_1,y_1) \ldots (\mathbf{x}_n,y_n)$ with $\mathbf{x}_1^T=[1 x_1 \ldots x_p]$
-- Regression in matrix notation
+- $n$ observatie $(\mathbf{x}_1,y_1) \ldots (\mathbf{x}_n,y_n)$ with $\mathbf{x}_1^T=[1 x_1 \ldots x_p]$
+- Regressie in matrix notatie
 \[\mathbf{Y}=\mathbf{X\beta} + \mathbf{\epsilon}\]
-with $\mathbf{Y}=\left[\begin{array}{c}y_1\\ \vdots\\y_n\end{array}\right]$,
+met $\mathbf{Y}=\left[\begin{array}{c}y_1\\ \vdots\\y_n\end{array}\right]$,
 $\mathbf{X}=\left[\begin{array}{cccc} 1&x_{11}&\ldots&x_{1p}\\
 \vdots&\vdots&&\vdots\\
 1&x_{n1}&\ldots&x_{np}
@@ -130,15 +128,15 @@ $\mathbf{\epsilon}=\left[\begin{array}{c} \epsilon_1 \\ \vdots \\ \epsilon_n\end
 
 ---
 
-## Least Squares (LS)
+## kleinste kwadmuisen techniek/Least Squares (LS)
 
-- Minimize the residual sum of squares
+- Minimimaliseer de  residuele kwadmuisensom
 \begin{eqnarray*}
 RSS(\boldsymbol{\beta})&=&\sum\limits_{i=1}^n e^2_i\\
 &=&\sum\limits_{i=1}^n \left(y_i-\beta_0-\sum\limits_{j=1}^p x_{ij}\beta_j\right)^2
 \end{eqnarray*}
 
-- or in matrix notation
+- of in matrix notatie
 
 $$
 \text{RSS}(\boldsymbol{\beta})=(\mathbf{Y}-\mathbf{X\beta})^T(\mathbf{Y}-\mathbf{X\beta})
@@ -148,7 +146,7 @@ $$\rightarrow \hat{\boldsymbol{\beta}}=\text{argmin}_\beta \text{ RSS}(\boldsymb
 
 ---
 
-### Minimize RSS
+### Minimimaliseer RSS
 \[
 \begin{array}{ccc}
 \frac{\partial RSS}{\partial \boldsymbol{\beta}}&=&\mathbf{0}\\\\
@@ -161,7 +159,7 @@ $$\rightarrow \hat{\boldsymbol{\beta}}=\text{argmin}_\beta \text{ RSS}(\boldsymb
 
 ---
 
-## Variance Estimator?
+## Variantie schatter?
 \[
 \begin{array}{ccl}
 \hat{\boldsymbol{\Sigma}}_{\hat{\boldsymbol{\beta}}}
@@ -176,90 +174,92 @@ $$\rightarrow \hat{\boldsymbol{\beta}}=\text{argmin}_\beta \text{ RSS}(\boldsymb
 \end{array}
 \]
 
-The uncertainty on the model parameters thus depends on the residual variability and the design! 
+De onzekerheid op model parameters hangt dus af van de residuele variabiliteit en het de proefopzet!
 
-- The larger $\mathbf{X}^T\mathbf{X}$ the more information the experiment contains on the model parameters and the smaller their variances and standard errors will be! 
-- Factorial designs? 
-- Designs with continuous predictors? 
+- Hoe groter $\mathbf{X}^T\mathbf{X}$ hoe meer informatie het experiment zal hebben over de model parameters en hoe kleiner hun variantie en standaard errors! 
+
+- Factoriële designs? 
+- Designs with continue predictoren? 
 
 ---
 
-The effect size of interest is typically a linear combinations of the model parameters, i.e. 
+De effectgrootte van interesse is typisch een lineaire combinatie van de model parameters,  
 $$
 l_0 \times \beta_0 + l_1 \times \beta_1 + ... + l_{p-1} \times \beta_{p-1} = \mathbf{L}^T\boldsymbol{\beta}
 $$ 
 
-The null hypothesis of our test statistics is than formulated as 
+De nulhypothese van onze test kan dan worden geschreven als 
 
 
 $$
 H_0: \mathbf{L}^T\boldsymbol{\beta} = 0 
 $$ 
 
-vs the alternative hypothesis 
+vs de alternatieve hypothese 
 
 $$
 H_0: \mathbf{L}^T\boldsymbol{\beta} \neq 0 
 $$
-which can be assessed using a t-test statistic: 
+
+En het bewijs in het experiment tegen $H_0$ kan worden gekwantificeerd met de t-test statistiek: 
 
 $$
 t=\frac{\mathbf{L}^T\hat{\boldsymbol{\beta}} - 0}{\text{se}_{\mathbf{L}^T\hat{\boldsymbol{\beta}}}}
 $$
-which follows a t-distribution with n-p degrees of freedom under the null hypothesis when all assumptions for the linear model are valid. 
+die een t-distributie volgt met n-p vrijheidsgraden onder de nul hypothese als alle aannames van het model geldig zijn.
 
-So the power 
+De kracht van de toets is dan
 
 $$P(p < 0.05 | H_1)$$
+en hangt af van 
 
-will typically depends on 
+- de werkelijke effectgrootte in de populatie $\mathbf{L}^T\boldsymbol{\beta}$.
+- Het aantal observaties: SE en df van t-test.
+- Keuze van de designpunten
+- Keuze van significantie-niveau $\alpha$. 
 
-- the real effect size in the population  $\mathbf{L}^T\boldsymbol{\beta}$.
-- Number of observations: SE and df of t-test.
-- Choice of the design points.
-- Choice of significance level. 
+We kunnen dit evalueren aan de hand van simulaties.
 
-Similar to the introductory example, we can use simulations to assess the power.
+## Muis voorbeeld
 
-## Mouse example 
+- In 2021 publiceerden Choa et al. dat cytokine Thymic stromal lymphopoietin
+(TSLP) vetverlies induceert bij muizen die een vet dieet krijgen door de secretie van talg. [[html](https://www.science.org/doi/full/10.1126/science.abd2893)] [[PDF](https://www.science.org/doi/pdf/10.1126/science.abd2893)]
 
-- In 2021 Choa et al. published that the cytokine Thymic stromal lymphopoietin
-(TSLP) induced fat loss through sebum secretion (talg). [[html](https://www.science.org/doi/full/10.1126/science.abd2893)] [[PDF](https://www.science.org/doi/pdf/10.1126/science.abd2893)]
+- Stel dat je een gelijkaardig experiment op wil zetten om na te gaan of cytokine interleukin 25 (IL) ook een effect heeft op het gewicht van muizen. 
 
-- Suppose that you would like to set up a similar study to test if cytokine interleukin 25 (IL) also has beneficial effect. 
+- Je plant een studie met een controle groep muizen die een hoog vet dieet krijgen  (HFD) en een behandelingsgroep die een HFD dieet met IL krijgt. 
 
-- You plan to setup a study with a control group of high fat diet (HFD) fed mice and a treatment group that recieves the HFD and IL. 
-
-- What sample size do you need to pick up the effect of the treatment. 
+- Wat is de vereiste steekproefgrootte om een bepaald effect op te pikken van de behandeling? 
 
 
-### How will we analyse the data of this experiment? 
+### Hoe zal je de data van het experiment analyseren? 
 
 
 ---
 
 
 
-- $H_0$: The average weight difference is equal to zero
-- $H-0$: The average weight difference is different from zero
+- $H_0$: Er is geen verschil in het gewicht van muizen die een dieet met IL krijgen en muizen die het controle dieet krijgen.
+- $H-0$: Het gewicht is gemiddelde verschillend tussen muizen die het IL dieet krijgen en muizen die het controle dieet krijgen.
 
-- Two sample t-test or a t-test on the slope of a linear model with one dummy variable. 
+- Two sample t-test of een t-test op de helling van het lineaire model met 1 dummy variabele
 
 $$ Y_i = \beta_0 + \beta_1 X_\text{iIL} + \epsilon_i$$ 
 
 $$
-\text{with }
+\text{met }
 X_\text{iIL}=\begin{cases}X_{iIL}=0 & \text{HFD}\\X_{iIL}=1 & \text{HFD + IL}\end{cases}.
 $$
 
-- Estimated effect size 
+- Geschatte effectgrootte?
+
 $$\hat\delta = \bar X_{IL} - \bar X_{c} = \hat \beta_1$$
 
-- Test statistic
+- Test statistiek
 $$
 T = \frac{\bar{X}_{IL}-\bar{X}_{c}}{SD_\text{pooled} \times \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} = \frac{\hat\beta_1}{\text{SE}_{\hat\beta_1}}
 $$
-- $\hat \beta_1$ is an unbiased estimator of the real weight difference ($\delta$) that would occur in the population of rats fed with HFD and rats fed with HFD + IL.  
+- $\hat \beta_1$ is een onvertekende schatter van het werkelijk gewichtsverschil ($\delta =\mu_{IL}-\mu_{c} = \beta_1$) dat zou voorkomen in de populatie van muizen gevoed met HFD vs muizen gevoed met HFD + IL.  
 
 ### Power? 
 
@@ -268,25 +268,28 @@ P[p < \alpha \vert \beta_1 \neq 0]
 $$
 
 
-- Hence, the power will depend on the real weight difference between the group means $\beta_1$ in the population.
-- The variability of the weight measurements
-- The significance level $\alpha$
-- Sample size $n_{IL}$ and $n_c$ in both groups 
+De kracht (power) zal dus afhangen van 
+
+- Het werkelijke gemiddelde gewichtsverschil $\beta_1$ in de populatie.
+- De variabiliteit van de gewichtsmetingen
+- het significantie-niveau $\alpha$
+- steekproefgrootte $n_{IL}$ en $n_c$ in beide groepen 
 
 
-We can estimate the power if 
+We kunnen de power schatten als 
 
-1. The assumptions of the model are met: weights are normally distributed with same variance
+1. voldaan is aan de  aannamens van het model: gewicht in beide groepen is normaal verdeeld met gelijke variantie
 
-and we know
+en als we de 
 
-2. the standard deviation of the weight measurements around their average mean for HFD-fed mice  
-3. the real effect size in the population
-4. $n_1$ and $n_2$ 
+2. standaard deviatie kennen van gewichtsmetingen rond hun groepsgemiddelde voor muizen die een HFD diet krijgen
 
-### Use data from a previous experiment to get insight in mice data
+3. de echte effectgrootte in de populatie
+4. $n_1$ en $n_2$ 
 
-Suppose that we have access to the data of a preliminary experiment (e.g. provided by Karen Svenson via Gary Churchill and Dan Gatti and partially funded by P50 GM070683 on [PH525x](http://genomicsclass.github.io/book/pages/random_variables.html))
+### Gebruik data uit vorig experiment om inzicht te krijgen in de gewichtsdata van muizen
+
+Stel dat we toegang hebben tot data van een vorig experiment (hier dat van Karen Svenson en Dan Gatti, gefinancierd door P50 GM070683 en beschikbaar op [PH525x](http://genomicsclass.github.io/book/pages/random_variables.html))
 
 ```{r}
 mice <- read.csv("https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/femaleMiceWeights.csv")
@@ -313,35 +316,35 @@ miceSum <- mice %>%
   mutate(se=sd/sqrt(n))
 miceSum 
 ```
-In the experiment we have data from two diets: 
 
-- regular diet of cerial and grain based diet (Chow) 
-- High Fat (hf)
+In het experiment werden twee diëten gebruikt: 
 
-We can use the hf mice as input for our power analysis. 
+- gewoon diet o.b.v. granen (Chow) 
+- Heel vet dieet (high fat: hf)
 
-- The data of the hf mice seem to be normally distributed 
-- The mean weight is `r miceSum %>% filter(Diet == "hf") %>% pull("mean") %>% round(.,1)`g 
-- The SD of the weight is `r miceSum %>% filter(Diet == "hf") %>% pull("sd") %>% round(.,1)`g 
+We kunnen de data van de hf muizen gebruiken als input voor onze power analyse. 
 
-Effect size? 
+- De data van hf muizen lijk normaal verdeeld te zijn.  
+- Het gemiddelde gewicht van een hf muis is `r miceSum %>% filter(Diet == "hf") %>% pull("mean") %>% round(.,1)`g 
+- De standaard deviatie (SD) van het gewicht van hf muizen is `r miceSum %>% filter(Diet == "hf") %>% pull("sd") %>% round(.,1)`g 
 
-- The alternative hypothesis is complex. 
-- It includes all possible effects! 
-- In order to do the power analysis we will have to choose a minimum effect size that we would like to detect. 
+Effectgroote? 
 
-- Suppose that we would like to detect if the weight of the rats difference $\delta$ of at least 10%. 
+- De alternative hypothese is complex. 
+- Omvat alle mogelijke effecten! 
+- Om een power analyse te doen kiezen we daarom een minimale effectgrootte die we wensen op te pikken in het nieuwe experiment. 
+- Veronderstel dat we een gewichtsverschil willen oppikken van minimaal 10%. 
 
 ```{r}
 delta <- - round(miceSum$mean[2] *.1,1)
 delta
 ```
 
-Note, that the average weight then would get close to that of the rats in our pilot experiment that were fed on the chow diet.
+Merk op dat het gemiddeld gewicht dan dicht komt bij dat van muizen in het pilootexperiment die werden gevoed met het normale dieet. 
 
-We can set up a simulation study to assess the power of an experiment with 8 mice in each group:
+We kunnen nu een simulatie studie opzetten om de power te berekenen voor een experiment met 8 muizen in elke groep. 
 
-#### One simulation
+#### Eén simulatie
 
 ```{r}
 set.seed(1423)
@@ -359,12 +362,12 @@ stat <- summary(fit)
 summary(fit)$coef[2,]
 ```
 
-For this simulated experiment we would `r ifelse(summary(fit)$coef[2,"Pr(>|t|)"] < alpha,"","not")` have been able to pick up the effect of the treatment at the significance level $\alpha$=`r alpha` (p = `r` round(summary(fit)$coef[2,"Pr(>|t|)"],2)`)! 
+Voor het gesimuleerde experiment konden we het effect van de behandeling `r ifelse(summary(fit)$coef[2,"Pr(>|t|)"] < alpha,"","niet")` oppikken bij het  $\alpha$=`r alpha` (p = `r` round(summary(fit)$coef[2,"Pr(>|t|)"],2)`) significantie-niveau! 
 
-- We have to repeat the experiment many times to estimate the power. 
-- We will therefore put our simulation in a general function. 
+- We moeten het experiment herhalen om de power te schatten. 
+- We zullen de simulatie daarom coderen in een functie die we kunnen hergebruiken. 
 
-#### Simulation of repeated experiments
+#### Simulatie van herhaalde experimenten (repeated experiments)
 
 ```{r}
 library(multcomp)
@@ -397,8 +400,9 @@ simLm(
   contrasts = "Diethf = 0")
 ```
 
-We now have a generic function that can simulate data from a normal distribution for every design. 
-The function has arguments: 
+We hebben nu een generiek functie waarmee we data kunnen simuleren die normaal verdeeld zijn voor elk mogelijk design die we met het lineair model kunnen analyseren. 
+
+De functie heeft volgende argumenten: 
 
 - `form`: One sided formula including the structure of the predictors in the model 
 - `data`: Data frame with the predictor values for the design
@@ -407,7 +411,7 @@ The function has arguments:
 - `contrasts`: a scalar or a vector with the null hypotheses that we would like to assess. 
 - `simIndex`: an arbitrary argument that is not used by the  function but that will allow it to be used in an sapply loop that runs from 1 up to the number of simulations. 
 
-Simulate nSim = 1000 repeated experiments: 
+Simuleer nSim = 1000 herhaalde experimenten: 
 
 ```{r}
 set.seed(1425)
@@ -418,11 +422,13 @@ power <- mean(simResults[,4] < alpha)
 power
 ```
 
-We have a power of `r power*100`% to pick up the treatment effect when using 8 bioreps in each treatment group. 
+We hebben een power van `r power*100`% om het behandelingseffect op te pikken met 8 biologische herhalingen in elke behandelingsgroep. 
 
-#### Power for multiple sample sizes 
+Merk op dat de power van een experiment ook het hoogste is als het aantal observaties gebalanceerd is, m.a.w. $n_1=n_2$. 
 
-We can now calculate the power for multiple sample sizes. 
+#### Power voor verschillende steekproefgroottes 
+
+We kunnen de power nu berekenen voor meerdere steekproefgrootes. 
 
 ```{r}
 power <- data.frame(n=c(3,5,10,25,50,75,100),power=NA)
@@ -443,12 +449,13 @@ power %>%
   geom_line()
 ```
 
-#### Assess power in function of sample size for different effect sizes 
+#### Bestudeer power in functie van steekproefgrootte en effectgrootte 
 
-Note, that 
-- the sign of the delta is arbitrary because we test two-sided. 
-- the intercept is arbitrary because we only asses $\beta_0$
-- We therefore typically set $\beta_0 = 0$
+Merk op dat 
+
+- het teken van delta arbitrair is omdat we tweezijdig testen.
+- het intercept arbitrair is omdat we alleen testen op $\beta_1$
+- We nemen daarom typisch $\beta_0 = 0$
 
 ```{r}
 nSim <- 1000
@@ -477,27 +484,28 @@ power %>%
   geom_line()
 ```
 
-Note, that the power curves are still a bit choppy because we selected a limited number of sample sizes and because `nSim` simulations is not enough to get a good power estimate when the power is low. 
+Merk op dat de power curves wat schokkerig zijn omdat we maar een beperkt aantal steekproefgroottes en een beperkt aantal simulaties uitvoerden. 
+Voor de lage powers is het aantal simulaties zeker onvoldoende om heel betrouwbare schattingen van de power te bekomen. 
 
-# Final remarks
+# Opmerkingen
 
-- The code can be easily extended towards other designs by altering
+- De code kan eenvoudig aangepast worden naar andere designs (zie oefeningen)
     
     - predictor data 
     - formula
     - contrast
 
-- The simulations start to take long when you evaluate many scenario's. 
+- De simulaties kunnen lang duren wanneer je veel scenario's evalueert.  
     
-    - More efficient code using matrices
-    - For a two group comparison closed form solutions exist
+    - Meer efficiënte code met matrices
+    - Voor two group comparison bestaat een analytische oplossing. 
     
 
 
 
-## More efficient code based on matrix algebra
+##  Meer efficiënte code met matrices
 
-Code runs much faster. We now simulate 20 times more experiments in a much shorter time! 
+Code is veel sneller. We simulaleren nu 20 keer meer experimenten in een veel kortere tijd! 
 
 ```{r}
 nSim <- 20000
@@ -506,7 +514,6 @@ sd <- round(miceSum$sd[2],1)
 ns <-  c(3,5,10,20,25,50,75,100)  
 deltas <- c(1,2,3,5,10)
 
-L <- limma::makeContrasts("Diethf",levels=c("(Intercept)","Diethf"))
 
 powerFast <- matrix(NA,nrow=length(ns)*length(deltas),ncol=3) %>% as.data.frame
 names(powerFast) <- c("b1","n","power")
@@ -520,6 +527,8 @@ for (n in ns)
   ### Simulation
   predictorData <- data.frame(Diet = rep(c("c","hf"),c(n1,n2)) %>% as.factor)
   design <- model.matrix(~Diet,predictorData)
+  L <- limma::makeContrasts("Diethf",levels = colnames(design))
+
   
   for (b1 in deltas)
   {
@@ -550,10 +559,11 @@ powerFast %>%
   geom_line()
 ```
 
-## More efficient code based on closed form solution that exists for two group comparison
+## Meer efficiënte code gebaseerd op de analytische oplossing voor een two group comparison
 
-For the two sample t-test a closed form estimate exists for the power. 
-In this context the Cohen's effect size is typically used: 
+- Voor de two sample t-test bestaat er een analytische oplossing om de power te berekenen. 
+
+- In deze context maakt men typisch gebruik van de "Cohen's effect size": 
 
 $D = \frac{\delta}{SD}$
 
@@ -563,7 +573,8 @@ D <- delta/sd
 library(pwr)
 pwr.t.test(n=8, d=D, type='two.sample')
 ```
-Note, that this is very similar to the power that we calculated using the simulations! 
+
+Merk op dat de power overeenkomt met degene die we via simulaties hebben geschat! 
 
 ```{r}
 b0 <- 0
