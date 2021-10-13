@@ -12,7 +12,7 @@
 <meta name="author" content="Lieven Clement" />
 
 
-<title>Experimental Design I: replicatie en power</title>
+<title>Experimenteel Design I: replicatie en power</title>
 
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -506,7 +506,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Experimental Design I: replicatie en power</h1>
+<h1 class="title toc-ignore">Experimenteel Design I: replicatie en power</h1>
 <h4 class="author">Lieven Clement</h4>
 <h4 class="date">statOmics, Ghent University (<a href="https://statomics.github.io" class="uri">https://statomics.github.io</a>)</h4>
 
@@ -523,28 +523,27 @@ div.tocify {
 <pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<div id="concepts" class="section level1">
-<h1><span class="header-section-number">1</span> Concepts</h1>
+<div id="concepten" class="section level1">
+<h1><span class="header-section-number">1</span> Concepten</h1>
 <ul>
-<li>Experimental units representative for population: Randomisation</li>
-<li>Replication: technical vs biological, sample size - power</li>
-<li>Sources of variation: technical, biological, within subject, between subject</li>
+<li>Experimentele eenheden zijn representatief voor populatie: Randomisatie</li>
+<li>Replicatie: technisch vs biologisch, steekproefgrootte - power</li>
+<li>Bronnen van variabiliteit: technisch, biologisch, binnen en tussen subjecten.</li>
 </ul>
 </div>
 <div id="replicatie" class="section level1">
 <h1><span class="header-section-number">2</span> Replicatie</h1>
-<p>Two pager on Replication in nature methods [<a href="https://www.nature.com/articles/nmeth.3091.pdf">PDF</a>] <embed src="https://www.nature.com/articles/nmeth.3091.pdf" style="width:100.0%" /></p>
-<div id="example" class="section level2">
-<h2><span class="header-section-number">2.1</span> Example</h2>
-<p>Consider a single cell RNA-seq experiment where researchers want to assess the effect of drug treatment on gene expression</p>
-<p>Potential research questions</p>
+<p>Paper over replicatie in Nature Methods (2 pagina’s) [<a href="https://www.nature.com/articles/nmeth.3091.pdf">PDF</a>] <embed src="https://www.nature.com/articles/nmeth.3091.pdf" style="width:100.0%" /></p>
+<div id="voorbeeld" class="section level2">
+<h2><span class="header-section-number">2.1</span> Voorbeeld</h2>
+<p>In een RNA-seq experiment willen de onderzoekers het effect nagaan van een medicijn op de gen expressie.</p>
+<p>Mogelijkse onderzoeksvraag</p>
 <ul>
-<li>Is there a difference in average gene expression between treated and non treated samples</li>
-<li>Is there a difference in variability of gene expression between treated and non treated samples</li>
+<li>Is er een verschil in gemiddelde gen expressie tussen behandelde en niet behandelde samples</li>
 </ul>
 </div>
-<div id="sources-of-variation" class="section level2">
-<h2><span class="header-section-number">2.2</span> Sources of variation</h2>
+<div id="bronnen-van-variabiliteit" class="section level2">
+<h2><span class="header-section-number">2.2</span> Bronnen van variabiliteit</h2>
 <p>TABLE 1 NATURE METHODS | VOL.11 NO.9 | SEPTEMBER 2014 | 879 - 880</p>
 <table>
 <colgroup>
@@ -601,7 +600,7 @@ div.tocify {
 <td align="center">T</td>
 </tr>
 <tr class="odd">
-<td align="center">Sample preparation</td>
+<td align="center">Sample prepamuision</td>
 <td align="left">Dissociation runs from given tissue sample</td>
 <td align="center">T</td>
 </tr>
@@ -643,78 +642,76 @@ div.tocify {
 </ol>
 <hr />
 </div>
-<div id="at-which-level-should-we-replicate" class="section level2">
-<h2><span class="header-section-number">2.3</span> At which level should we replicate?</h2>
+<div id="op-welk-niveau-moeten-we-repliceren" class="section level2">
+<h2><span class="header-section-number">2.3</span> Op welk niveau moeten we repliceren?</h2>
 <ul>
 <li><span class="math inline">\(\text{var}(X)=\sigma^2_A+\sigma^2_C+\sigma^2_M=\sigma^2_{TOT}\)</span></li>
 <li><span class="math inline">\(\text{var}(\bar{X})=\frac{\sigma^2_A}{n_A}+\frac{\sigma^2_C}{n_A n_C} + \frac{\sigma^2_M}{n_A n_C n_M}\)</span></li>
 </ul>
 <p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnmeth.3091/MediaObjects/41592_2014_Article_BFnmeth3091_Fig1_HTML.jpg" /> Figure 1 NATURE METHODS | VOL.11 NO.9 | SEPTEMBER 2014 | 879 - 880</p>
 <ol style="list-style-type: lower-alpha">
-<li>Three levels of replication (two biological, one technical) with animal, cell and measurement replicates normally distributed with a mean across animals of 10 and ratio of variances 1:2:0.5. Solid green (biological) and blue (technical) dots show how a measurement of the expression (X = 12) samples from all three sources of variation. Distribution s.d. is shown as horizontal lines.</li>
-<li>Expression variance, Var(X), and variance of expression mean, Var(<span class="math inline">\(\bar X\)</span>), computed across 10,000 simulations of nAnCnM = 48 measurements for unique combinations of the number of animals (nA = 1 to 48), cells per animal (nC = 1 to 48) and technical replicate measurements per cell (nM = 1 and 3). The ratio of Var(X) and Var(<span class="math inline">\(\bar X\)</span>) is the effective sample size, n, which corresponds to the equivalent number of statistically independent measurements. Horizontal dashed lines correspond to biological and total variation. Error bars on Var(X) show s.d. from the 10,000 simulated samples (nM = 1).</li>
+<li>Three levels of replication (two biological, one technical) with animal, cell and measurement replicates normally distributed with a mean across animals of 10 and muisio of variances 1:2:0.5. Solid green (biological) and blue (technical) dots show how a measurement of the expression (X = 12) samples from all three sources of variation. Distribution s.d. is shown as horizontal lines.</li>
+<li>Expression variance, Var(X), and variance of expression mean, Var(<span class="math inline">\(\bar X\)</span>), computed across 10,000 simulations of nAnCnM = 48 measurements for unique combinations of the number of animals (nA = 1 to 48), cells per animal (nC = 1 to 48) and technical replicate measurements per cell (nM = 1 and 3). The muisio of Var(X) and Var(<span class="math inline">\(\bar X\)</span>) is the effective sample size, n, which corresponds to the equivalent number of statistically independent measurements. Horizontal dashed lines correspond to biological and total variation. Error bars on Var(X) show s.d. from the 10,000 simulated samples (nM = 1).</li>
 </ol>
 <hr />
+<p>Waar ligt interesse?</p>
 <ul>
-<li>Cost benefit trade-off: cost difference between biological and technical replicates</li>
-<li>Typically, biological variability is substantially larger than technical variability</li>
-</ul>
-<p><span class="math inline">\(\rightarrow\)</span> commit resources to sampling biologically relevant variables</p>
-<p><span class="math inline">\(\rightarrow\)</span> unless measures of technical variability are of interest then increasing number of technical measurements is valuable.</p>
-<ul>
-<li><p>Good experimental design practice includes planning for replication.</p>
+<li><p>Karakteriseren van bronnen van variabiliteit in experiment ==&gt; technische en biologische repeats zijn nodig</p></li>
+<li><p>Voornamelijke interesse in schatten van effect van behandeling ==&gt; focus op biologische repeats</p></li>
+<li><p>Extra biologische repeats lumpen alle bronnen van variabiliteit: biologische + technische variabiliteit.</p></li>
+<li><p>Goed experimenteel design vereist na denken over replicatie</p>
 <ol style="list-style-type: decimal">
-<li>Identify the research questions to be answered with experiments.</li>
-<li>Determine proportion of variability induced by each step.</li>
-<li>Be aware for pseudoreplication and aim for statistically independent replicates.</li>
+<li>Identificeer onderzoeksvragen die men wenst te beantwoorden.</li>
+<li>Breng bronnen van variabiliteit in kaart in elke stap van het experiment</li>
+<li>Let op voor pseudoreplicatie, beoog zoveel mogelijk onafhankelijke repeats.</li>
 </ol></li>
 </ul>
 <hr />
 </div>
 </div>
-<div id="power-sample-size-and-other-design-aspects" class="section level1">
-<h1><span class="header-section-number">3</span> Power, sample size and other design aspects</h1>
+<div id="power-steekproefgrootte-en-andere-design-aspecten." class="section level1">
+<h1><span class="header-section-number">3</span> Power, steekproefgrootte en andere design aspecten.</h1>
 <p>Reading materials: <a href="https://www.nature.com/articles/nmeth.2738.pdf">Nature Methods (2013), 10(12), 1139–1140</a></p>
-<div id="intermezzo-linear-regression-in-matrix-form" class="section level2">
-<h2><span class="header-section-number">3.1</span> Intermezzo linear regression in matrix form</h2>
+<div id="intermezzo-lineare-regression-in-matrix-vorm" class="section level2">
+<h2><span class="header-section-number">3.1</span> Intermezzo lineare regression in matrix vorm</h2>
 <ul>
-<li>Linear regression is a very important statistical tool to study the association between variables and to build prediction models.</li>
+<li>Lineaire regressie is een belangrijke methode in statistische data analyse.</li>
 </ul>
-<div id="scalar-form" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Scalar form</h3>
+<div id="scalaire-vorm" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Scalaire vorm</h3>
 <ul>
-<li>Consider a vector of predictors <span class="math inline">\(\mathbf{x}=(x_1,\ldots,x_p)\)</span> and</li>
-<li>a real-valued response <span class="math inline">\(Y\)</span></li>
-<li>then the linear regression model can be written as <span class="math display">\[
+<li>Stel dat men voor elke experimentele eenheid <span class="math inline">\(p\)</span> predictoren meet <span class="math inline">\(\mathbf{x}=(x_1,\ldots,x_p)\)</span> en</li>
+<li>continue respons <span class="math inline">\(Y\)</span></li>
+<li>het linear regressiemodel kan dan worden geschreven als: <span class="math display">\[
 Y=f(\mathbf{x}) +\epsilon=\beta_0+\sum\limits_{j=1}^p x_j\beta_j + \epsilon
-\]</span> with i.i.d. <span class="math inline">\(\epsilon\sim N(0,\sigma^2)\)</span></li>
+\]</span> met i.i.d. <span class="math inline">\(\epsilon\sim N(0,\sigma^2)\)</span></li>
 </ul>
 </div>
-<div id="vectormatrix-form" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Vector/Matrix form</h3>
+<div id="vectormatrix-vorm" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Vector/Matrix vorm</h3>
 <ul>
-<li><span class="math inline">\(n\)</span> observations <span class="math inline">\((\mathbf{x}_1,y_1) \ldots (\mathbf{x}_n,y_n)\)</span> with <span class="math inline">\(\mathbf{x}_1^T=[1 x_1 \ldots x_p]\)</span></li>
-<li>Regression in matrix notation <span class="math display">\[\mathbf{Y}=\mathbf{X\beta} + \mathbf{\epsilon}\]</span> with <span class="math inline">\(\mathbf{Y}=\left[\begin{array}{c}y_1\\ \vdots\\y_n\end{array}\right]\)</span>, <span class="math inline">\(\mathbf{X}=\left[\begin{array}{cccc} 1&amp;x_{11}&amp;\ldots&amp;x_{1p}\\ \vdots&amp;\vdots&amp;&amp;\vdots\\ 1&amp;x_{n1}&amp;\ldots&amp;x_{np} \end{array}\right]\)</span> or <span class="math inline">\(\mathbf{X}=\left[\begin{array}{c} \mathbf{x}_1^T\\\vdots\\\mathbf{x}_n^T\end{array}\right]\)</span>, <span class="math inline">\(\boldsymbol{\beta}=\left[\begin{array}{c}\beta_0\\ \vdots\\ \beta_p\end{array}\right]\)</span> and <span class="math inline">\(\mathbf{\epsilon}=\left[\begin{array}{c} \epsilon_1 \\ \vdots \\ \epsilon_n\end{array}\right]\)</span></li>
+<li><span class="math inline">\(n\)</span> observatie <span class="math inline">\((\mathbf{x}_1,y_1) \ldots (\mathbf{x}_n,y_n)\)</span> with <span class="math inline">\(\mathbf{x}_1^T=[1 x_1 \ldots x_p]\)</span></li>
+<li>Regressie in matrix notatie <span class="math display">\[\mathbf{Y}=\mathbf{X\beta} + \mathbf{\epsilon}\]</span> met <span class="math inline">\(\mathbf{Y}=\left[\begin{array}{c}y_1\\ \vdots\\y_n\end{array}\right]\)</span>, <span class="math inline">\(\mathbf{X}=\left[\begin{array}{cccc} 1&amp;x_{11}&amp;\ldots&amp;x_{1p}\\ \vdots&amp;\vdots&amp;&amp;\vdots\\ 1&amp;x_{n1}&amp;\ldots&amp;x_{np} \end{array}\right]\)</span> or <span class="math inline">\(\mathbf{X}=\left[\begin{array}{c} \mathbf{x}_1^T\\\vdots\\\mathbf{x}_n^T\end{array}\right]\)</span>, <span class="math inline">\(\boldsymbol{\beta}=\left[\begin{array}{c}\beta_0\\ \vdots\\ \beta_p\end{array}\right]\)</span> and <span class="math inline">\(\mathbf{\epsilon}=\left[\begin{array}{c} \epsilon_1 \\ \vdots \\ \epsilon_n\end{array}\right]\)</span></li>
 </ul>
 <hr />
 </div>
 </div>
-<div id="least-squares-ls" class="section level2">
-<h2><span class="header-section-number">3.2</span> Least Squares (LS)</h2>
+<div id="kleinste-kwadmuisen-techniekleast-squares-ls" class="section level2">
+<h2><span class="header-section-number">3.2</span> kleinste kwadmuisen techniek/Least Squares (LS)</h2>
 <ul>
-<li><p>Minimize the residual sum of squares <span class="math display">\[\begin{eqnarray*}
+<li><p>Minimimaliseer de residuele kwadmuisensom <span class="math display">\[\begin{eqnarray*}
 RSS(\boldsymbol{\beta})&amp;=&amp;\sum\limits_{i=1}^n e^2_i\\
 &amp;=&amp;\sum\limits_{i=1}^n \left(y_i-\beta_0-\sum\limits_{j=1}^p x_{ij}\beta_j\right)^2
 \end{eqnarray*}\]</span></p></li>
-<li><p>or in matrix notation</p></li>
+<li><p>of in matrix notatie</p></li>
 </ul>
 <p><span class="math display">\[
 \text{RSS}(\boldsymbol{\beta})=(\mathbf{Y}-\mathbf{X\beta})^T(\mathbf{Y}-\mathbf{X\beta})
 \]</span></p>
 <p><span class="math display">\[\rightarrow \hat{\boldsymbol{\beta}}=\text{argmin}_\beta \text{ RSS}(\boldsymbol{\beta})\]</span></p>
 <hr />
-<div id="minimize-rss" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Minimize RSS</h3>
+<div id="minimimaliseer-rss" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Minimimaliseer RSS</h3>
 <p><span class="math display">\[
 \begin{array}{ccc}
 \frac{\partial RSS}{\partial \boldsymbol{\beta}}&amp;=&amp;\mathbf{0}\\\\
@@ -727,8 +724,8 @@ RSS(\boldsymbol{\beta})&amp;=&amp;\sum\limits_{i=1}^n e^2_i\\
 <hr />
 </div>
 </div>
-<div id="variance-estimator" class="section level2">
-<h2><span class="header-section-number">3.3</span> Variance Estimator?</h2>
+<div id="variantie-schatter" class="section level2">
+<h2><span class="header-section-number">3.3</span> Variantie schatter?</h2>
 <p><span class="math display">\[
 \begin{array}{ccl}
 \hat{\boldsymbol{\Sigma}}_{\hat{\boldsymbol{\beta}}}
@@ -742,65 +739,69 @@ RSS(\boldsymbol{\beta})&amp;=&amp;\sum\limits_{i=1}^n e^2_i\\
 &amp;=&amp;(\mathbf{X}^T\mathbf{X})^{-1}\sigma^2
 \end{array}
 \]</span></p>
-<p>The uncertainty on the model parameters thus depends on the residual variability and the design!</p>
+<p>De onzekerheid op model parameters hangt dus af van de residuele variabiliteit en het de proefopzet!</p>
 <ul>
-<li>The larger <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> the more information the experiment contains on the model parameters and the smaller their variances and standard errors will be!</li>
-<li>Factorial designs?</li>
-<li>Designs with continuous predictors?</li>
+<li><p>Hoe groter <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> hoe meer informatie het experiment zal hebben over de model parameters en hoe kleiner hun variantie en standaard errors!</p></li>
+<li><p>Factoriële designs?</p></li>
+<li><p>Designs with continue predictoren?</p></li>
 </ul>
 <hr />
-<p>The effect size of interest is typically a linear combinations of the model parameters, i.e.  <span class="math display">\[
+<p>De effectgrootte van interesse is typisch een lineaire combinatie van de model parameters,<br />
+<span class="math display">\[
 l_0 \times \beta_0 + l_1 \times \beta_1 + ... + l_{p-1} \times \beta_{p-1} = \mathbf{L}^T\boldsymbol{\beta}
 \]</span></p>
-<p>The null hypothesis of our test statistics is than formulated as</p>
+<p>De nulhypothese van onze test kan dan worden geschreven als</p>
 <p><span class="math display">\[
 H_0: \mathbf{L}^T\boldsymbol{\beta} = 0 
 \]</span></p>
-<p>vs the alternative hypothesis</p>
+<p>vs de alternatieve hypothese</p>
 <p><span class="math display">\[
 H_0: \mathbf{L}^T\boldsymbol{\beta} \neq 0 
-\]</span> which can be assessed using a t-test statistic:</p>
+\]</span></p>
+<p>En het bewijs in het experiment tegen <span class="math inline">\(H_0\)</span> kan worden gekwantificeerd met de t-test statistiek:</p>
 <p><span class="math display">\[
 t=\frac{\mathbf{L}^T\hat{\boldsymbol{\beta}} - 0}{\text{se}_{\mathbf{L}^T\hat{\boldsymbol{\beta}}}}
-\]</span> which follows a t-distribution with n-p degrees of freedom under the null hypothesis when all assumptions for the linear model are valid.</p>
-<p>So the power</p>
-<p><span class="math display">\[P(p &lt; 0.05 | H_1)\]</span></p>
-<p>will typically depends on</p>
+\]</span> die een t-distributie volgt met n-p vrijheidsgraden onder de nul hypothese als alle aannames van het model geldig zijn.</p>
+<p>De kracht van de toets is dan</p>
+<p><span class="math display">\[P(p &lt; 0.05 | H_1)\]</span> en hangt af van</p>
 <ul>
-<li>the real effect size in the population <span class="math inline">\(\mathbf{L}^T\boldsymbol{\beta}\)</span>.</li>
-<li>Number of observations: SE and df of t-test.</li>
-<li>Choice of the design points.</li>
-<li>Choice of significance level.</li>
+<li>de werkelijke effectgrootte in de populatie <span class="math inline">\(\mathbf{L}^T\boldsymbol{\beta}\)</span>.</li>
+<li>Het aantal observaties: SE en df van t-test.</li>
+<li>Keuze van de designpunten</li>
+<li>Keuze van significantie-niveau <span class="math inline">\(\alpha\)</span>.</li>
 </ul>
-<p>Similar to the introductory example, we can use simulations to assess the power.</p>
+<p>We kunnen dit evalueren aan de hand van simulaties.</p>
 </div>
-<div id="mouse-example" class="section level2">
-<h2><span class="header-section-number">3.4</span> Mouse example</h2>
+<div id="muis-voorbeeld" class="section level2">
+<h2><span class="header-section-number">3.4</span> Muis voorbeeld</h2>
 <ul>
-<li><p>In 2021 Choa et al. published that the cytokine Thymic stromal lymphopoietin (TSLP) induced fat loss through sebum secretion (talg). [<a href="https://www.science.org/doi/full/10.1126/science.abd2893">html</a>] [<a href="https://www.science.org/doi/pdf/10.1126/science.abd2893">PDF</a>]</p></li>
-<li><p>Suppose that you would like to set up a similar study to test if cytokine interleukin 25 (IL) also has beneficial effect.</p></li>
-<li><p>You plan to setup a study with a control group of high fat diet (HFD) fed mice and a treatment group that recieves the HFD and IL.</p></li>
-<li><p>What sample size do you need to pick up the effect of the treatment.</p></li>
+<li><p>In 2021 publiceerden Choa et al. dat cytokine Thymic stromal lymphopoietin (TSLP) vetverlies induceert bij muizen die een vet dieet krijgen door de secretie van talg. [<a href="https://www.science.org/doi/full/10.1126/science.abd2893">html</a>] [<a href="https://www.science.org/doi/pdf/10.1126/science.abd2893">PDF</a>]</p></li>
+<li><p>Stel dat je een gelijkaardig experiment op wil zetten om na te gaan of cytokine interleukin 25 (IL) ook een effect heeft op het gewicht van muizen.</p></li>
+<li><p>Je plant een studie met een controle groep muizen die een hoog vet dieet krijgen (HFD) en een behandelingsgroep die een HFD dieet met IL krijgt.</p></li>
+<li><p>Wat is de vereiste steekproefgrootte om een bepaald effect op te pikken van de behandeling?</p></li>
 </ul>
-<div id="how-will-we-analyse-the-data-of-this-experiment" class="section level3">
-<h3><span class="header-section-number">3.4.1</span> How will we analyse the data of this experiment?</h3>
+<div id="hoe-zal-je-de-data-van-het-experiment-analyseren" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Hoe zal je de data van het experiment analyseren?</h3>
 <hr />
 <ul>
-<li><p><span class="math inline">\(H_0\)</span>: The average weight difference is equal to zero</p></li>
-<li><p><span class="math inline">\(H-0\)</span>: The average weight difference is different from zero</p></li>
-<li><p>Two sample t-test or a t-test on the slope of a linear model with one dummy variable.</p></li>
+<li><p><span class="math inline">\(H_0\)</span>: Er is geen verschil in het gewicht van muizen die een dieet met IL krijgen en muizen die het controle dieet krijgen.</p></li>
+<li><p><span class="math inline">\(H-0\)</span>: Het gewicht is gemiddelde verschillend tussen muizen die het IL dieet krijgen en muizen die het controle dieet krijgen.</p></li>
+<li><p>Two sample t-test of een t-test op de helling van het lineaire model met 1 dummy variabele</p></li>
 </ul>
 <p><span class="math display">\[ Y_i = \beta_0 + \beta_1 X_\text{iIL} + \epsilon_i\]</span></p>
 <p><span class="math display">\[
-\text{with }
+\text{met }
 X_\text{iIL}=\begin{cases}X_{iIL}=0 &amp; \text{HFD}\\X_{iIL}=1 &amp; \text{HFD + IL}\end{cases}.
 \]</span></p>
 <ul>
-<li><p>Estimated effect size <span class="math display">\[\hat\delta = \bar X_{IL} - \bar X_{c} = \hat \beta_1\]</span></p></li>
-<li><p>Test statistic <span class="math display">\[
+<li>Geschatte effectgrootte?</li>
+</ul>
+<p><span class="math display">\[\hat\delta = \bar X_{IL} - \bar X_{c} = \hat \beta_1\]</span></p>
+<ul>
+<li>Test statistiek <span class="math display">\[
 T = \frac{\bar{X}_{IL}-\bar{X}_{c}}{SD_\text{pooled} \times \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} = \frac{\hat\beta_1}{\text{SE}_{\hat\beta_1}}
-\]</span></p></li>
-<li><p><span class="math inline">\(\hat \beta_1\)</span> is an unbiased estimator of the real weight difference (<span class="math inline">\(\delta\)</span>) that would occur in the population of rats fed with HFD and rats fed with HFD + IL.</p></li>
+\]</span></li>
+<li><span class="math inline">\(\hat \beta_1\)</span> is een onvertekende schatter van het werkelijk gewichtsverschil (<span class="math inline">\(\delta =\mu_{IL}-\mu_{c} = \beta_1\)</span>) dat zou voorkomen in de populatie van muizen gevoed met HFD vs muizen gevoed met HFD + IL.</li>
 </ul>
 </div>
 <div id="power" class="section level3">
@@ -808,27 +809,27 @@ T = \frac{\bar{X}_{IL}-\bar{X}_{c}}{SD_\text{pooled} \times \sqrt{\frac{1}{n_1} 
 <p><span class="math display">\[
 P[p &lt; \alpha \vert \beta_1 \neq 0]
 \]</span></p>
+<p>De kracht (power) zal dus afhangen van</p>
 <ul>
-<li>Hence, the power will depend on the real weight difference between the group means <span class="math inline">\(\beta_1\)</span> in the population.</li>
-<li>The variability of the weight measurements</li>
-<li>The significance level <span class="math inline">\(\alpha\)</span></li>
-<li>Sample size <span class="math inline">\(n_{IL}\)</span> and <span class="math inline">\(n_c\)</span> in both groups</li>
+<li>Het werkelijke gemiddelde gewichtsverschil <span class="math inline">\(\beta_1\)</span> in de populatie.</li>
+<li>De variabiliteit van de gewichtsmetingen</li>
+<li>het significantie-niveau <span class="math inline">\(\alpha\)</span></li>
+<li>steekproefgrootte <span class="math inline">\(n_{IL}\)</span> en <span class="math inline">\(n_c\)</span> in beide groepen</li>
 </ul>
-<p>We can estimate the power if</p>
+<p>We kunnen de power schatten als</p>
 <ol style="list-style-type: decimal">
-<li>The assumptions of the model are met: weights are normally distributed with same variance</li>
+<li>voldaan is aan de aannamens van het model: gewicht in beide groepen is normaal verdeeld met gelijke variantie</li>
 </ol>
-<p>and we know</p>
+<p>en als we de</p>
 <ol start="2" style="list-style-type: decimal">
-<li>the standard deviation of the weight measurements around their average mean for HFD-fed mice<br />
-</li>
-<li>the real effect size in the population</li>
-<li><span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span></li>
+<li><p>standaard deviatie kennen van gewichtsmetingen rond hun groepsgemiddelde voor muizen die een HFD diet krijgen</p></li>
+<li><p>de echte effectgrootte in de populatie</p></li>
+<li><p><span class="math inline">\(n_1\)</span> en <span class="math inline">\(n_2\)</span></p></li>
 </ol>
 </div>
-<div id="use-data-from-a-previous-experiment-to-get-insight-in-mice-data" class="section level3">
-<h3><span class="header-section-number">3.4.3</span> Use data from a previous experiment to get insight in mice data</h3>
-<p>Suppose that we have access to the data of a preliminary experiment (e.g. provided by Karen Svenson via Gary Churchill and Dan Gatti and partially funded by P50 GM070683 on <a href="http://genomicsclass.github.io/book/pages/random_variables.html">PH525x</a>)</p>
+<div id="gebruik-data-uit-vorig-experiment-om-inzicht-te-krijgen-in-de-gewichtsdata-van-muizen" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Gebruik data uit vorig experiment om inzicht te krijgen in de gewichtsdata van muizen</h3>
+<p>Stel dat we toegang hebben tot data van een vorig experiment (hier dat van Karen Svenson en Dan Gatti, gefinancierd door P50 GM070683 en beschikbaar op <a href="http://genomicsclass.github.io/book/pages/random_variables.html">PH525x</a>)</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>mice &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/femaleMiceWeights.csv&quot;</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
 <span id="cb5-3"><a href="#cb5-3"></a>mice <span class="op">%&gt;%</span><span class="st"> </span></span>
@@ -855,31 +856,32 @@ P[p &lt; \alpha \vert \beta_1 \neq 0]
 {"columns":[{"label":["Diet"],"name":[1],"type":["fct"],"align":["left"]},{"label":["mean"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[4],"type":["int"],"align":["right"]},{"label":["se"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"chow","2":"23.81333","3":"3.022541","4":"12","5":"0.8725323"},{"1":"hf","2":"26.83417","3":"4.097606","4":"12","5":"1.1828769"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>In the experiment we have data from two diets:</p>
+<p>In het experiment werden twee diëten gebruikt:</p>
 <ul>
-<li>regular diet of cerial and grain based diet (Chow)</li>
-<li>High Fat (hf)</li>
+<li>gewoon diet o.b.v. granen (Chow)</li>
+<li>Heel vet dieet (high fat: hf)</li>
 </ul>
-<p>We can use the hf mice as input for our power analysis.</p>
+<p>We kunnen de data van de hf muizen gebruiken als input voor onze power analyse.</p>
 <ul>
-<li>The data of the hf mice seem to be normally distributed</li>
-<li>The mean weight is 26.8g</li>
-<li>The SD of the weight is 4.1g</li>
+<li>De data van hf muizen lijk normaal verdeeld te zijn.<br />
+</li>
+<li>Het gemiddelde gewicht van een hf muis is 26.8g</li>
+<li>De standaard deviatie (SD) van het gewicht van hf muizen is 4.1g</li>
 </ul>
-<p>Effect size?</p>
+<p>Effectgroote?</p>
 <ul>
-<li><p>The alternative hypothesis is complex.</p></li>
-<li><p>It includes all possible effects!</p></li>
-<li><p>In order to do the power analysis we will have to choose a minimum effect size that we would like to detect.</p></li>
-<li><p>Suppose that we would like to detect if the weight of the rats difference <span class="math inline">\(\delta\)</span> of at least 10%.</p></li>
+<li>De alternative hypothese is complex.</li>
+<li>Omvat alle mogelijke effecten!</li>
+<li>Om een power analyse te doen kiezen we daarom een minimale effectgrootte die we wensen op te pikken in het nieuwe experiment.</li>
+<li>Veronderstel dat we een gewichtsverschil willen oppikken van minimaal 10%.</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>delta &lt;-<span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="kw">round</span>(miceSum<span class="op">$</span>mean[<span class="dv">2</span>] <span class="op">*</span>.<span class="dv">1</span>,<span class="dv">1</span>)</span>
 <span id="cb8-2"><a href="#cb8-2"></a>delta</span></code></pre></div>
 <pre><code>## [1] -2.7</code></pre>
-<p>Note, that the average weight then would get close to that of the rats in our pilot experiment that were fed on the chow diet.</p>
-<p>We can set up a simulation study to assess the power of an experiment with 8 mice in each group:</p>
-<div id="one-simulation" class="section level4">
-<h4><span class="header-section-number">3.4.3.1</span> One simulation</h4>
+<p>Merk op dat het gemiddeld gewicht dan dicht komt bij dat van muizen in het pilootexperiment die werden gevoed met het normale dieet.</p>
+<p>We kunnen nu een simulatie studie opzetten om de power te berekenen voor een experiment met 8 muizen in elke groep.</p>
+<div id="eén-simulatie" class="section level4">
+<h4><span class="header-section-number">3.4.3.1</span> Eén simulatie</h4>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">set.seed</span>(<span class="dv">1423</span>)</span>
 <span id="cb10-2"><a href="#cb10-2"></a>n1 &lt;-<span class="st"> </span>n2 &lt;-<span class="st"> </span><span class="dv">8</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a>b0 &lt;-<span class="st"> </span><span class="kw">round</span>(miceSum<span class="op">$</span>mean[<span class="dv">2</span>],<span class="dv">1</span>)</span>
@@ -895,14 +897,14 @@ P[p &lt; \alpha \vert \beta_1 \neq 0]
 <span id="cb10-13"><a href="#cb10-13"></a><span class="kw">summary</span>(fit)<span class="op">$</span>coef[<span class="dv">2</span>,]</span></code></pre></div>
 <pre><code>##   Estimate Std. Error    t value   Pr(&gt;|t|) 
 ##  2.5972480  1.7919658  1.4493848  0.1692595</code></pre>
-<p>For this simulated experiment we would not have been able to pick up the effect of the treatment at the significance level <span class="math inline">\(\alpha\)</span>=0.05 (p = <code>r</code> round(summary(fit)$coef[2,“Pr(&gt;|t|)”],2)`)!</p>
+<p>Voor het gesimuleerde experiment konden we het effect van de behandeling niet oppikken bij het <span class="math inline">\(\alpha\)</span>=0.05 (p = <code>r</code> round(summary(fit)$coef[2,“Pr(&gt;|t|)”],2)`) significantie-niveau!</p>
 <ul>
-<li>We have to repeat the experiment many times to estimate the power.</li>
-<li>We will therefore put our simulation in a general function.</li>
+<li>We moeten het experiment herhalen om de power te schatten.</li>
+<li>We zullen de simulatie daarom coderen in een functie die we kunnen hergebruiken.</li>
 </ul>
 </div>
-<div id="simulation-of-repeated-experiments" class="section level4">
-<h4><span class="header-section-number">3.4.3.2</span> Simulation of repeated experiments</h4>
+<div id="simulatie-van-herhaalde-experimenten-repeated-experiments" class="section level4">
+<h4><span class="header-section-number">3.4.3.2</span> Simulatie van herhaalde experimenten (repeated experiments)</h4>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">library</span>(multcomp)</span></code></pre></div>
 <pre><code>## Loading required package: mvtnorm</code></pre>
 <pre><code>## Loading required package: survival</code></pre>
@@ -947,7 +949,8 @@ P[p &lt; \alpha \vert \beta_1 \neq 0]
 <span id="cb21-27"><a href="#cb21-27"></a>  <span class="dt">contrasts =</span> <span class="st">&quot;Diethf = 0&quot;</span>)</span></code></pre></div>
 <pre><code>## coefficients.Diethf        sigma.Diethf        tstat.Diethf             pvalues 
 ##           1.9444623           2.0931302           0.9289734           0.3686439</code></pre>
-<p>We now have a generic function that can simulate data from a normal distribution for every design. The function has arguments:</p>
+<p>We hebben nu een generiek functie waarmee we data kunnen simuleren die normaal verdeeld zijn voor elk mogelijk design die we met het lineair model kunnen analyseren.</p>
+<p>De functie heeft volgende argumenten:</p>
 <ul>
 <li><code>form</code>: One sided formula including the structure of the predictors in the model</li>
 <li><code>data</code>: Data frame with the predictor values for the design</li>
@@ -956,7 +959,7 @@ P[p &lt; \alpha \vert \beta_1 \neq 0]
 <li><code>contrasts</code>: a scalar or a vector with the null hypotheses that we would like to assess.</li>
 <li><code>simIndex</code>: an arbitrary argument that is not used by the function but that will allow it to be used in an sapply loop that runs from 1 up to the number of simulations.</li>
 </ul>
-<p>Simulate nSim = 1000 repeated experiments:</p>
+<p>Simuleer nSim = 1000 herhaalde experimenten:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">set.seed</span>(<span class="dv">1425</span>)</span>
 <span id="cb23-2"><a href="#cb23-2"></a>nSim &lt;-<span class="st"> </span><span class="dv">1000</span></span>
 <span id="cb23-3"><a href="#cb23-3"></a></span>
@@ -964,11 +967,12 @@ P[p &lt; \alpha \vert \beta_1 \neq 0]
 <span id="cb23-5"><a href="#cb23-5"></a>power &lt;-<span class="st"> </span><span class="kw">mean</span>(simResults[,<span class="dv">4</span>] <span class="op">&lt;</span><span class="st"> </span>alpha)</span>
 <span id="cb23-6"><a href="#cb23-6"></a>power</span></code></pre></div>
 <pre><code>## [1] 0.221</code></pre>
-<p>We have a power of 22.1% to pick up the treatment effect when using 8 bioreps in each treatment group.</p>
+<p>We hebben een power van 22.1% om het behandelingseffect op te pikken met 8 biologische herhalingen in elke behandelingsgroep.</p>
+<p>Merk op dat de power van een experiment ook het hoogste is als het aantal observaties gebalanceerd is, m.a.w. <span class="math inline">\(n_1=n_2\)</span>.</p>
 </div>
-<div id="power-for-multiple-sample-sizes" class="section level4">
-<h4><span class="header-section-number">3.4.3.3</span> Power for multiple sample sizes</h4>
-<p>We can now calculate the power for multiple sample sizes.</p>
+<div id="power-voor-verschillende-steekproefgroottes" class="section level4">
+<h4><span class="header-section-number">3.4.3.3</span> Power voor verschillende steekproefgroottes</h4>
+<p>We kunnen de power nu berekenen voor meerdere steekproefgrootes.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>power &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">n=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">50</span>,<span class="dv">75</span>,<span class="dv">100</span>),<span class="dt">power=</span><span class="ot">NA</span>)</span>
 <span id="cb25-2"><a href="#cb25-2"></a></span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(power))</span>
@@ -989,9 +993,14 @@ P[p &lt; \alpha \vert \beta_1 \neq 0]
 <span id="cb26-3"><a href="#cb26-3"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <p><img src="experimentalDesignI_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
-<div id="assess-power-in-function-of-sample-size-for-different-effect-sizes" class="section level4">
-<h4><span class="header-section-number">3.4.3.4</span> Assess power in function of sample size for different effect sizes</h4>
-<p>Note, that - the sign of the delta is arbitrary because we test two-sided. - the intercept is arbitrary because we only asses <span class="math inline">\(\beta_0\)</span> - We therefore typically set <span class="math inline">\(\beta_0 = 0\)</span></p>
+<div id="bestudeer-power-in-functie-van-steekproefgrootte-en-effectgrootte" class="section level4">
+<h4><span class="header-section-number">3.4.3.4</span> Bestudeer power in functie van steekproefgrootte en effectgrootte</h4>
+<p>Merk op dat</p>
+<ul>
+<li>het teken van delta arbitrair is omdat we tweezijdig testen.</li>
+<li>het intercept arbitrair is omdat we alleen testen op <span class="math inline">\(\beta_1\)</span></li>
+<li>We nemen daarom typisch <span class="math inline">\(\beta_0 = 0\)</span></li>
+</ul>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>nSim &lt;-<span class="st"> </span><span class="dv">1000</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a>b0 &lt;-<span class="st"> </span><span class="dv">0</span></span>
 <span id="cb27-3"><a href="#cb27-3"></a>deltas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>)</span>
@@ -1014,84 +1023,110 @@ P[p &lt; \alpha \vert \beta_1 \neq 0]
 <span id="cb28-2"><a href="#cb28-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>n,<span class="dt">y=</span>power,<span class="dt">col=</span>b1<span class="op">%&gt;%</span>as.factor)) <span class="op">+</span></span>
 <span id="cb28-3"><a href="#cb28-3"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <p><img src="experimentalDesignI_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<p>Note, that the power curves are still a bit choppy because we selected a limited number of sample sizes and because <code>nSim</code> simulations is not enough to get a good power estimate when the power is low.</p>
+<p>Merk op dat de power curves wat schokkerig zijn omdat we maar een beperkt aantal steekproefgroottes en een beperkt aantal simulaties uitvoerden. Voor de lage powers is het aantal simulaties zeker onvoldoende om heel betrouwbare schattingen van de power te bekomen.</p>
 </div>
 </div>
 </div>
 </div>
-<div id="final-remarks" class="section level1">
-<h1><span class="header-section-number">4</span> Final remarks</h1>
+<div id="opmerkingen" class="section level1">
+<h1><span class="header-section-number">4</span> Opmerkingen</h1>
 <ul>
-<li><p>The code can be easily extended towards other designs by altering</p>
+<li><p>De code kan eenvoudig aangepast worden naar andere designs (zie oefeningen)</p>
 <ul>
 <li>predictor data</li>
 <li>formula</li>
 <li>contrast</li>
 </ul></li>
-<li><p>The simulations start to take long when you evaluate many scenario’s.</p>
+<li><p>De simulaties kunnen lang duren wanneer je veel scenario’s evalueert.</p>
 <ul>
-<li>More efficient code using matrices</li>
-<li>For a two group comparison closed form solutions exist</li>
+<li>Meer efficiënte code met matrices</li>
+<li>Voor two group comparison bestaat een analytische oplossing.</li>
 </ul></li>
 </ul>
-<div id="more-efficient-code-based-on-matrix-algebra" class="section level2">
-<h2><span class="header-section-number">4.1</span> More efficient code based on matrix algebra</h2>
-<p>Code runs much faster. We now simulate 20 times more experiments in a much shorter time!</p>
+<div id="meer-efficiënte-code-met-matrices" class="section level2">
+<h2><span class="header-section-number">4.1</span> Meer efficiënte code met matrices</h2>
+<p>Code is veel sneller. We simulaleren nu 20 keer meer experimenten in een veel kortere tijd!</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>nSim &lt;-<span class="st"> </span><span class="dv">20000</span></span>
 <span id="cb29-2"><a href="#cb29-2"></a>b0 &lt;-<span class="st"> </span><span class="dv">0</span></span>
 <span id="cb29-3"><a href="#cb29-3"></a>sd &lt;-<span class="st"> </span><span class="kw">round</span>(miceSum<span class="op">$</span>sd[<span class="dv">2</span>],<span class="dv">1</span>)</span>
 <span id="cb29-4"><a href="#cb29-4"></a>ns &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">50</span>,<span class="dv">75</span>,<span class="dv">100</span>)  </span>
 <span id="cb29-5"><a href="#cb29-5"></a>deltas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>)</span>
 <span id="cb29-6"><a href="#cb29-6"></a></span>
-<span id="cb29-7"><a href="#cb29-7"></a>L &lt;-<span class="st"> </span>limma<span class="op">::</span><span class="kw">makeContrasts</span>(<span class="st">&quot;Diethf&quot;</span>,<span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;(Intercept)&quot;</span>,<span class="st">&quot;Diethf&quot;</span>))</span></code></pre></div>
-<pre><code>## Warning in limma::makeContrasts(&quot;Diethf&quot;, levels = c(&quot;(Intercept)&quot;, &quot;Diethf&quot;)):
-## Renaming (Intercept) to Intercept</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>powerFast &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>,<span class="dt">nrow=</span><span class="kw">length</span>(ns)<span class="op">*</span><span class="kw">length</span>(deltas),<span class="dt">ncol=</span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span>as.data.frame</span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="kw">names</span>(powerFast) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;b1&quot;</span>,<span class="st">&quot;n&quot;</span>,<span class="st">&quot;power&quot;</span>)</span>
-<span id="cb31-3"><a href="#cb31-3"></a></span>
-<span id="cb31-4"><a href="#cb31-4"></a>i &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb31-5"><a href="#cb31-5"></a></span>
-<span id="cb31-6"><a href="#cb31-6"></a><span class="cf">for</span> (n <span class="cf">in</span> ns)</span>
-<span id="cb31-7"><a href="#cb31-7"></a>{</span>
-<span id="cb31-8"><a href="#cb31-8"></a>  n1 &lt;-<span class="st"> </span>n2 &lt;-<span class="st">  </span>n</span>
-<span id="cb31-9"><a href="#cb31-9"></a>  </span>
-<span id="cb31-10"><a href="#cb31-10"></a>  <span class="co">### Simulation</span></span>
-<span id="cb31-11"><a href="#cb31-11"></a>  predictorData &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Diet =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;hf&quot;</span>),<span class="kw">c</span>(n1,n2)) <span class="op">%&gt;%</span><span class="st"> </span>as.factor)</span>
-<span id="cb31-12"><a href="#cb31-12"></a>  design &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(<span class="op">~</span>Diet,predictorData)</span>
-<span id="cb31-13"><a href="#cb31-13"></a>  </span>
-<span id="cb31-14"><a href="#cb31-14"></a>  <span class="cf">for</span> (b1 <span class="cf">in</span> deltas)</span>
-<span id="cb31-15"><a href="#cb31-15"></a>  {</span>
-<span id="cb31-16"><a href="#cb31-16"></a>    ySim &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">nrow</span>(predictorData)<span class="op">*</span>nSim,<span class="dt">sd=</span>sd)</span>
-<span id="cb31-17"><a href="#cb31-17"></a>    <span class="kw">dim</span>(ySim) &lt;-<span class="kw">c</span>(<span class="kw">nrow</span>(predictorData),nSim)</span>
-<span id="cb31-18"><a href="#cb31-18"></a>    ySim &lt;-<span class="st"> </span>ySim <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(design <span class="op">%*%</span><span class="kw">c</span>(b0,b1))</span>
-<span id="cb31-19"><a href="#cb31-19"></a>    ySim &lt;-<span class="st"> </span><span class="kw">t</span>(ySim)</span>
-<span id="cb31-20"><a href="#cb31-20"></a>  </span>
-<span id="cb31-21"><a href="#cb31-21"></a>    <span class="co">### Fitting</span></span>
-<span id="cb31-22"><a href="#cb31-22"></a>    fitAll &lt;-<span class="st"> </span>limma<span class="op">::</span><span class="kw">lmFit</span>(ySim,design)</span>
-<span id="cb31-23"><a href="#cb31-23"></a>  </span>
-<span id="cb31-24"><a href="#cb31-24"></a>    <span class="co">### Inference</span></span>
-<span id="cb31-25"><a href="#cb31-25"></a>    varUnscaled &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">t</span>(L)<span class="op">%*%</span>fitAll<span class="op">$</span>cov.coefficients<span class="op">%*%</span>L)</span>
-<span id="cb31-26"><a href="#cb31-26"></a>    contrasts &lt;-<span class="st"> </span>fitAll<span class="op">$</span>coefficients <span class="op">%*%</span>L</span>
-<span id="cb31-27"><a href="#cb31-27"></a>    seContrasts &lt;-<span class="st"> </span>varUnscaled<span class="op">^</span>.<span class="dv">5</span><span class="op">*</span>fitAll<span class="op">$</span>sigma</span>
-<span id="cb31-28"><a href="#cb31-28"></a>    tstats &lt;-<span class="st"> </span>contrasts<span class="op">/</span>seContrasts</span>
-<span id="cb31-29"><a href="#cb31-29"></a>    pvals &lt;-<span class="st"> </span><span class="kw">pt</span>(<span class="kw">abs</span>(tstats),fitAll<span class="op">$</span>df.residual,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="dv">2</span></span>
-<span id="cb31-30"><a href="#cb31-30"></a>    </span>
-<span id="cb31-31"><a href="#cb31-31"></a>    i &lt;-<span class="st"> </span>i<span class="op">+</span><span class="dv">1</span></span>
-<span id="cb31-32"><a href="#cb31-32"></a>    powerFast[i,] &lt;-<span class="st"> </span><span class="kw">c</span>(b1,n,<span class="kw">mean</span>(pvals <span class="op">&lt;</span><span class="st"> </span>alpha))</span>
-<span id="cb31-33"><a href="#cb31-33"></a>  }</span>
-<span id="cb31-34"><a href="#cb31-34"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>powerFast <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>n,<span class="dt">y=</span>power,<span class="dt">col=</span>b1<span class="op">%&gt;%</span>as.factor)) <span class="op">+</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<span id="cb29-7"><a href="#cb29-7"></a></span>
+<span id="cb29-8"><a href="#cb29-8"></a>powerFast &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>,<span class="dt">nrow=</span><span class="kw">length</span>(ns)<span class="op">*</span><span class="kw">length</span>(deltas),<span class="dt">ncol=</span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span>as.data.frame</span>
+<span id="cb29-9"><a href="#cb29-9"></a><span class="kw">names</span>(powerFast) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;b1&quot;</span>,<span class="st">&quot;n&quot;</span>,<span class="st">&quot;power&quot;</span>)</span>
+<span id="cb29-10"><a href="#cb29-10"></a></span>
+<span id="cb29-11"><a href="#cb29-11"></a>i &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a></span>
+<span id="cb29-13"><a href="#cb29-13"></a><span class="cf">for</span> (n <span class="cf">in</span> ns)</span>
+<span id="cb29-14"><a href="#cb29-14"></a>{</span>
+<span id="cb29-15"><a href="#cb29-15"></a>  n1 &lt;-<span class="st"> </span>n2 &lt;-<span class="st">  </span>n</span>
+<span id="cb29-16"><a href="#cb29-16"></a>  </span>
+<span id="cb29-17"><a href="#cb29-17"></a>  <span class="co">### Simulation</span></span>
+<span id="cb29-18"><a href="#cb29-18"></a>  predictorData &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Diet =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;hf&quot;</span>),<span class="kw">c</span>(n1,n2)) <span class="op">%&gt;%</span><span class="st"> </span>as.factor)</span>
+<span id="cb29-19"><a href="#cb29-19"></a>  design &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(<span class="op">~</span>Diet,predictorData)</span>
+<span id="cb29-20"><a href="#cb29-20"></a>  L &lt;-<span class="st"> </span>limma<span class="op">::</span><span class="kw">makeContrasts</span>(<span class="st">&quot;Diethf&quot;</span>,<span class="dt">levels =</span> <span class="kw">colnames</span>(design))</span>
+<span id="cb29-21"><a href="#cb29-21"></a></span>
+<span id="cb29-22"><a href="#cb29-22"></a>  </span>
+<span id="cb29-23"><a href="#cb29-23"></a>  <span class="cf">for</span> (b1 <span class="cf">in</span> deltas)</span>
+<span id="cb29-24"><a href="#cb29-24"></a>  {</span>
+<span id="cb29-25"><a href="#cb29-25"></a>    ySim &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">nrow</span>(predictorData)<span class="op">*</span>nSim,<span class="dt">sd=</span>sd)</span>
+<span id="cb29-26"><a href="#cb29-26"></a>    <span class="kw">dim</span>(ySim) &lt;-<span class="kw">c</span>(<span class="kw">nrow</span>(predictorData),nSim)</span>
+<span id="cb29-27"><a href="#cb29-27"></a>    ySim &lt;-<span class="st"> </span>ySim <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(design <span class="op">%*%</span><span class="kw">c</span>(b0,b1))</span>
+<span id="cb29-28"><a href="#cb29-28"></a>    ySim &lt;-<span class="st"> </span><span class="kw">t</span>(ySim)</span>
+<span id="cb29-29"><a href="#cb29-29"></a>  </span>
+<span id="cb29-30"><a href="#cb29-30"></a>    <span class="co">### Fitting</span></span>
+<span id="cb29-31"><a href="#cb29-31"></a>    fitAll &lt;-<span class="st"> </span>limma<span class="op">::</span><span class="kw">lmFit</span>(ySim,design)</span>
+<span id="cb29-32"><a href="#cb29-32"></a>  </span>
+<span id="cb29-33"><a href="#cb29-33"></a>    <span class="co">### Inference</span></span>
+<span id="cb29-34"><a href="#cb29-34"></a>    varUnscaled &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">t</span>(L)<span class="op">%*%</span>fitAll<span class="op">$</span>cov.coefficients<span class="op">%*%</span>L)</span>
+<span id="cb29-35"><a href="#cb29-35"></a>    contrasts &lt;-<span class="st"> </span>fitAll<span class="op">$</span>coefficients <span class="op">%*%</span>L</span>
+<span id="cb29-36"><a href="#cb29-36"></a>    seContrasts &lt;-<span class="st"> </span>varUnscaled<span class="op">^</span>.<span class="dv">5</span><span class="op">*</span>fitAll<span class="op">$</span>sigma</span>
+<span id="cb29-37"><a href="#cb29-37"></a>    tstats &lt;-<span class="st"> </span>contrasts<span class="op">/</span>seContrasts</span>
+<span id="cb29-38"><a href="#cb29-38"></a>    pvals &lt;-<span class="st"> </span><span class="kw">pt</span>(<span class="kw">abs</span>(tstats),fitAll<span class="op">$</span>df.residual,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb29-39"><a href="#cb29-39"></a>    </span>
+<span id="cb29-40"><a href="#cb29-40"></a>    i &lt;-<span class="st"> </span>i<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb29-41"><a href="#cb29-41"></a>    powerFast[i,] &lt;-<span class="st"> </span><span class="kw">c</span>(b1,n,<span class="kw">mean</span>(pvals <span class="op">&lt;</span><span class="st"> </span>alpha))</span>
+<span id="cb29-42"><a href="#cb29-42"></a>  }</span>
+<span id="cb29-43"><a href="#cb29-43"></a>}</span></code></pre></div>
+<pre><code>## Warning in limma::makeContrasts(&quot;Diethf&quot;, levels = colnames(design)): Renaming
+## (Intercept) to Intercept
+
+## Warning in limma::makeContrasts(&quot;Diethf&quot;, levels = colnames(design)): Renaming
+## (Intercept) to Intercept
+
+## Warning in limma::makeContrasts(&quot;Diethf&quot;, levels = colnames(design)): Renaming
+## (Intercept) to Intercept
+
+## Warning in limma::makeContrasts(&quot;Diethf&quot;, levels = colnames(design)): Renaming
+## (Intercept) to Intercept
+
+## Warning in limma::makeContrasts(&quot;Diethf&quot;, levels = colnames(design)): Renaming
+## (Intercept) to Intercept
+
+## Warning in limma::makeContrasts(&quot;Diethf&quot;, levels = colnames(design)): Renaming
+## (Intercept) to Intercept
+
+## Warning in limma::makeContrasts(&quot;Diethf&quot;, levels = colnames(design)): Renaming
+## (Intercept) to Intercept
+
+## Warning in limma::makeContrasts(&quot;Diethf&quot;, levels = colnames(design)): Renaming
+## (Intercept) to Intercept</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>powerFast <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>n,<span class="dt">y=</span>power,<span class="dt">col=</span>b1<span class="op">%&gt;%</span>as.factor)) <span class="op">+</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <p><img src="experimentalDesignI_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
-<div id="more-efficient-code-based-on-closed-form-solution-that-exists-for-two-group-comparison" class="section level2">
-<h2><span class="header-section-number">4.2</span> More efficient code based on closed form solution that exists for two group comparison</h2>
-<p>For the two sample t-test a closed form estimate exists for the power. In this context the Cohen’s effect size is typically used:</p>
+<div id="meer-efficiënte-code-gebaseerd-op-de-analytische-oplossing-voor-een-two-group-comparison" class="section level2">
+<h2><span class="header-section-number">4.2</span> Meer efficiënte code gebaseerd op de analytische oplossing voor een two group comparison</h2>
+<ul>
+<li><p>Voor de two sample t-test bestaat er een analytische oplossing om de power te berekenen.</p></li>
+<li><p>In deze context maakt men typisch gebruik van de “Cohen’s effect size”:</p></li>
+</ul>
 <p><span class="math inline">\(D = \frac{\delta}{SD}\)</span></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>D &lt;-<span class="st"> </span>delta<span class="op">/</span>sd</span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="kw">library</span>(pwr)</span>
-<span id="cb33-3"><a href="#cb33-3"></a><span class="kw">pwr.t.test</span>(<span class="dt">n=</span><span class="dv">8</span>, <span class="dt">d=</span>D, <span class="dt">type=</span><span class="st">&#39;two.sample&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>D &lt;-<span class="st"> </span>delta<span class="op">/</span>sd</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="kw">library</span>(pwr)</span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="kw">pwr.t.test</span>(<span class="dt">n=</span><span class="dv">8</span>, <span class="dt">d=</span>D, <span class="dt">type=</span><span class="st">&#39;two.sample&#39;</span>)</span></code></pre></div>
 <pre><code>## 
 ##      Two-sample t test power calculation 
 ## 
@@ -1102,26 +1137,26 @@ P[p &lt; \alpha \vert \beta_1 \neq 0]
 ##     alternative = two.sided
 ## 
 ## NOTE: n is number in *each* group</code></pre>
-<p>Note, that this is very similar to the power that we calculated using the simulations!</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>b0 &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a>sd &lt;-<span class="st"> </span><span class="kw">round</span>(miceSum<span class="op">$</span>sd[<span class="dv">2</span>],<span class="dv">1</span>)</span>
-<span id="cb35-3"><a href="#cb35-3"></a>ns &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">50</span>,<span class="dv">75</span>,<span class="dv">100</span>)  </span>
-<span id="cb35-4"><a href="#cb35-4"></a>Ds &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>)<span class="op">/</span>sd</span>
-<span id="cb35-5"><a href="#cb35-5"></a></span>
-<span id="cb35-6"><a href="#cb35-6"></a></span>
-<span id="cb35-7"><a href="#cb35-7"></a>powerTheo &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Ds=</span><span class="kw">rep</span>(Ds,<span class="dt">each=</span><span class="kw">length</span>(ns)),</span>
-<span id="cb35-8"><a href="#cb35-8"></a>                    <span class="dt">n=</span><span class="kw">rep</span>(ns,<span class="kw">length</span>(Ds)),</span>
-<span id="cb35-9"><a href="#cb35-9"></a>                    <span class="dt">power=</span><span class="ot">NA</span>)</span>
-<span id="cb35-10"><a href="#cb35-10"></a></span>
-<span id="cb35-11"><a href="#cb35-11"></a>powerTheo<span class="op">$</span>power &lt;-<span class="st"> </span><span class="kw">apply</span>(powerTheo[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>],<span class="dv">1</span>,<span class="cf">function</span>(x) <span class="kw">pwr.t.test</span>(<span class="dt">d=</span>x[<span class="dv">1</span>],<span class="dt">n=</span>x[<span class="dv">2</span>],<span class="dt">type=</span><span class="st">&quot;two.sample&quot;</span>)<span class="op">$</span>power)</span></code></pre></div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>powerTheo <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>n,<span class="dt">y=</span>power,<span class="dt">col=</span>Ds<span class="op">%&gt;%</span>as.factor)) <span class="op">+</span></span>
-<span id="cb36-3"><a href="#cb36-3"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<p>Merk op dat de power overeenkomt met degene die we via simulaties hebben geschat!</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>b0 &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>sd &lt;-<span class="st"> </span><span class="kw">round</span>(miceSum<span class="op">$</span>sd[<span class="dv">2</span>],<span class="dv">1</span>)</span>
+<span id="cb34-3"><a href="#cb34-3"></a>ns &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">50</span>,<span class="dv">75</span>,<span class="dv">100</span>)  </span>
+<span id="cb34-4"><a href="#cb34-4"></a>Ds &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>)<span class="op">/</span>sd</span>
+<span id="cb34-5"><a href="#cb34-5"></a></span>
+<span id="cb34-6"><a href="#cb34-6"></a></span>
+<span id="cb34-7"><a href="#cb34-7"></a>powerTheo &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Ds=</span><span class="kw">rep</span>(Ds,<span class="dt">each=</span><span class="kw">length</span>(ns)),</span>
+<span id="cb34-8"><a href="#cb34-8"></a>                    <span class="dt">n=</span><span class="kw">rep</span>(ns,<span class="kw">length</span>(Ds)),</span>
+<span id="cb34-9"><a href="#cb34-9"></a>                    <span class="dt">power=</span><span class="ot">NA</span>)</span>
+<span id="cb34-10"><a href="#cb34-10"></a></span>
+<span id="cb34-11"><a href="#cb34-11"></a>powerTheo<span class="op">$</span>power &lt;-<span class="st"> </span><span class="kw">apply</span>(powerTheo[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>],<span class="dv">1</span>,<span class="cf">function</span>(x) <span class="kw">pwr.t.test</span>(<span class="dt">d=</span>x[<span class="dv">1</span>],<span class="dt">n=</span>x[<span class="dv">2</span>],<span class="dt">type=</span><span class="st">&quot;two.sample&quot;</span>)<span class="op">$</span>power)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>powerTheo <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>n,<span class="dt">y=</span>power,<span class="dt">col=</span>Ds<span class="op">%&gt;%</span>as.factor)) <span class="op">+</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <p><img src="experimentalDesignI_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRXhwZXJpbWVudGFsIERlc2lnbiBJOiByZXBsaWNhdGllIGVuIHBvd2VyIgphdXRob3I6ICJMaWV2ZW4gQ2xlbWVudCIKZGF0ZTogInN0YXRPbWljcywgR2hlbnQgVW5pdmVyc2l0eSAoaHR0cHM6Ly9zdGF0b21pY3MuZ2l0aHViLmlvKSIKb3V0cHV0OgogIGh0bWxfZG9jdW1lbnQ6CiAgICBjb2RlX2Rvd25sb2FkOiB5ZXMKICAgIHRoZW1lOiBjb3NtbwogICAgdG9jOiB5ZXMKICAgIHRvY19mbG9hdDogeWVzCiAgICBoaWdobGlnaHQ6IHRhbmdvCiAgICBudW1iZXJfc2VjdGlvbnM6IHllcwotLS0KCgo8YSByZWw9ImxpY2Vuc2UiIGhyZWY9Imh0dHBzOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS1uYy1zYS80LjAiPjxpbWcgYWx0PSJDcmVhdGl2ZSBDb21tb25zIExpY2Vuc2UiIHN0eWxlPSJib3JkZXItd2lkdGg6MCIgc3JjPSJodHRwczovL2kuY3JlYXRpdmVjb21tb25zLm9yZy9sL2J5LW5jLXNhLzQuMC84OHgzMS5wbmciIC8+PC9hPgoKYGBge3J9CmxpYnJhcnkodGlkeXZlcnNlKQpgYGAKCiMgQ29uY2VwdHMKCi0gRXhwZXJpbWVudGFsIHVuaXRzIHJlcHJlc2VudGF0aXZlIGZvciBwb3B1bGF0aW9uOiBSYW5kb21pc2F0aW9uIAotIFJlcGxpY2F0aW9uOiB0ZWNobmljYWwgdnMgYmlvbG9naWNhbCwgc2FtcGxlIHNpemUgLSBwb3dlcgotIFNvdXJjZXMgb2YgdmFyaWF0aW9uOiB0ZWNobmljYWwsIGJpb2xvZ2ljYWwsIHdpdGhpbiBzdWJqZWN0LCBiZXR3ZWVuIHN1YmplY3QKCiMgUmVwbGljYXRpZSAKClR3byBwYWdlciBvbiBSZXBsaWNhdGlvbiBpbiBuYXR1cmUgbWV0aG9kcyBbW1BERl0oaHR0cHM6Ly93d3cubmF0dXJlLmNvbS9hcnRpY2xlcy9ubWV0aC4zMDkxLnBkZildCiFbXShodHRwczovL3d3dy5uYXR1cmUuY29tL2FydGljbGVzL25tZXRoLjMwOTEucGRmKXsgd2lkdGg9MTAwJSB9CgojIyBFeGFtcGxlCgpDb25zaWRlciBhIHNpbmdsZSBjZWxsIFJOQS1zZXEgZXhwZXJpbWVudCB3aGVyZSByZXNlYXJjaGVycyB3YW50IHRvIGFzc2VzcyB0aGUgZWZmZWN0IG9mIGRydWcgdHJlYXRtZW50IG9uIGdlbmUgZXhwcmVzc2lvbgoKUG90ZW50aWFsIHJlc2VhcmNoIHF1ZXN0aW9ucwoKLSBJcyB0aGVyZSBhIGRpZmZlcmVuY2UgaW4gYXZlcmFnZSBnZW5lIGV4cHJlc3Npb24gYmV0d2VlbiB0cmVhdGVkIGFuZCBub24gdHJlYXRlZCBzYW1wbGVzCi0gSXMgdGhlcmUgYSBkaWZmZXJlbmNlIGluIHZhcmlhYmlsaXR5IG9mIGdlbmUgZXhwcmVzc2lvbiBiZXR3ZWVuIHRyZWF0ZWQgYW5kIG5vbiB0cmVhdGVkIHNhbXBsZXMgCgojIyBTb3VyY2VzIG9mIHZhcmlhdGlvbgoKVEFCTEUgMSBOQVRVUkUgTUVUSE9EUyB8IFZPTC4xMSBOTy45IHwgU0VQVEVNQkVSIDIwMTQgfCA4NzkgLSA4ODAKCnwgICB8IFJlcGxpY2F0ZSB0eXBlIHwgUmVwbGljYXRlIGNhdGVnb3J5JF5cdGV4dHthfSQgfAp8Oi0tLTp8Oi0tLXw6LS0tOnwKfCB8IENvbG9uaWVzIHwJQiB8CnwgfCBTdHJhaW5zIHwJQiB8CnwgQW5pbWFsIHN0dWR5IHN1YmplY3RzIHwgQ29ob3VzZWQgZ3JvdXBzIHwJQiB8CnwgfCBHZW5kZXIgfCBCIHwKfCB8IEluZGl2aWR1YWxzCXwgQiB8IAp8IHwgfCB8CnwgfCBPcmdhbnMgZnJvbSBzYWNyaWZpY2VkIGFuaW1hbHMgfCBCIHwKfCB8IE1ldGhvZHMgZm9yIGRpc3NvY2lhdGluZyBjZWxscyBmcm9tIHRpc3N1ZSB8IFQgfAp8IFNhbXBsZSBwcmVwYXJhdGlvbiB8IERpc3NvY2lhdGlvbiBydW5zIGZyb20gZ2l2ZW4gdGlzc3VlIHNhbXBsZSB8IFQgfAp8IHwgSW5kaXZpZHVhbCBjZWxscyB8IEIgfAp8IHwgfCB8CnwgfCBSTkEtc2VxIGxpYnJhcnkgY29uc3RydWN0aW9uIHwgVCB8CnwgfCBSdW5zIGZyb20gdGhlIGxpYnJhcnkgb2YgYSBnaXZlbiBjZWxsIHwJVCB8CnwgU2VxdWVuY2luZyB8IFJlYWRzIGZyb20gZGlmZmVyZW50IHRyYW5zY3JpcHQgbW9sZWN1bGVzIHwgViReXHRleHR7Yn0kIHwKfCB8IFJlYWRzIHdpdGggdW5pcXVlIG1vbGVjdWxhciBpZGVudGlmaWVyIChVTUkpIGZyb20gYSBnaXZlbiB0cmFuc2NyaXB0IG1vbGVjdWxlIHwJVCB8CgooYSkgUmVwbGljYXRlcyBhcmUgY2F0ZWdvcml6ZWQgYXMgYmlvbG9naWNhbCAoQiksIHRlY2huaWNhbCAoVCkgb3Igb2YgdmFyaWFibGUgdHlwZSAoVikuIAooYikgU2VxdWVuY2UgcmVhZHMgc2VydmUgZGl2ZXJzZSBwdXJwb3NlcyBkZXBlbmRpbmcgb24gdGhlIGFwcGxpY2F0aW9uIGFuZCBob3cgcmVhZHMgYXJlIHVzZWQgaW4gYW5hbHlzaXMuCgotLS0KCiMjIEF0IHdoaWNoIGxldmVsIHNob3VsZCB3ZSByZXBsaWNhdGU/CgotICRcdGV4dHt2YXJ9KFgpPVxzaWdtYV4yX0ErXHNpZ21hXjJfQytcc2lnbWFeMl9NPVxzaWdtYV4yX3tUT1R9JAotICRcdGV4dHt2YXJ9KFxiYXJ7WH0pPVxmcmFje1xzaWdtYV4yX0F9e25fQX0rXGZyYWN7XHNpZ21hXjJfQ317bl9BIG5fQ30gKyBcZnJhY3tcc2lnbWFeMl9NfXtuX0Egbl9DIG5fTX0kCgohW10oaHR0cHM6Ly9tZWRpYS5zcHJpbmdlcm5hdHVyZS5jb20vZnVsbC9zcHJpbmdlci1zdGF0aWMvaW1hZ2UvYXJ0JTNBMTAuMTAzOCUyRm5tZXRoLjMwOTEvTWVkaWFPYmplY3RzLzQxNTkyXzIwMTRfQXJ0aWNsZV9CRm5tZXRoMzA5MV9GaWcxX0hUTUwuanBnKQpGaWd1cmUgMSBOQVRVUkUgTUVUSE9EUyB8IFZPTC4xMSBOTy45IHwgU0VQVEVNQkVSIDIwMTQgfCA4NzkgLSA4ODAKCihhKSBUaHJlZSBsZXZlbHMgb2YgcmVwbGljYXRpb24gKHR3byBiaW9sb2dpY2FsLCBvbmUgdGVjaG5pY2FsKSB3aXRoIGFuaW1hbCwgY2VsbCBhbmQgbWVhc3VyZW1lbnQgcmVwbGljYXRlcyBub3JtYWxseSBkaXN0cmlidXRlZCB3aXRoIGEgbWVhbiBhY3Jvc3MgYW5pbWFscyBvZiAxMCBhbmQgcmF0aW8gb2YgdmFyaWFuY2VzIDE6MjowLjUuIFNvbGlkIGdyZWVuIChiaW9sb2dpY2FsKSBhbmQgYmx1ZSAodGVjaG5pY2FsKSBkb3RzIHNob3cgaG93IGEgbWVhc3VyZW1lbnQgb2YgdGhlIGV4cHJlc3Npb24gKFggPSAxMikgc2FtcGxlcyBmcm9tIGFsbCB0aHJlZSBzb3VyY2VzIG9mIHZhcmlhdGlvbi4gRGlzdHJpYnV0aW9uIHMuZC4gaXMgc2hvd24gYXMgaG9yaXpvbnRhbCBsaW5lcy4gCihiKSBFeHByZXNzaW9uIHZhcmlhbmNlLCBWYXIoWCksIGFuZCB2YXJpYW5jZSBvZiBleHByZXNzaW9uIG1lYW4sIFZhcigkXGJhciBYJCksIGNvbXB1dGVkIGFjcm9zcyAxMCwwMDAgc2ltdWxhdGlvbnMgb2YgbkFuQ25NID0gNDggbWVhc3VyZW1lbnRzIGZvciB1bmlxdWUgY29tYmluYXRpb25zIG9mIHRoZSBudW1iZXIgb2YgYW5pbWFscyAobkEgPSAxIHRvIDQ4KSwgY2VsbHMgcGVyIGFuaW1hbCAobkMgPSAxIHRvIDQ4KSBhbmQgdGVjaG5pY2FsIHJlcGxpY2F0ZSBtZWFzdXJlbWVudHMgcGVyIGNlbGwgKG5NID0gMSBhbmQgMykuIFRoZSByYXRpbyBvZiBWYXIoWCkgYW5kIFZhcigkXGJhciBYJCkgaXMgdGhlIGVmZmVjdGl2ZSBzYW1wbGUgc2l6ZSwgbiwgd2hpY2ggY29ycmVzcG9uZHMgdG8gdGhlIGVxdWl2YWxlbnQgbnVtYmVyIG9mIHN0YXRpc3RpY2FsbHkgaW5kZXBlbmRlbnQgbWVhc3VyZW1lbnRzLiBIb3Jpem9udGFsIGRhc2hlZCBsaW5lcyBjb3JyZXNwb25kIHRvIGJpb2xvZ2ljYWwgYW5kIHRvdGFsIHZhcmlhdGlvbi4gRXJyb3IgYmFycyBvbiBWYXIoWCkgc2hvdyBzLmQuIGZyb20gdGhlIDEwLDAwMCBzaW11bGF0ZWQgc2FtcGxlcyAobk0gPSAxKS4KCi0tLQoKLSBDb3N0IGJlbmVmaXQgdHJhZGUtb2ZmOiBjb3N0IGRpZmZlcmVuY2UgYmV0d2VlbiBiaW9sb2dpY2FsIGFuZCB0ZWNobmljYWwgcmVwbGljYXRlcyAKLSBUeXBpY2FsbHksIGJpb2xvZ2ljYWwgdmFyaWFiaWxpdHkgaXMgc3Vic3RhbnRpYWxseSBsYXJnZXIgdGhhbiB0ZWNobmljYWwgdmFyaWFiaWxpdHkKCiRccmlnaHRhcnJvdyQgY29tbWl0IHJlc291cmNlcyB0byBzYW1wbGluZyBiaW9sb2dpY2FsbHkgcmVsZXZhbnQgdmFyaWFibGVzIAoKJFxyaWdodGFycm93JCB1bmxlc3MgbWVhc3VyZXMgb2YgdGVjaG5pY2FsIHZhcmlhYmlsaXR5IGFyZSBvZiBpbnRlcmVzdCB0aGVuIGluY3JlYXNpbmcgbnVtYmVyIG9mIHRlY2huaWNhbCBtZWFzdXJlbWVudHMgaXMgdmFsdWFibGUuCgotIEdvb2QgZXhwZXJpbWVudGFsIGRlc2lnbiBwcmFjdGljZSBpbmNsdWRlcyBwbGFubmluZyBmb3IgcmVwbGljYXRpb24uIAoKICAxLiBJZGVudGlmeSB0aGUgcmVzZWFyY2ggcXVlc3Rpb25zIHRvIGJlIGFuc3dlcmVkIHdpdGggZXhwZXJpbWVudHMuIAogIDIuIERldGVybWluZSBwcm9wb3J0aW9uIG9mIHZhcmlhYmlsaXR5IGluZHVjZWQgYnkgZWFjaCBzdGVwLgogIDMuIEJlIGF3YXJlIGZvciBwc2V1ZG9yZXBsaWNhdGlvbiBhbmQgYWltIGZvciBzdGF0aXN0aWNhbGx5IGluZGVwZW5kZW50IHJlcGxpY2F0ZXMuCgotLS0gCgojIFBvd2VyLCBzYW1wbGUgc2l6ZSBhbmQgb3RoZXIgZGVzaWduIGFzcGVjdHMKClJlYWRpbmcgbWF0ZXJpYWxzOiAKW05hdHVyZSBNZXRob2RzICgyMDEzKSwgMTAoMTIpLCAxMTM54oCTMTE0MF0oaHR0cHM6Ly93d3cubmF0dXJlLmNvbS9hcnRpY2xlcy9ubWV0aC4yNzM4LnBkZikKCiMjIEludGVybWV6em8gbGluZWFyIHJlZ3Jlc3Npb24gaW4gbWF0cml4IGZvcm0gCgotIExpbmVhciByZWdyZXNzaW9uIGlzIGEgdmVyeSBpbXBvcnRhbnQgc3RhdGlzdGljYWwgdG9vbCB0byBzdHVkeSB0aGUgYXNzb2NpYXRpb24gYmV0d2VlbiB2YXJpYWJsZXMgYW5kIHRvIGJ1aWxkIHByZWRpY3Rpb24gbW9kZWxzLgoKIyMjIFNjYWxhciBmb3JtCgotIENvbnNpZGVyIGEgdmVjdG9yIG9mIHByZWRpY3RvcnMgJFxtYXRoYmZ7eH09KHhfMSxcbGRvdHMseF9wKSQgYW5kCi0gYSByZWFsLXZhbHVlZCByZXNwb25zZSAkWSQKLSB0aGVuIHRoZSBsaW5lYXIgcmVncmVzc2lvbiBtb2RlbCBjYW4gYmUgd3JpdHRlbiBhcwpcWwpZPWYoXG1hdGhiZnt4fSkgK1xlcHNpbG9uPVxiZXRhXzArXHN1bVxsaW1pdHNfe2o9MX1ecCB4X2pcYmV0YV9qICsgXGVwc2lsb24KXF0Kd2l0aCBpLmkuZC4gJFxlcHNpbG9uXHNpbSBOKDAsXHNpZ21hXjIpJAoKCgojIyMgVmVjdG9yL01hdHJpeCBmb3JtCgotICRuJCBvYnNlcnZhdGlvbnMgJChcbWF0aGJme3h9XzEseV8xKSBcbGRvdHMgKFxtYXRoYmZ7eH1fbix5X24pJCB3aXRoICRcbWF0aGJme3h9XzFeVD1bMSB4XzEgXGxkb3RzIHhfcF0kCi0gUmVncmVzc2lvbiBpbiBtYXRyaXggbm90YXRpb24KXFtcbWF0aGJme1l9PVxtYXRoYmZ7WFxiZXRhfSArIFxtYXRoYmZ7XGVwc2lsb259XF0Kd2l0aCAkXG1hdGhiZntZfT1cbGVmdFtcYmVnaW57YXJyYXl9e2N9eV8xXFwgXHZkb3RzXFx5X25cZW5ke2FycmF5fVxyaWdodF0kLAokXG1hdGhiZntYfT1cbGVmdFtcYmVnaW57YXJyYXl9e2NjY2N9IDEmeF97MTF9JlxsZG90cyZ4X3sxcH1cXApcdmRvdHMmXHZkb3RzJiZcdmRvdHNcXAoxJnhfe24xfSZcbGRvdHMmeF97bnB9ClxlbmR7YXJyYXl9XHJpZ2h0XSQgb3IgJFxtYXRoYmZ7WH09XGxlZnRbXGJlZ2lue2FycmF5fXtjfSBcbWF0aGJme3h9XzFeVFxcXHZkb3RzXFxcbWF0aGJme3h9X25eVFxlbmR7YXJyYXl9XHJpZ2h0XSQsCiRcYm9sZHN5bWJvbHtcYmV0YX09XGxlZnRbXGJlZ2lue2FycmF5fXtjfVxiZXRhXzBcXCBcdmRvdHNcXCBcYmV0YV9wXGVuZHthcnJheX1ccmlnaHRdJCBhbmQKJFxtYXRoYmZ7XGVwc2lsb259PVxsZWZ0W1xiZWdpbnthcnJheX17Y30gXGVwc2lsb25fMSBcXCBcdmRvdHMgXFwgXGVwc2lsb25fblxlbmR7YXJyYXl9XHJpZ2h0XSQKCi0tLQoKIyMgTGVhc3QgU3F1YXJlcyAoTFMpCgotIE1pbmltaXplIHRoZSByZXNpZHVhbCBzdW0gb2Ygc3F1YXJlcwpcYmVnaW57ZXFuYXJyYXkqfQpSU1MoXGJvbGRzeW1ib2x7XGJldGF9KSY9JlxzdW1cbGltaXRzX3tpPTF9Xm4gZV4yX2lcXAomPSZcc3VtXGxpbWl0c197aT0xfV5uIFxsZWZ0KHlfaS1cYmV0YV8wLVxzdW1cbGltaXRzX3tqPTF9XnAgeF97aWp9XGJldGFfalxyaWdodCleMgpcZW5ke2VxbmFycmF5Kn0KCi0gb3IgaW4gbWF0cml4IG5vdGF0aW9uCgokJApcdGV4dHtSU1N9KFxib2xkc3ltYm9se1xiZXRhfSk9KFxtYXRoYmZ7WX0tXG1hdGhiZntYXGJldGF9KV5UKFxtYXRoYmZ7WX0tXG1hdGhiZntYXGJldGF9KQokJAoKJCRccmlnaHRhcnJvdyBcaGF0e1xib2xkc3ltYm9se1xiZXRhfX09XHRleHR7YXJnbWlufV9cYmV0YSBcdGV4dHsgUlNTfShcYm9sZHN5bWJvbHtcYmV0YX0pJCQKCi0tLQoKIyMjIE1pbmltaXplIFJTUwpcWwpcYmVnaW57YXJyYXl9e2NjY30KXGZyYWN7XHBhcnRpYWwgUlNTfXtccGFydGlhbCBcYm9sZHN5bWJvbHtcYmV0YX19Jj0mXG1hdGhiZnswfVxcXFwKXGZyYWN7KFxtYXRoYmZ7WX0tXG1hdGhiZntYXGJldGF9KV5UKFxtYXRoYmZ7WX0tXG1hdGhiZntYfVxib2xkc3ltYm9se1xiZXRhfSl9e1xwYXJ0aWFsIFxib2xkc3ltYm9se1xiZXRhfX0mPSZcbWF0aGJmezB9XFxcXAotMlxtYXRoYmZ7WH1eVChcbWF0aGJme1l9LVxtYXRoYmZ7WH1cYm9sZHN5bWJvbHtcYmV0YX0pJj0mXG1hdGhiZnswfVxcXFwKXG1hdGhiZntYfV5UXG1hdGhiZntYXGJldGF9Jj0mXG1hdGhiZntYfV5UXG1hdGhiZntZfVxcXFwKXGhhdHtcYm9sZHN5bWJvbHtcYmV0YX19Jj0mKFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0pXnstMX1cbWF0aGJme1h9XlRcbWF0aGJme1l9ClxlbmR7YXJyYXl9ClxdCgotLS0KCiMjIFZhcmlhbmNlIEVzdGltYXRvcj8KXFsKXGJlZ2lue2FycmF5fXtjY2x9ClxoYXR7XGJvbGRzeW1ib2x7XFNpZ21hfX1fe1xoYXR7XGJvbGRzeW1ib2x7XGJldGF9fX0KJj0mXHRleHR7dmFyfVxsZWZ0WyhcbWF0aGJme1h9XlRcbWF0aGJme1h9KV57LTF9XG1hdGhiZntYfV5UXG1hdGhiZntZfVxyaWdodF1cXFxcCiY9JihcbWF0aGJme1h9XlRcbWF0aGJme1h9KV57LTF9XG1hdGhiZntYfV5UXHRleHR7dmFyfVxsZWZ0W1xtYXRoYmZ7WX1ccmlnaHRdXG1hdGhiZntYfShcbWF0aGJme1h9XlRcbWF0aGJme1h9KV57LTF9XFxcXAomPSYoXG1hdGhiZntYfV5UXG1hdGhiZntYfSleey0xfVxtYXRoYmZ7WH1eVChcbWF0aGJme0l9XHNpZ21hXjIpXG1hdGhiZntYfShcbWF0aGJme1h9XlRcbWF0aGJme1h9KV57LTF9ClxcXFwKJj0mKFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0pXnstMX1cbWF0aGJme1h9XlRcbWF0aGJme0l9XHF1YWRcbWF0aGJme1h9KFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0pXnstMX1cc2lnbWFeMlxcXFwKJVxoYXR7XGJvbGRtYXRoe1xTaWdtYX19X3tcaGF0e1xib2xkc3ltYm9se1xiZXRhfX19Jj0mKFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0pXnstMX1cbWF0aGJme1h9XlQgXHRleHR7dmFyfVxsZWZ0W1xtYXRoYmZ7WX1ccmlnaHRdKFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0pXnstMX1cbWF0aGJme1h9XFwKJj0mKFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0pXnstMX1cbWF0aGJme1h9XlRcbWF0aGJme1h9KFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0pXnstMX1cc2lnbWFeMlxcXFwKJj0mKFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0pXnstMX1cc2lnbWFeMgpcZW5ke2FycmF5fQpcXQoKVGhlIHVuY2VydGFpbnR5IG9uIHRoZSBtb2RlbCBwYXJhbWV0ZXJzIHRodXMgZGVwZW5kcyBvbiB0aGUgcmVzaWR1YWwgdmFyaWFiaWxpdHkgYW5kIHRoZSBkZXNpZ24hIAoKLSBUaGUgbGFyZ2VyICRcbWF0aGJme1h9XlRcbWF0aGJme1h9JCB0aGUgbW9yZSBpbmZvcm1hdGlvbiB0aGUgZXhwZXJpbWVudCBjb250YWlucyBvbiB0aGUgbW9kZWwgcGFyYW1ldGVycyBhbmQgdGhlIHNtYWxsZXIgdGhlaXIgdmFyaWFuY2VzIGFuZCBzdGFuZGFyZCBlcnJvcnMgd2lsbCBiZSEgCi0gRmFjdG9yaWFsIGRlc2lnbnM/IAotIERlc2lnbnMgd2l0aCBjb250aW51b3VzIHByZWRpY3RvcnM/IAoKLS0tCgpUaGUgZWZmZWN0IHNpemUgb2YgaW50ZXJlc3QgaXMgdHlwaWNhbGx5IGEgbGluZWFyIGNvbWJpbmF0aW9ucyBvZiB0aGUgbW9kZWwgcGFyYW1ldGVycywgaS5lLiAKJCQKbF8wIFx0aW1lcyBcYmV0YV8wICsgbF8xIFx0aW1lcyBcYmV0YV8xICsgLi4uICsgbF97cC0xfSBcdGltZXMgXGJldGFfe3AtMX0gPSBcbWF0aGJme0x9XlRcYm9sZHN5bWJvbHtcYmV0YX0KJCQgCgpUaGUgbnVsbCBoeXBvdGhlc2lzIG9mIG91ciB0ZXN0IHN0YXRpc3RpY3MgaXMgdGhhbiBmb3JtdWxhdGVkIGFzIAoKCiQkCkhfMDogXG1hdGhiZntMfV5UXGJvbGRzeW1ib2x7XGJldGF9ID0gMCAKJCQgCgp2cyB0aGUgYWx0ZXJuYXRpdmUgaHlwb3RoZXNpcyAKCiQkCkhfMDogXG1hdGhiZntMfV5UXGJvbGRzeW1ib2x7XGJldGF9IFxuZXEgMCAKJCQKd2hpY2ggY2FuIGJlIGFzc2Vzc2VkIHVzaW5nIGEgdC10ZXN0IHN0YXRpc3RpYzogCgokJAp0PVxmcmFje1xtYXRoYmZ7TH1eVFxoYXR7XGJvbGRzeW1ib2x7XGJldGF9fSAtIDB9e1x0ZXh0e3NlfV97XG1hdGhiZntMfV5UXGhhdHtcYm9sZHN5bWJvbHtcYmV0YX19fX0KJCQKd2hpY2ggZm9sbG93cyBhIHQtZGlzdHJpYnV0aW9uIHdpdGggbi1wIGRlZ3JlZXMgb2YgZnJlZWRvbSB1bmRlciB0aGUgbnVsbCBoeXBvdGhlc2lzIHdoZW4gYWxsIGFzc3VtcHRpb25zIGZvciB0aGUgbGluZWFyIG1vZGVsIGFyZSB2YWxpZC4gCgpTbyB0aGUgcG93ZXIgCgokJFAocCA8IDAuMDUgfCBIXzEpJCQKCndpbGwgdHlwaWNhbGx5IGRlcGVuZHMgb24gCgotIHRoZSByZWFsIGVmZmVjdCBzaXplIGluIHRoZSBwb3B1bGF0aW9uICAkXG1hdGhiZntMfV5UXGJvbGRzeW1ib2x7XGJldGF9JC4KLSBOdW1iZXIgb2Ygb2JzZXJ2YXRpb25zOiBTRSBhbmQgZGYgb2YgdC10ZXN0LgotIENob2ljZSBvZiB0aGUgZGVzaWduIHBvaW50cy4KLSBDaG9pY2Ugb2Ygc2lnbmlmaWNhbmNlIGxldmVsLiAKClNpbWlsYXIgdG8gdGhlIGludHJvZHVjdG9yeSBleGFtcGxlLCB3ZSBjYW4gdXNlIHNpbXVsYXRpb25zIHRvIGFzc2VzcyB0aGUgcG93ZXIuCgojIyBNb3VzZSBleGFtcGxlIAoKLSBJbiAyMDIxIENob2EgZXQgYWwuIHB1Ymxpc2hlZCB0aGF0IHRoZSBjeXRva2luZSBUaHltaWMgc3Ryb21hbCBseW1waG9wb2lldGluCihUU0xQKSBpbmR1Y2VkIGZhdCBsb3NzIHRocm91Z2ggc2VidW0gc2VjcmV0aW9uICh0YWxnKS4gW1todG1sXShodHRwczovL3d3dy5zY2llbmNlLm9yZy9kb2kvZnVsbC8xMC4xMTI2L3NjaWVuY2UuYWJkMjg5MyldIFtbUERGXShodHRwczovL3d3dy5zY2llbmNlLm9yZy9kb2kvcGRmLzEwLjExMjYvc2NpZW5jZS5hYmQyODkzKV0KCi0gU3VwcG9zZSB0aGF0IHlvdSB3b3VsZCBsaWtlIHRvIHNldCB1cCBhIHNpbWlsYXIgc3R1ZHkgdG8gdGVzdCBpZiBjeXRva2luZSBpbnRlcmxldWtpbiAyNSAoSUwpIGFsc28gaGFzIGJlbmVmaWNpYWwgZWZmZWN0LiAKCi0gWW91IHBsYW4gdG8gc2V0dXAgYSBzdHVkeSB3aXRoIGEgY29udHJvbCBncm91cCBvZiBoaWdoIGZhdCBkaWV0IChIRkQpIGZlZCBtaWNlIGFuZCBhIHRyZWF0bWVudCBncm91cCB0aGF0IHJlY2lldmVzIHRoZSBIRkQgYW5kIElMLiAKCi0gV2hhdCBzYW1wbGUgc2l6ZSBkbyB5b3UgbmVlZCB0byBwaWNrIHVwIHRoZSBlZmZlY3Qgb2YgdGhlIHRyZWF0bWVudC4gCgoKIyMjIEhvdyB3aWxsIHdlIGFuYWx5c2UgdGhlIGRhdGEgb2YgdGhpcyBleHBlcmltZW50PyAKCgotLS0KCgoKLSAkSF8wJDogVGhlIGF2ZXJhZ2Ugd2VpZ2h0IGRpZmZlcmVuY2UgaXMgZXF1YWwgdG8gemVybwotICRILTAkOiBUaGUgYXZlcmFnZSB3ZWlnaHQgZGlmZmVyZW5jZSBpcyBkaWZmZXJlbnQgZnJvbSB6ZXJvCgotIFR3byBzYW1wbGUgdC10ZXN0IG9yIGEgdC10ZXN0IG9uIHRoZSBzbG9wZSBvZiBhIGxpbmVhciBtb2RlbCB3aXRoIG9uZSBkdW1teSB2YXJpYWJsZS4gCgokJCBZX2kgPSBcYmV0YV8wICsgXGJldGFfMSBYX1x0ZXh0e2lJTH0gKyBcZXBzaWxvbl9pJCQgCgokJApcdGV4dHt3aXRoIH0KWF9cdGV4dHtpSUx9PVxiZWdpbntjYXNlc31YX3tpSUx9PTAgJiBcdGV4dHtIRkR9XFxYX3tpSUx9PTEgJiBcdGV4dHtIRkQgKyBJTH1cZW5ke2Nhc2VzfS4KJCQKCi0gRXN0aW1hdGVkIGVmZmVjdCBzaXplIAokJFxoYXRcZGVsdGEgPSBcYmFyIFhfe0lMfSAtIFxiYXIgWF97Y30gPSBcaGF0IFxiZXRhXzEkJAoKLSBUZXN0IHN0YXRpc3RpYwokJApUID0gXGZyYWN7XGJhcntYfV97SUx9LVxiYXJ7WH1fe2N9fXtTRF9cdGV4dHtwb29sZWR9IFx0aW1lcyBcc3FydHtcZnJhY3sxfXtuXzF9ICsgXGZyYWN7MX17bl8yfX19ID0gXGZyYWN7XGhhdFxiZXRhXzF9e1x0ZXh0e1NFfV97XGhhdFxiZXRhXzF9fQokJAotICRcaGF0IFxiZXRhXzEkIGlzIGFuIHVuYmlhc2VkIGVzdGltYXRvciBvZiB0aGUgcmVhbCB3ZWlnaHQgZGlmZmVyZW5jZSAoJFxkZWx0YSQpIHRoYXQgd291bGQgb2NjdXIgaW4gdGhlIHBvcHVsYXRpb24gb2YgcmF0cyBmZWQgd2l0aCBIRkQgYW5kIHJhdHMgZmVkIHdpdGggSEZEICsgSUwuICAKCiMjIyBQb3dlcj8gCgokJApQW3AgPCBcYWxwaGEgXHZlcnQgXGJldGFfMSBcbmVxIDBdCiQkCgoKLSBIZW5jZSwgdGhlIHBvd2VyIHdpbGwgZGVwZW5kIG9uIHRoZSByZWFsIHdlaWdodCBkaWZmZXJlbmNlIGJldHdlZW4gdGhlIGdyb3VwIG1lYW5zICRcYmV0YV8xJCBpbiB0aGUgcG9wdWxhdGlvbi4KLSBUaGUgdmFyaWFiaWxpdHkgb2YgdGhlIHdlaWdodCBtZWFzdXJlbWVudHMKLSBUaGUgc2lnbmlmaWNhbmNlIGxldmVsICRcYWxwaGEkCi0gU2FtcGxlIHNpemUgJG5fe0lMfSQgYW5kICRuX2MkIGluIGJvdGggZ3JvdXBzIAoKCldlIGNhbiBlc3RpbWF0ZSB0aGUgcG93ZXIgaWYgCgoxLiBUaGUgYXNzdW1wdGlvbnMgb2YgdGhlIG1vZGVsIGFyZSBtZXQ6IHdlaWdodHMgYXJlIG5vcm1hbGx5IGRpc3RyaWJ1dGVkIHdpdGggc2FtZSB2YXJpYW5jZQoKYW5kIHdlIGtub3cKCjIuIHRoZSBzdGFuZGFyZCBkZXZpYXRpb24gb2YgdGhlIHdlaWdodCBtZWFzdXJlbWVudHMgYXJvdW5kIHRoZWlyIGF2ZXJhZ2UgbWVhbiBmb3IgSEZELWZlZCBtaWNlICAKMy4gdGhlIHJlYWwgZWZmZWN0IHNpemUgaW4gdGhlIHBvcHVsYXRpb24KNC4gJG5fMSQgYW5kICRuXzIkIAoKIyMjIFVzZSBkYXRhIGZyb20gYSBwcmV2aW91cyBleHBlcmltZW50IHRvIGdldCBpbnNpZ2h0IGluIG1pY2UgZGF0YQoKU3VwcG9zZSB0aGF0IHdlIGhhdmUgYWNjZXNzIHRvIHRoZSBkYXRhIG9mIGEgcHJlbGltaW5hcnkgZXhwZXJpbWVudCAoZS5nLiBwcm92aWRlZCBieSBLYXJlbiBTdmVuc29uIHZpYSBHYXJ5IENodXJjaGlsbCBhbmQgRGFuIEdhdHRpIGFuZCBwYXJ0aWFsbHkgZnVuZGVkIGJ5IFA1MCBHTTA3MDY4MyBvbiBbUEg1MjV4XShodHRwOi8vZ2Vub21pY3NjbGFzcy5naXRodWIuaW8vYm9vay9wYWdlcy9yYW5kb21fdmFyaWFibGVzLmh0bWwpKQoKYGBge3J9Cm1pY2UgPC0gcmVhZC5jc3YoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9nZW5vbWljc2NsYXNzL2RhZ2RhdGEvbWFzdGVyL2luc3QvZXh0ZGF0YS9mZW1hbGVNaWNlV2VpZ2h0cy5jc3YiKQoKbWljZSAlPiUgCiAgZ2dwbG90KGFlcyh4PURpZXQseT1Cb2R5d2VpZ2h0KSkgKwogIGdlb21fYm94cGxvdChvdXRsaWVyLnNoYXBlPUZBTFNFKSArCiAgZ2VvbV9qaXR0ZXIoKQoKbWljZSAlPiUgCiAgZ2dwbG90KGFlcyhzYW1wbGU9Qm9keXdlaWdodCkpICsKICBnZW9tX3FxKCkgKyAKICBnZW9tX3FxX2xpbmUoKSArCiAgZmFjZXRfd3JhcCh+RGlldCkKYGBgCgpgYGB7cn0KbWljZSA8LSBtaWNlICU+JSBtdXRhdGUoRGlldCA9IGFzLmZhY3RvcihEaWV0KSkKbWljZVN1bSA8LSBtaWNlICU+JSAKICBncm91cF9ieShEaWV0KSAgJT4lCiAgc3VtbWFyaXplX2F0KCJCb2R5d2VpZ2h0IixsaXN0KG1lYW49fm1lYW4oLixuYS5ybT1UUlVFKSwKICAgICAgICAgICAgICAgICAgICBzZD1+c2QoLixuYS5ybT1UUlVFKSwKICAgICAgICAgICAgICAgICAgICBuPWZ1bmN0aW9uKHgpIHglPiVpcy5uYSU+JWAhYCU+JXN1bSkpICU+JQogIG11dGF0ZShzZT1zZC9zcXJ0KG4pKQptaWNlU3VtIApgYGAKSW4gdGhlIGV4cGVyaW1lbnQgd2UgaGF2ZSBkYXRhIGZyb20gdHdvIGRpZXRzOiAKCi0gcmVndWxhciBkaWV0IG9mIGNlcmlhbCBhbmQgZ3JhaW4gYmFzZWQgZGlldCAoQ2hvdykgCi0gSGlnaCBGYXQgKGhmKQoKV2UgY2FuIHVzZSB0aGUgaGYgbWljZSBhcyBpbnB1dCBmb3Igb3VyIHBvd2VyIGFuYWx5c2lzLiAKCi0gVGhlIGRhdGEgb2YgdGhlIGhmIG1pY2Ugc2VlbSB0byBiZSBub3JtYWxseSBkaXN0cmlidXRlZCAKLSBUaGUgbWVhbiB3ZWlnaHQgaXMgYHIgbWljZVN1bSAlPiUgZmlsdGVyKERpZXQgPT0gImhmIikgJT4lIHB1bGwoIm1lYW4iKSAlPiUgcm91bmQoLiwxKWBnIAotIFRoZSBTRCBvZiB0aGUgd2VpZ2h0IGlzIGByIG1pY2VTdW0gJT4lIGZpbHRlcihEaWV0ID09ICJoZiIpICU+JSBwdWxsKCJzZCIpICU+JSByb3VuZCguLDEpYGcgCgpFZmZlY3Qgc2l6ZT8gCgotIFRoZSBhbHRlcm5hdGl2ZSBoeXBvdGhlc2lzIGlzIGNvbXBsZXguIAotIEl0IGluY2x1ZGVzIGFsbCBwb3NzaWJsZSBlZmZlY3RzISAKLSBJbiBvcmRlciB0byBkbyB0aGUgcG93ZXIgYW5hbHlzaXMgd2Ugd2lsbCBoYXZlIHRvIGNob29zZSBhIG1pbmltdW0gZWZmZWN0IHNpemUgdGhhdCB3ZSB3b3VsZCBsaWtlIHRvIGRldGVjdC4gCgotIFN1cHBvc2UgdGhhdCB3ZSB3b3VsZCBsaWtlIHRvIGRldGVjdCBpZiB0aGUgd2VpZ2h0IG9mIHRoZSByYXRzIGRpZmZlcmVuY2UgJFxkZWx0YSQgb2YgYXQgbGVhc3QgMTAlLiAKCmBgYHtyfQpkZWx0YSA8LSAtIHJvdW5kKG1pY2VTdW0kbWVhblsyXSAqLjEsMSkKZGVsdGEKYGBgCgpOb3RlLCB0aGF0IHRoZSBhdmVyYWdlIHdlaWdodCB0aGVuIHdvdWxkIGdldCBjbG9zZSB0byB0aGF0IG9mIHRoZSByYXRzIGluIG91ciBwaWxvdCBleHBlcmltZW50IHRoYXQgd2VyZSBmZWQgb24gdGhlIGNob3cgZGlldC4KCldlIGNhbiBzZXQgdXAgYSBzaW11bGF0aW9uIHN0dWR5IHRvIGFzc2VzcyB0aGUgcG93ZXIgb2YgYW4gZXhwZXJpbWVudCB3aXRoIDggbWljZSBpbiBlYWNoIGdyb3VwOgoKIyMjIyBPbmUgc2ltdWxhdGlvbgoKYGBge3J9CnNldC5zZWVkKDE0MjMpCm4xIDwtIG4yIDwtIDgKYjAgPC0gcm91bmQobWljZVN1bSRtZWFuWzJdLDEpCmIxIDwtIC0gZGVsdGEKc2QgPC0gcm91bmQobWljZVN1bSRzZFsyXSwxKQphbHBoYSA8LSAwLjA1Cgp4IDwtIHJlcCgwOjEsYyhuMSxuMikpCnkgPC0gYjAgKyBiMSAqIHggKyBybm9ybShuMStuMiwwLCBzZCA9IHNkKQpmaXQgPC0gbG0oeX54KQpiaGF0IDwtIGZpdCRjb2VmIApzdGF0IDwtIHN1bW1hcnkoZml0KQpzdW1tYXJ5KGZpdCkkY29lZlsyLF0KYGBgCgpGb3IgdGhpcyBzaW11bGF0ZWQgZXhwZXJpbWVudCB3ZSB3b3VsZCBgciBpZmVsc2Uoc3VtbWFyeShmaXQpJGNvZWZbMiwiUHIoPnx0fCkiXSA8IGFscGhhLCIiLCJub3QiKWAgaGF2ZSBiZWVuIGFibGUgdG8gcGljayB1cCB0aGUgZWZmZWN0IG9mIHRoZSB0cmVhdG1lbnQgYXQgdGhlIHNpZ25pZmljYW5jZSBsZXZlbCAkXGFscGhhJD1gciBhbHBoYWAgKHAgPSBgcmAgcm91bmQoc3VtbWFyeShmaXQpJGNvZWZbMiwiUHIoPnx0fCkiXSwyKWApISAKCi0gV2UgaGF2ZSB0byByZXBlYXQgdGhlIGV4cGVyaW1lbnQgbWFueSB0aW1lcyB0byBlc3RpbWF0ZSB0aGUgcG93ZXIuIAotIFdlIHdpbGwgdGhlcmVmb3JlIHB1dCBvdXIgc2ltdWxhdGlvbiBpbiBhIGdlbmVyYWwgZnVuY3Rpb24uIAoKIyMjIyBTaW11bGF0aW9uIG9mIHJlcGVhdGVkIGV4cGVyaW1lbnRzCgpgYGB7cn0KbGlicmFyeShtdWx0Y29tcCkKbjEgPC0gbjIgPC0gOAoKYjAgPC0gcm91bmQobWljZVN1bSRtZWFuWzJdLDEpCmIxIDwtIC0gZGVsdGEKCnNkIDwtIHJvdW5kKG1pY2VTdW0kc2RbMl0sMSkKcHJlZGljdG9yRGF0YSA8LSBkYXRhLmZyYW1lKERpZXQgPSByZXAoYygiYyIsImhmIiksYyhuMSxuMikpICU+JSBhcy5mYWN0b3IpCgphbHBoYSA8LSAwLjA1CgpzaW1MbSA8LSBmdW5jdGlvbihmb3JtLCBkYXRhLCBiZXRhcywgc2QsIGNvbnRyYXN0cywgc2ltSW5kZXggPSBOQSkKewogIGRhdGFTaW0gPC0gZGF0YQogIFggPC0gbW9kZWwubWF0cml4KGZvcm0sZGF0YVNpbSkKICBkYXRhU2ltJHlTaW0gPC0gWCUqJWJldGFzICsgcm5vcm0obnJvdyhkYXRhU2ltKSwwLHNkKQogIGZvcm0gPC0gZm9ybXVsYShwYXN0ZSgieVNpbSB+Iixmb3JtW1syXV0pKQogIGZpdFNpbSA8LSBsbShmb3JtLGRhdGFTaW0pCiAgbWNwIDwtIGdsaHQoZml0U2ltLGxpbmZjdCA9IGNvbnRyYXN0cykKICByZXR1cm4oc3VtbWFyeShtY3ApJHRlc3RbYygiY29lZmZpY2llbnRzIiwic2lnbWEiLCJ0c3RhdCIsInB2YWx1ZXMiKV0lPiUgdW5saXN0KQp9CgpzaW1MbSgKICBmb3JtID0gfkRpZXQsCiAgZGF0YSA9IHByZWRpY3RvckRhdGEsCiAgYmV0YXMgPSBjKGIwLGIxKSwKICBzZCA9IHNkLAogIGNvbnRyYXN0cyA9ICJEaWV0aGYgPSAwIikKYGBgCgpXZSBub3cgaGF2ZSBhIGdlbmVyaWMgZnVuY3Rpb24gdGhhdCBjYW4gc2ltdWxhdGUgZGF0YSBmcm9tIGEgbm9ybWFsIGRpc3RyaWJ1dGlvbiBmb3IgZXZlcnkgZGVzaWduLiAKVGhlIGZ1bmN0aW9uIGhhcyBhcmd1bWVudHM6IAoKLSBgZm9ybWA6IE9uZSBzaWRlZCBmb3JtdWxhIGluY2x1ZGluZyB0aGUgc3RydWN0dXJlIG9mIHRoZSBwcmVkaWN0b3JzIGluIHRoZSBtb2RlbCAKLSBgZGF0YWA6IERhdGEgZnJhbWUgd2l0aCB0aGUgcHJlZGljdG9yIHZhbHVlcyBmb3IgdGhlIGRlc2lnbgotIGBiZXRhc2A6IEEgdmVjdG9yIHdpdGggdmFsdWVzIGZvciBhbGwgbWVhbiBtb2RlbCBwYXJhbWV0ZXJzCi0gYHNkYDogVGhlIHN0YW5kYXJkIGRldmlhdGlvbiBvZiB0aGUgZXJyb3IgCi0gYGNvbnRyYXN0c2A6IGEgc2NhbGFyIG9yIGEgdmVjdG9yIHdpdGggdGhlIG51bGwgaHlwb3RoZXNlcyB0aGF0IHdlIHdvdWxkIGxpa2UgdG8gYXNzZXNzLiAKLSBgc2ltSW5kZXhgOiBhbiBhcmJpdHJhcnkgYXJndW1lbnQgdGhhdCBpcyBub3QgdXNlZCBieSB0aGUgIGZ1bmN0aW9uIGJ1dCB0aGF0IHdpbGwgYWxsb3cgaXQgdG8gYmUgdXNlZCBpbiBhbiBzYXBwbHkgbG9vcCB0aGF0IHJ1bnMgZnJvbSAxIHVwIHRvIHRoZSBudW1iZXIgb2Ygc2ltdWxhdGlvbnMuIAoKU2ltdWxhdGUgblNpbSA9IDEwMDAgcmVwZWF0ZWQgZXhwZXJpbWVudHM6IAoKYGBge3J9CnNldC5zZWVkKDE0MjUpCm5TaW0gPC0gMTAwMAoKc2ltUmVzdWx0cyAgPC0gdChzYXBwbHkoMTpuU2ltLHNpbUxtLGZvcm0gPSB+RGlldCxkYXRhID0gcHJlZGljdG9yRGF0YSxiZXRhcyA9IGMoYjAsYjEpLHNkID0gc2QsY29udHJhc3RzID0gIkRpZXRoZiA9IDAiKSkKcG93ZXIgPC0gbWVhbihzaW1SZXN1bHRzWyw0XSA8IGFscGhhKQpwb3dlcgpgYGAKCldlIGhhdmUgYSBwb3dlciBvZiBgciBwb3dlcioxMDBgJSB0byBwaWNrIHVwIHRoZSB0cmVhdG1lbnQgZWZmZWN0IHdoZW4gdXNpbmcgOCBiaW9yZXBzIGluIGVhY2ggdHJlYXRtZW50IGdyb3VwLiAKCiMjIyMgUG93ZXIgZm9yIG11bHRpcGxlIHNhbXBsZSBzaXplcyAKCldlIGNhbiBub3cgY2FsY3VsYXRlIHRoZSBwb3dlciBmb3IgbXVsdGlwbGUgc2FtcGxlIHNpemVzLiAKCmBgYHtyfQpwb3dlciA8LSBkYXRhLmZyYW1lKG49YygzLDUsMTAsMjUsNTAsNzUsMTAwKSxwb3dlcj1OQSkKCmZvciAoaSBpbiAxOm5yb3cocG93ZXIpKQp7CiAgbjEgPC0gbjIgPC0gcG93ZXIkbltpXQogIHByZWRpY3RvckRhdGEgPC0gZGF0YS5mcmFtZShEaWV0ID0gcmVwKGMoImMiLCJoZiIpLGMobjEsbjIpKSAlPiUgYXMuZmFjdG9yKQogIHNpbVJlc3VsdHMgIDwtIHQoc2FwcGx5KDE6blNpbSxzaW1MbSxmb3JtID0gfkRpZXQsZGF0YSA9IHByZWRpY3RvckRhdGEsYmV0YXMgPSBjKGIwLGIxKSxzZCA9IHNkLGNvbnRyYXN0cyA9ICJEaWV0aGYgPSAwIikpCiAgcG93ZXIkcG93ZXJbaV0gPC0gbWVhbihzaW1SZXN1bHRzWywicHZhbHVlcyJdIDwgYWxwaGEpCn0KcG93ZXIKYGBgCgpgYGB7cn0KcG93ZXIgJT4lIAogIGdncGxvdChhZXMoeD1uLHk9cG93ZXIpKSArCiAgZ2VvbV9saW5lKCkKYGBgCgojIyMjIEFzc2VzcyBwb3dlciBpbiBmdW5jdGlvbiBvZiBzYW1wbGUgc2l6ZSBmb3IgZGlmZmVyZW50IGVmZmVjdCBzaXplcyAKCk5vdGUsIHRoYXQgCi0gdGhlIHNpZ24gb2YgdGhlIGRlbHRhIGlzIGFyYml0cmFyeSBiZWNhdXNlIHdlIHRlc3QgdHdvLXNpZGVkLiAKLSB0aGUgaW50ZXJjZXB0IGlzIGFyYml0cmFyeSBiZWNhdXNlIHdlIG9ubHkgYXNzZXMgJFxiZXRhXzAkCi0gV2UgdGhlcmVmb3JlIHR5cGljYWxseSBzZXQgJFxiZXRhXzAgPSAwJAoKYGBge3J9Cm5TaW0gPC0gMTAwMApiMCA8LSAwCmRlbHRhcyA8LSBjKDEsMiwzLDUsMTApCnNkIDwtIHJvdW5kKG1pY2VTdW0kc2RbMl0sMSkKbnMgPC0gIGMoMyw1LDEwLDIwLDI1LDUwLDc1LDEwMCkgIAoKcG93ZXIgPC0gZGF0YS5mcmFtZShiMT1yZXAoZGVsdGFzLGVhY2g9bGVuZ3RoKG5zKSksCiAgICAgICAgICAgICAgICAgICAgbj1yZXAobnMsbGVuZ3RoKGRlbHRhcykpLAogICAgICAgICAgICAgICAgICAgIHBvd2VyPU5BKQoKZm9yIChpIGluIDE6bnJvdyhwb3dlcikpCnsKICBiMSA8LXBvd2VyJGIxW2ldCiAgbjEgPC0gbjIgPC0gIHBvd2VyJG5baV0KICBwcmVkaWN0b3JEYXRhIDwtIGRhdGEuZnJhbWUoRGlldCA9IHJlcChjKCJjIiwiaGYiKSxjKG4xLG4yKSkgJT4lIGFzLmZhY3RvcikKICBzaW1SZXN1bHRzICA8LSB0KHNhcHBseSgxOm5TaW0sc2ltTG0sZm9ybSA9IH5EaWV0LGRhdGEgPSBwcmVkaWN0b3JEYXRhLGJldGFzID0gYyhiMCxiMSksc2QgPSBzZCxjb250cmFzdHMgPSAiRGlldGhmID0gMCIpKQogIHBvd2VyJHBvd2VyW2ldIDwtIG1lYW4oc2ltUmVzdWx0c1ssInB2YWx1ZXMiXSA8IGFscGhhKQp9CmBgYAoKYGBge3J9CnBvd2VyICU+JSAKICBnZ3Bsb3QoYWVzKHg9bix5PXBvd2VyLGNvbD1iMSU+JWFzLmZhY3RvcikpICsKICBnZW9tX2xpbmUoKQpgYGAKCk5vdGUsIHRoYXQgdGhlIHBvd2VyIGN1cnZlcyBhcmUgc3RpbGwgYSBiaXQgY2hvcHB5IGJlY2F1c2Ugd2Ugc2VsZWN0ZWQgYSBsaW1pdGVkIG51bWJlciBvZiBzYW1wbGUgc2l6ZXMgYW5kIGJlY2F1c2UgYG5TaW1gIHNpbXVsYXRpb25zIGlzIG5vdCBlbm91Z2ggdG8gZ2V0IGEgZ29vZCBwb3dlciBlc3RpbWF0ZSB3aGVuIHRoZSBwb3dlciBpcyBsb3cuIAoKIyBGaW5hbCByZW1hcmtzCgotIFRoZSBjb2RlIGNhbiBiZSBlYXNpbHkgZXh0ZW5kZWQgdG93YXJkcyBvdGhlciBkZXNpZ25zIGJ5IGFsdGVyaW5nCiAgICAKICAgIC0gcHJlZGljdG9yIGRhdGEgCiAgICAtIGZvcm11bGEKICAgIC0gY29udHJhc3QKCi0gVGhlIHNpbXVsYXRpb25zIHN0YXJ0IHRvIHRha2UgbG9uZyB3aGVuIHlvdSBldmFsdWF0ZSBtYW55IHNjZW5hcmlvJ3MuIAogICAgCiAgICAtIE1vcmUgZWZmaWNpZW50IGNvZGUgdXNpbmcgbWF0cmljZXMKICAgIC0gRm9yIGEgdHdvIGdyb3VwIGNvbXBhcmlzb24gY2xvc2VkIGZvcm0gc29sdXRpb25zIGV4aXN0CiAgICAKCgoKIyMgTW9yZSBlZmZpY2llbnQgY29kZSBiYXNlZCBvbiBtYXRyaXggYWxnZWJyYQoKQ29kZSBydW5zIG11Y2ggZmFzdGVyLiBXZSBub3cgc2ltdWxhdGUgMjAgdGltZXMgbW9yZSBleHBlcmltZW50cyBpbiBhIG11Y2ggc2hvcnRlciB0aW1lISAKCmBgYHtyfQpuU2ltIDwtIDIwMDAwCmIwIDwtIDAKc2QgPC0gcm91bmQobWljZVN1bSRzZFsyXSwxKQpucyA8LSAgYygzLDUsMTAsMjAsMjUsNTAsNzUsMTAwKSAgCmRlbHRhcyA8LSBjKDEsMiwzLDUsMTApCgpMIDwtIGxpbW1hOjptYWtlQ29udHJhc3RzKCJEaWV0aGYiLGxldmVscz1jKCIoSW50ZXJjZXB0KSIsIkRpZXRoZiIpKQoKcG93ZXJGYXN0IDwtIG1hdHJpeChOQSxucm93PWxlbmd0aChucykqbGVuZ3RoKGRlbHRhcyksbmNvbD0zKSAlPiUgYXMuZGF0YS5mcmFtZQpuYW1lcyhwb3dlckZhc3QpIDwtIGMoImIxIiwibiIsInBvd2VyIikKCmkgPC0gMAoKZm9yIChuIGluIG5zKQp7CiAgbjEgPC0gbjIgPC0gIG4KICAKICAjIyMgU2ltdWxhdGlvbgogIHByZWRpY3RvckRhdGEgPC0gZGF0YS5mcmFtZShEaWV0ID0gcmVwKGMoImMiLCJoZiIpLGMobjEsbjIpKSAlPiUgYXMuZmFjdG9yKQogIGRlc2lnbiA8LSBtb2RlbC5tYXRyaXgofkRpZXQscHJlZGljdG9yRGF0YSkKICAKICBmb3IgKGIxIGluIGRlbHRhcykKICB7CiAgICB5U2ltIDwtIHJub3JtKG5yb3cocHJlZGljdG9yRGF0YSkqblNpbSxzZD1zZCkKICAgIGRpbSh5U2ltKSA8LWMobnJvdyhwcmVkaWN0b3JEYXRhKSxuU2ltKQogICAgeVNpbSA8LSB5U2ltICsgYyhkZXNpZ24gJSolYyhiMCxiMSkpCiAgICB5U2ltIDwtIHQoeVNpbSkKICAKICAgICMjIyBGaXR0aW5nCiAgICBmaXRBbGwgPC0gbGltbWE6OmxtRml0KHlTaW0sZGVzaWduKQogIAogICAgIyMjIEluZmVyZW5jZQogICAgdmFyVW5zY2FsZWQgPC0gYyh0KEwpJSolZml0QWxsJGNvdi5jb2VmZmljaWVudHMlKiVMKQogICAgY29udHJhc3RzIDwtIGZpdEFsbCRjb2VmZmljaWVudHMgJSolTAogICAgc2VDb250cmFzdHMgPC0gdmFyVW5zY2FsZWReLjUqZml0QWxsJHNpZ21hCiAgICB0c3RhdHMgPC0gY29udHJhc3RzL3NlQ29udHJhc3RzCiAgICBwdmFscyA8LSBwdChhYnModHN0YXRzKSxmaXRBbGwkZGYucmVzaWR1YWwsbG93ZXIudGFpbCA9IEZBTFNFKSoyCiAgICAKICAgIGkgPC0gaSsxCiAgICBwb3dlckZhc3RbaSxdIDwtIGMoYjEsbixtZWFuKHB2YWxzIDwgYWxwaGEpKQogIH0KfQpgYGAKCmBgYHtyfQpwb3dlckZhc3QgJT4lIAogIGdncGxvdChhZXMoeD1uLHk9cG93ZXIsY29sPWIxJT4lYXMuZmFjdG9yKSkgKwogIGdlb21fbGluZSgpCmBgYAoKIyMgTW9yZSBlZmZpY2llbnQgY29kZSBiYXNlZCBvbiBjbG9zZWQgZm9ybSBzb2x1dGlvbiB0aGF0IGV4aXN0cyBmb3IgdHdvIGdyb3VwIGNvbXBhcmlzb24KCkZvciB0aGUgdHdvIHNhbXBsZSB0LXRlc3QgYSBjbG9zZWQgZm9ybSBlc3RpbWF0ZSBleGlzdHMgZm9yIHRoZSBwb3dlci4gCkluIHRoaXMgY29udGV4dCB0aGUgQ29oZW4ncyBlZmZlY3Qgc2l6ZSBpcyB0eXBpY2FsbHkgdXNlZDogCgokRCA9IFxmcmFje1xkZWx0YX17U0R9JAoKCmBgYHtyfQpEIDwtIGRlbHRhL3NkCmxpYnJhcnkocHdyKQpwd3IudC50ZXN0KG49OCwgZD1ELCB0eXBlPSd0d28uc2FtcGxlJykKYGBgCk5vdGUsIHRoYXQgdGhpcyBpcyB2ZXJ5IHNpbWlsYXIgdG8gdGhlIHBvd2VyIHRoYXQgd2UgY2FsY3VsYXRlZCB1c2luZyB0aGUgc2ltdWxhdGlvbnMhIAoKYGBge3J9CmIwIDwtIDAKc2QgPC0gcm91bmQobWljZVN1bSRzZFsyXSwxKQpucyA8LSAgYygzLDUsMTAsMjAsMjUsNTAsNzUsMTAwKSAgCkRzIDwtIGMoMSwyLDMsNSwxMCkvc2QKCgpwb3dlclRoZW8gPC0gZGF0YS5mcmFtZShEcz1yZXAoRHMsZWFjaD1sZW5ndGgobnMpKSwKICAgICAgICAgICAgICAgICAgICBuPXJlcChucyxsZW5ndGgoRHMpKSwKICAgICAgICAgICAgICAgICAgICBwb3dlcj1OQSkKCnBvd2VyVGhlbyRwb3dlciA8LSBhcHBseShwb3dlclRoZW9bLDE6Ml0sMSxmdW5jdGlvbih4KSBwd3IudC50ZXN0KGQ9eFsxXSxuPXhbMl0sdHlwZT0idHdvLnNhbXBsZSIpJHBvd2VyKQpgYGAKCgpgYGB7cn0KcG93ZXJUaGVvICU+JSAKICBnZ3Bsb3QoYWVzKHg9bix5PXBvd2VyLGNvbD1EcyU+JWFzLmZhY3RvcikpICsKICBnZW9tX2xpbmUoKQpgYGAKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRXhwZXJpbWVudGVlbCBEZXNpZ24gSTogcmVwbGljYXRpZSBlbiBwb3dlciIKYXV0aG9yOiAiTGlldmVuIENsZW1lbnQiCmRhdGU6ICJzdGF0T21pY3MsIEdoZW50IFVuaXZlcnNpdHkgKGh0dHBzOi8vc3RhdG9taWNzLmdpdGh1Yi5pbykiCm91dHB1dDoKICBodG1sX2RvY3VtZW50OgogICAgY29kZV9kb3dubG9hZDogeWVzCiAgICB0aGVtZTogY29zbW8KICAgIHRvYzogeWVzCiAgICB0b2NfZmxvYXQ6IHllcwogICAgaGlnaGxpZ2h0OiB0YW5nbwogICAgbnVtYmVyX3NlY3Rpb25zOiB5ZXMKLS0tCgoKPGEgcmVsPSJsaWNlbnNlIiBocmVmPSJodHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnktbmMtc2EvNC4wIj48aW1nIGFsdD0iQ3JlYXRpdmUgQ29tbW9ucyBMaWNlbnNlIiBzdHlsZT0iYm9yZGVyLXdpZHRoOjAiIHNyYz0iaHR0cHM6Ly9pLmNyZWF0aXZlY29tbW9ucy5vcmcvbC9ieS1uYy1zYS80LjAvODh4MzEucG5nIiAvPjwvYT4KCmBgYHtyfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKYGBgCgojIENvbmNlcHRlbgoKLSBFeHBlcmltZW50ZWxlIGVlbmhlZGVuIHppam4gcmVwcmVzZW50YXRpZWYgdm9vciBwb3B1bGF0aWU6IFJhbmRvbWlzYXRpZQotIFJlcGxpY2F0aWU6IHRlY2huaXNjaCB2cyBiaW9sb2dpc2NoLCBzdGVla3Byb2VmZ3Jvb3R0ZSAtIHBvd2VyCi0gQnJvbm5lbiB2YW4gdmFyaWFiaWxpdGVpdDogdGVjaG5pc2NoLCBiaW9sb2dpc2NoLCBiaW5uZW4gZW4gdHVzc2VuIHN1YmplY3Rlbi4gCgojIFJlcGxpY2F0aWUgCgpQYXBlciBvdmVyIHJlcGxpY2F0aWUgaW4gTmF0dXJlIE1ldGhvZHMgKDIgcGFnaW5hJ3MpIFtbUERGXShodHRwczovL3d3dy5uYXR1cmUuY29tL2FydGljbGVzL25tZXRoLjMwOTEucGRmKV0KIVtdKGh0dHBzOi8vd3d3Lm5hdHVyZS5jb20vYXJ0aWNsZXMvbm1ldGguMzA5MS5wZGYpeyB3aWR0aD0xMDAlIH0KCiMjIFZvb3JiZWVsZAoKSW4gZWVuIFJOQS1zZXEgZXhwZXJpbWVudCB3aWxsZW4gZGUgb25kZXJ6b2VrZXJzIGhldCBlZmZlY3QgbmFnYWFuIHZhbiBlZW4gbWVkaWNpam4gb3AgZGUgZ2VuIGV4cHJlc3NpZS4gCgpNb2dlbGlqa3NlIG9uZGVyem9la3N2cmFhZwoKLSBJcyBlciBlZW4gdmVyc2NoaWwgaW4gZ2VtaWRkZWxkZSBnZW4gZXhwcmVzc2llIHR1c3NlbiBiZWhhbmRlbGRlIGVuIG5pZXQgYmVoYW5kZWxkZSBzYW1wbGVzCgojIyBCcm9ubmVuIHZhbiB2YXJpYWJpbGl0ZWl0CgpUQUJMRSAxIE5BVFVSRSBNRVRIT0RTIHwgVk9MLjExIE5PLjkgfCBTRVBURU1CRVIgMjAxNCB8IDg3OSAtIDg4MAoKfCAgIHwgUmVwbGljYXRlIHR5cGUgfCBSZXBsaWNhdGUgY2F0ZWdvcnkkXlx0ZXh0e2F9JCB8Cnw6LS0tOnw6LS0tfDotLS06fAp8IHwgQ29sb25pZXMgfAlCIHwKfCB8IFN0cmFpbnMgfAlCIHwKfCBBbmltYWwgc3R1ZHkgc3ViamVjdHMgfCBDb2hvdXNlZCBncm91cHMgfAlCIHwKfCB8IEdlbmRlciB8IEIgfAp8IHwgSW5kaXZpZHVhbHMJfCBCIHwgCnwgfCB8IHwKfCB8IE9yZ2FucyBmcm9tIHNhY3JpZmljZWQgYW5pbWFscyB8IEIgfAp8IHwgTWV0aG9kcyBmb3IgZGlzc29jaWF0aW5nIGNlbGxzIGZyb20gdGlzc3VlIHwgVCB8CnwgU2FtcGxlIHByZXBhbXVpc2lvbiB8IERpc3NvY2lhdGlvbiBydW5zIGZyb20gZ2l2ZW4gdGlzc3VlIHNhbXBsZSB8IFQgfAp8IHwgSW5kaXZpZHVhbCBjZWxscyB8IEIgfAp8IHwgfCB8CnwgfCBSTkEtc2VxIGxpYnJhcnkgY29uc3RydWN0aW9uIHwgVCB8CnwgfCBSdW5zIGZyb20gdGhlIGxpYnJhcnkgb2YgYSBnaXZlbiBjZWxsIHwJVCB8CnwgU2VxdWVuY2luZyB8IFJlYWRzIGZyb20gZGlmZmVyZW50IHRyYW5zY3JpcHQgbW9sZWN1bGVzIHwgViReXHRleHR7Yn0kIHwKfCB8IFJlYWRzIHdpdGggdW5pcXVlIG1vbGVjdWxhciBpZGVudGlmaWVyIChVTUkpIGZyb20gYSBnaXZlbiB0cmFuc2NyaXB0IG1vbGVjdWxlIHwJVCB8CgooYSkgUmVwbGljYXRlcyBhcmUgY2F0ZWdvcml6ZWQgYXMgYmlvbG9naWNhbCAoQiksIHRlY2huaWNhbCAoVCkgb3Igb2YgdmFyaWFibGUgdHlwZSAoVikuIAooYikgU2VxdWVuY2UgcmVhZHMgc2VydmUgZGl2ZXJzZSBwdXJwb3NlcyBkZXBlbmRpbmcgb24gdGhlIGFwcGxpY2F0aW9uIGFuZCBob3cgcmVhZHMgYXJlIHVzZWQgaW4gYW5hbHlzaXMuCgotLS0KCiMjIE9wIHdlbGsgbml2ZWF1IG1vZXRlbiB3ZSByZXBsaWNlcmVuPwoKLSAkXHRleHR7dmFyfShYKT1cc2lnbWFeMl9BK1xzaWdtYV4yX0MrXHNpZ21hXjJfTT1cc2lnbWFeMl97VE9UfSQKLSAkXHRleHR7dmFyfShcYmFye1h9KT1cZnJhY3tcc2lnbWFeMl9BfXtuX0F9K1xmcmFje1xzaWdtYV4yX0N9e25fQSBuX0N9ICsgXGZyYWN7XHNpZ21hXjJfTX17bl9BIG5fQyBuX019JAoKIVtdKGh0dHBzOi8vbWVkaWEuc3ByaW5nZXJuYXR1cmUuY29tL2Z1bGwvc3ByaW5nZXItc3RhdGljL2ltYWdlL2FydCUzQTEwLjEwMzglMkZubWV0aC4zMDkxL01lZGlhT2JqZWN0cy80MTU5Ml8yMDE0X0FydGljbGVfQkZubWV0aDMwOTFfRmlnMV9IVE1MLmpwZykKRmlndXJlIDEgTkFUVVJFIE1FVEhPRFMgfCBWT0wuMTEgTk8uOSB8IFNFUFRFTUJFUiAyMDE0IHwgODc5IC0gODgwCgooYSkgVGhyZWUgbGV2ZWxzIG9mIHJlcGxpY2F0aW9uICh0d28gYmlvbG9naWNhbCwgb25lIHRlY2huaWNhbCkgd2l0aCBhbmltYWwsIGNlbGwgYW5kIG1lYXN1cmVtZW50IHJlcGxpY2F0ZXMgbm9ybWFsbHkgZGlzdHJpYnV0ZWQgd2l0aCBhIG1lYW4gYWNyb3NzIGFuaW1hbHMgb2YgMTAgYW5kIG11aXNpbyBvZiB2YXJpYW5jZXMgMToyOjAuNS4gU29saWQgZ3JlZW4gKGJpb2xvZ2ljYWwpIGFuZCBibHVlICh0ZWNobmljYWwpIGRvdHMgc2hvdyBob3cgYSBtZWFzdXJlbWVudCBvZiB0aGUgZXhwcmVzc2lvbiAoWCA9IDEyKSBzYW1wbGVzIGZyb20gYWxsIHRocmVlIHNvdXJjZXMgb2YgdmFyaWF0aW9uLiBEaXN0cmlidXRpb24gcy5kLiBpcyBzaG93biBhcyBob3Jpem9udGFsIGxpbmVzLiAKKGIpIEV4cHJlc3Npb24gdmFyaWFuY2UsIFZhcihYKSwgYW5kIHZhcmlhbmNlIG9mIGV4cHJlc3Npb24gbWVhbiwgVmFyKCRcYmFyIFgkKSwgY29tcHV0ZWQgYWNyb3NzIDEwLDAwMCBzaW11bGF0aW9ucyBvZiBuQW5Dbk0gPSA0OCBtZWFzdXJlbWVudHMgZm9yIHVuaXF1ZSBjb21iaW5hdGlvbnMgb2YgdGhlIG51bWJlciBvZiBhbmltYWxzIChuQSA9IDEgdG8gNDgpLCBjZWxscyBwZXIgYW5pbWFsIChuQyA9IDEgdG8gNDgpIGFuZCB0ZWNobmljYWwgcmVwbGljYXRlIG1lYXN1cmVtZW50cyBwZXIgY2VsbCAobk0gPSAxIGFuZCAzKS4gVGhlIG11aXNpbyBvZiBWYXIoWCkgYW5kIFZhcigkXGJhciBYJCkgaXMgdGhlIGVmZmVjdGl2ZSBzYW1wbGUgc2l6ZSwgbiwgd2hpY2ggY29ycmVzcG9uZHMgdG8gdGhlIGVxdWl2YWxlbnQgbnVtYmVyIG9mIHN0YXRpc3RpY2FsbHkgaW5kZXBlbmRlbnQgbWVhc3VyZW1lbnRzLiBIb3Jpem9udGFsIGRhc2hlZCBsaW5lcyBjb3JyZXNwb25kIHRvIGJpb2xvZ2ljYWwgYW5kIHRvdGFsIHZhcmlhdGlvbi4gRXJyb3IgYmFycyBvbiBWYXIoWCkgc2hvdyBzLmQuIGZyb20gdGhlIDEwLDAwMCBzaW11bGF0ZWQgc2FtcGxlcyAobk0gPSAxKS4KCi0tLQoKV2FhciBsaWd0IGludGVyZXNzZT8gCgotIEthcmFrdGVyaXNlcmVuIHZhbiBicm9ubmVuIHZhbiB2YXJpYWJpbGl0ZWl0IGluIGV4cGVyaW1lbnQgPT0+IHRlY2huaXNjaGUgZW4gYmlvbG9naXNjaGUgcmVwZWF0cyB6aWpuIG5vZGlnCi0gVm9vcm5hbWVsaWprZSBpbnRlcmVzc2UgaW4gc2NoYXR0ZW4gdmFuIGVmZmVjdCB2YW4gYmVoYW5kZWxpbmcgPT0+IGZvY3VzIG9wIGJpb2xvZ2lzY2hlIHJlcGVhdHMKLSBFeHRyYSBiaW9sb2dpc2NoZSByZXBlYXRzIGx1bXBlbiBhbGxlIGJyb25uZW4gdmFuIHZhcmlhYmlsaXRlaXQ6IGJpb2xvZ2lzY2hlICsgdGVjaG5pc2NoZSB2YXJpYWJpbGl0ZWl0LiAKCi0gR29lZCBleHBlcmltZW50ZWVsIGRlc2lnbiB2ZXJlaXN0IG5hIGRlbmtlbiBvdmVyIHJlcGxpY2F0aWUgCgogIDEuIElkZW50aWZpY2VlciBvbmRlcnpvZWtzdnJhZ2VuIGRpZSBtZW4gd2Vuc3QgdGUgYmVhbnR3b29yZGVuLiAKICAyLiBCcmVuZyBicm9ubmVuIHZhbiB2YXJpYWJpbGl0ZWl0IGluIGthYXJ0IGluIGVsa2Ugc3RhcCB2YW4gaGV0IGV4cGVyaW1lbnQKICAzLiBMZXQgb3Agdm9vciBwc2V1ZG9yZXBsaWNhdGllLCBiZW9vZyB6b3ZlZWwgbW9nZWxpamsgb25hZmhhbmtlbGlqa2UgcmVwZWF0cy4gCgotLS0gCgojIFBvd2VyLCBzdGVla3Byb2VmZ3Jvb3R0ZSBlbiBhbmRlcmUgZGVzaWduIGFzcGVjdGVuLiAKClJlYWRpbmcgbWF0ZXJpYWxzOiAKW05hdHVyZSBNZXRob2RzICgyMDEzKSwgMTAoMTIpLCAxMTM54oCTMTE0MF0oaHR0cHM6Ly93d3cubmF0dXJlLmNvbS9hcnRpY2xlcy9ubWV0aC4yNzM4LnBkZikKCiMjIEludGVybWV6em8gbGluZWFyZSByZWdyZXNzaW9uIGluIG1hdHJpeCB2b3JtIAoKLSBMaW5lYWlyZSByZWdyZXNzaWUgaXMgZWVuIGJlbGFuZ3JpamtlIG1ldGhvZGUgaW4gc3RhdGlzdGlzY2hlIGRhdGEgYW5hbHlzZS4KCiMjIyBTY2FsYWlyZSB2b3JtCgotIFN0ZWwgZGF0IG1lbiB2b29yIGVsa2UgZXhwZXJpbWVudGVsZSBlZW5oZWlkICRwJCBwcmVkaWN0b3JlbiBtZWV0ICRcbWF0aGJme3h9PSh4XzEsXGxkb3RzLHhfcCkkIGVuCi0gY29udGludWUgcmVzcG9ucyAkWSQKLSBoZXQgbGluZWFyIHJlZ3Jlc3NpZW1vZGVsIGthbiBkYW4gd29yZGVuIGdlc2NocmV2ZW4gYWxzOiAKXFsKWT1mKFxtYXRoYmZ7eH0pICtcZXBzaWxvbj1cYmV0YV8wK1xzdW1cbGltaXRzX3tqPTF9XnAgeF9qXGJldGFfaiArIFxlcHNpbG9uClxdCm1ldCBpLmkuZC4gJFxlcHNpbG9uXHNpbSBOKDAsXHNpZ21hXjIpJAoKCgojIyMgVmVjdG9yL01hdHJpeCB2b3JtCgotICRuJCBvYnNlcnZhdGllICQoXG1hdGhiZnt4fV8xLHlfMSkgXGxkb3RzIChcbWF0aGJme3h9X24seV9uKSQgd2l0aCAkXG1hdGhiZnt4fV8xXlQ9WzEgeF8xIFxsZG90cyB4X3BdJAotIFJlZ3Jlc3NpZSBpbiBtYXRyaXggbm90YXRpZQpcW1xtYXRoYmZ7WX09XG1hdGhiZntYXGJldGF9ICsgXG1hdGhiZntcZXBzaWxvbn1cXQptZXQgJFxtYXRoYmZ7WX09XGxlZnRbXGJlZ2lue2FycmF5fXtjfXlfMVxcIFx2ZG90c1xceV9uXGVuZHthcnJheX1ccmlnaHRdJCwKJFxtYXRoYmZ7WH09XGxlZnRbXGJlZ2lue2FycmF5fXtjY2NjfSAxJnhfezExfSZcbGRvdHMmeF97MXB9XFwKXHZkb3RzJlx2ZG90cyYmXHZkb3RzXFwKMSZ4X3tuMX0mXGxkb3RzJnhfe25wfQpcZW5ke2FycmF5fVxyaWdodF0kIG9yICRcbWF0aGJme1h9PVxsZWZ0W1xiZWdpbnthcnJheX17Y30gXG1hdGhiZnt4fV8xXlRcXFx2ZG90c1xcXG1hdGhiZnt4fV9uXlRcZW5ke2FycmF5fVxyaWdodF0kLAokXGJvbGRzeW1ib2x7XGJldGF9PVxsZWZ0W1xiZWdpbnthcnJheX17Y31cYmV0YV8wXFwgXHZkb3RzXFwgXGJldGFfcFxlbmR7YXJyYXl9XHJpZ2h0XSQgYW5kCiRcbWF0aGJme1xlcHNpbG9ufT1cbGVmdFtcYmVnaW57YXJyYXl9e2N9IFxlcHNpbG9uXzEgXFwgXHZkb3RzIFxcIFxlcHNpbG9uX25cZW5ke2FycmF5fVxyaWdodF0kCgotLS0KCiMjIGtsZWluc3RlIGt3YWRtdWlzZW4gdGVjaG5pZWsvTGVhc3QgU3F1YXJlcyAoTFMpCgotIE1pbmltaW1hbGlzZWVyIGRlICByZXNpZHVlbGUga3dhZG11aXNlbnNvbQpcYmVnaW57ZXFuYXJyYXkqfQpSU1MoXGJvbGRzeW1ib2x7XGJldGF9KSY9JlxzdW1cbGltaXRzX3tpPTF9Xm4gZV4yX2lcXAomPSZcc3VtXGxpbWl0c197aT0xfV5uIFxsZWZ0KHlfaS1cYmV0YV8wLVxzdW1cbGltaXRzX3tqPTF9XnAgeF97aWp9XGJldGFfalxyaWdodCleMgpcZW5ke2VxbmFycmF5Kn0KCi0gb2YgaW4gbWF0cml4IG5vdGF0aWUKCiQkClx0ZXh0e1JTU30oXGJvbGRzeW1ib2x7XGJldGF9KT0oXG1hdGhiZntZfS1cbWF0aGJme1hcYmV0YX0pXlQoXG1hdGhiZntZfS1cbWF0aGJme1hcYmV0YX0pCiQkCgokJFxyaWdodGFycm93IFxoYXR7XGJvbGRzeW1ib2x7XGJldGF9fT1cdGV4dHthcmdtaW59X1xiZXRhIFx0ZXh0eyBSU1N9KFxib2xkc3ltYm9se1xiZXRhfSkkJAoKLS0tCgojIyMgTWluaW1pbWFsaXNlZXIgUlNTClxbClxiZWdpbnthcnJheX17Y2NjfQpcZnJhY3tccGFydGlhbCBSU1N9e1xwYXJ0aWFsIFxib2xkc3ltYm9se1xiZXRhfX0mPSZcbWF0aGJmezB9XFxcXApcZnJhY3soXG1hdGhiZntZfS1cbWF0aGJme1hcYmV0YX0pXlQoXG1hdGhiZntZfS1cbWF0aGJme1h9XGJvbGRzeW1ib2x7XGJldGF9KX17XHBhcnRpYWwgXGJvbGRzeW1ib2x7XGJldGF9fSY9JlxtYXRoYmZ7MH1cXFxcCi0yXG1hdGhiZntYfV5UKFxtYXRoYmZ7WX0tXG1hdGhiZntYfVxib2xkc3ltYm9se1xiZXRhfSkmPSZcbWF0aGJmezB9XFxcXApcbWF0aGJme1h9XlRcbWF0aGJme1hcYmV0YX0mPSZcbWF0aGJme1h9XlRcbWF0aGJme1l9XFxcXApcaGF0e1xib2xkc3ltYm9se1xiZXRhfX0mPSYoXG1hdGhiZntYfV5UXG1hdGhiZntYfSleey0xfVxtYXRoYmZ7WH1eVFxtYXRoYmZ7WX0KXGVuZHthcnJheX0KXF0KCi0tLQoKIyMgVmFyaWFudGllIHNjaGF0dGVyPwpcWwpcYmVnaW57YXJyYXl9e2NjbH0KXGhhdHtcYm9sZHN5bWJvbHtcU2lnbWF9fV97XGhhdHtcYm9sZHN5bWJvbHtcYmV0YX19fQomPSZcdGV4dHt2YXJ9XGxlZnRbKFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0pXnstMX1cbWF0aGJme1h9XlRcbWF0aGJme1l9XHJpZ2h0XVxcXFwKJj0mKFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0pXnstMX1cbWF0aGJme1h9XlRcdGV4dHt2YXJ9XGxlZnRbXG1hdGhiZntZfVxyaWdodF1cbWF0aGJme1h9KFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0pXnstMX1cXFxcCiY9JihcbWF0aGJme1h9XlRcbWF0aGJme1h9KV57LTF9XG1hdGhiZntYfV5UKFxtYXRoYmZ7SX1cc2lnbWFeMilcbWF0aGJme1h9KFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0pXnstMX0KXFxcXAomPSYoXG1hdGhiZntYfV5UXG1hdGhiZntYfSleey0xfVxtYXRoYmZ7WH1eVFxtYXRoYmZ7SX1ccXVhZFxtYXRoYmZ7WH0oXG1hdGhiZntYfV5UXG1hdGhiZntYfSleey0xfVxzaWdtYV4yXFxcXAolXGhhdHtcYm9sZG1hdGh7XFNpZ21hfX1fe1xoYXR7XGJvbGRzeW1ib2x7XGJldGF9fX0mPSYoXG1hdGhiZntYfV5UXG1hdGhiZntYfSleey0xfVxtYXRoYmZ7WH1eVCBcdGV4dHt2YXJ9XGxlZnRbXG1hdGhiZntZfVxyaWdodF0oXG1hdGhiZntYfV5UXG1hdGhiZntYfSleey0xfVxtYXRoYmZ7WH1cXAomPSYoXG1hdGhiZntYfV5UXG1hdGhiZntYfSleey0xfVxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0oXG1hdGhiZntYfV5UXG1hdGhiZntYfSleey0xfVxzaWdtYV4yXFxcXAomPSYoXG1hdGhiZntYfV5UXG1hdGhiZntYfSleey0xfVxzaWdtYV4yClxlbmR7YXJyYXl9ClxdCgpEZSBvbnpla2VyaGVpZCBvcCBtb2RlbCBwYXJhbWV0ZXJzIGhhbmd0IGR1cyBhZiB2YW4gZGUgcmVzaWR1ZWxlIHZhcmlhYmlsaXRlaXQgZW4gaGV0IGRlIHByb2Vmb3B6ZXQhCgotIEhvZSBncm90ZXIgJFxtYXRoYmZ7WH1eVFxtYXRoYmZ7WH0kIGhvZSBtZWVyIGluZm9ybWF0aWUgaGV0IGV4cGVyaW1lbnQgemFsIGhlYmJlbiBvdmVyIGRlIG1vZGVsIHBhcmFtZXRlcnMgZW4gaG9lIGtsZWluZXIgaHVuIHZhcmlhbnRpZSBlbiBzdGFuZGFhcmQgZXJyb3JzISAKCi0gRmFjdG9yacOrbGUgZGVzaWducz8gCi0gRGVzaWducyB3aXRoIGNvbnRpbnVlIHByZWRpY3RvcmVuPyAKCi0tLQoKRGUgZWZmZWN0Z3Jvb3R0ZSB2YW4gaW50ZXJlc3NlIGlzIHR5cGlzY2ggZWVuIGxpbmVhaXJlIGNvbWJpbmF0aWUgdmFuIGRlIG1vZGVsIHBhcmFtZXRlcnMsICAKJCQKbF8wIFx0aW1lcyBcYmV0YV8wICsgbF8xIFx0aW1lcyBcYmV0YV8xICsgLi4uICsgbF97cC0xfSBcdGltZXMgXGJldGFfe3AtMX0gPSBcbWF0aGJme0x9XlRcYm9sZHN5bWJvbHtcYmV0YX0KJCQgCgpEZSBudWxoeXBvdGhlc2UgdmFuIG9uemUgdGVzdCBrYW4gZGFuIHdvcmRlbiBnZXNjaHJldmVuIGFscyAKCgokJApIXzA6IFxtYXRoYmZ7TH1eVFxib2xkc3ltYm9se1xiZXRhfSA9IDAgCiQkIAoKdnMgZGUgYWx0ZXJuYXRpZXZlIGh5cG90aGVzZSAKCiQkCkhfMDogXG1hdGhiZntMfV5UXGJvbGRzeW1ib2x7XGJldGF9IFxuZXEgMCAKJCQKCkVuIGhldCBiZXdpanMgaW4gaGV0IGV4cGVyaW1lbnQgdGVnZW4gJEhfMCQga2FuIHdvcmRlbiBnZWt3YW50aWZpY2VlcmQgbWV0IGRlIHQtdGVzdCBzdGF0aXN0aWVrOiAKCiQkCnQ9XGZyYWN7XG1hdGhiZntMfV5UXGhhdHtcYm9sZHN5bWJvbHtcYmV0YX19IC0gMH17XHRleHR7c2V9X3tcbWF0aGJme0x9XlRcaGF0e1xib2xkc3ltYm9se1xiZXRhfX19fQokJApkaWUgZWVuIHQtZGlzdHJpYnV0aWUgdm9sZ3QgbWV0IG4tcCB2cmlqaGVpZHNncmFkZW4gb25kZXIgZGUgbnVsIGh5cG90aGVzZSBhbHMgYWxsZSBhYW5uYW1lcyB2YW4gaGV0IG1vZGVsIGdlbGRpZyB6aWpuLgoKRGUga3JhY2h0IHZhbiBkZSB0b2V0cyBpcyBkYW4KCiQkUChwIDwgMC4wNSB8IEhfMSkkJAplbiBoYW5ndCBhZiB2YW4gCgotIGRlIHdlcmtlbGlqa2UgZWZmZWN0Z3Jvb3R0ZSBpbiBkZSBwb3B1bGF0aWUgJFxtYXRoYmZ7TH1eVFxib2xkc3ltYm9se1xiZXRhfSQuCi0gSGV0IGFhbnRhbCBvYnNlcnZhdGllczogU0UgZW4gZGYgdmFuIHQtdGVzdC4KLSBLZXV6ZSB2YW4gZGUgZGVzaWducHVudGVuCi0gS2V1emUgdmFuIHNpZ25pZmljYW50aWUtbml2ZWF1ICRcYWxwaGEkLiAKCldlIGt1bm5lbiBkaXQgZXZhbHVlcmVuIGFhbiBkZSBoYW5kIHZhbiBzaW11bGF0aWVzLgoKIyMgTXVpcyB2b29yYmVlbGQKCi0gSW4gMjAyMSBwdWJsaWNlZXJkZW4gQ2hvYSBldCBhbC4gZGF0IGN5dG9raW5lIFRoeW1pYyBzdHJvbWFsIGx5bXBob3BvaWV0aW4KKFRTTFApIHZldHZlcmxpZXMgaW5kdWNlZXJ0IGJpaiBtdWl6ZW4gZGllIGVlbiB2ZXQgZGllZXQga3JpamdlbiBkb29yIGRlIHNlY3JldGllIHZhbiB0YWxnLiBbW2h0bWxdKGh0dHBzOi8vd3d3LnNjaWVuY2Uub3JnL2RvaS9mdWxsLzEwLjExMjYvc2NpZW5jZS5hYmQyODkzKV0gW1tQREZdKGh0dHBzOi8vd3d3LnNjaWVuY2Uub3JnL2RvaS9wZGYvMTAuMTEyNi9zY2llbmNlLmFiZDI4OTMpXQoKLSBTdGVsIGRhdCBqZSBlZW4gZ2VsaWprYWFyZGlnIGV4cGVyaW1lbnQgb3Agd2lsIHpldHRlbiBvbSBuYSB0ZSBnYWFuIG9mIGN5dG9raW5lIGludGVybGV1a2luIDI1IChJTCkgb29rIGVlbiBlZmZlY3QgaGVlZnQgb3AgaGV0IGdld2ljaHQgdmFuIG11aXplbi4gCgotIEplIHBsYW50IGVlbiBzdHVkaWUgbWV0IGVlbiBjb250cm9sZSBncm9lcCBtdWl6ZW4gZGllIGVlbiBob29nIHZldCBkaWVldCBrcmlqZ2VuICAoSEZEKSBlbiBlZW4gYmVoYW5kZWxpbmdzZ3JvZXAgZGllIGVlbiBIRkQgZGllZXQgbWV0IElMIGtyaWpndC4gCgotIFdhdCBpcyBkZSB2ZXJlaXN0ZSBzdGVla3Byb2VmZ3Jvb3R0ZSBvbSBlZW4gYmVwYWFsZCBlZmZlY3Qgb3AgdGUgcGlra2VuIHZhbiBkZSBiZWhhbmRlbGluZz8gCgoKIyMjIEhvZSB6YWwgamUgZGUgZGF0YSB2YW4gaGV0IGV4cGVyaW1lbnQgYW5hbHlzZXJlbj8gCgoKLS0tCgoKCi0gJEhfMCQ6IEVyIGlzIGdlZW4gdmVyc2NoaWwgaW4gaGV0IGdld2ljaHQgdmFuIG11aXplbiBkaWUgZWVuIGRpZWV0IG1ldCBJTCBrcmlqZ2VuIGVuIG11aXplbiBkaWUgaGV0IGNvbnRyb2xlIGRpZWV0IGtyaWpnZW4uCi0gJEgtMCQ6IEhldCBnZXdpY2h0IGlzIGdlbWlkZGVsZGUgdmVyc2NoaWxsZW5kIHR1c3NlbiBtdWl6ZW4gZGllIGhldCBJTCBkaWVldCBrcmlqZ2VuIGVuIG11aXplbiBkaWUgaGV0IGNvbnRyb2xlIGRpZWV0IGtyaWpnZW4uCgotIFR3byBzYW1wbGUgdC10ZXN0IG9mIGVlbiB0LXRlc3Qgb3AgZGUgaGVsbGluZyB2YW4gaGV0IGxpbmVhaXJlIG1vZGVsIG1ldCAxIGR1bW15IHZhcmlhYmVsZQoKJCQgWV9pID0gXGJldGFfMCArIFxiZXRhXzEgWF9cdGV4dHtpSUx9ICsgXGVwc2lsb25faSQkIAoKJCQKXHRleHR7bWV0IH0KWF9cdGV4dHtpSUx9PVxiZWdpbntjYXNlc31YX3tpSUx9PTAgJiBcdGV4dHtIRkR9XFxYX3tpSUx9PTEgJiBcdGV4dHtIRkQgKyBJTH1cZW5ke2Nhc2VzfS4KJCQKCi0gR2VzY2hhdHRlIGVmZmVjdGdyb290dGU/CgokJFxoYXRcZGVsdGEgPSBcYmFyIFhfe0lMfSAtIFxiYXIgWF97Y30gPSBcaGF0IFxiZXRhXzEkJAoKLSBUZXN0IHN0YXRpc3RpZWsKJCQKVCA9IFxmcmFje1xiYXJ7WH1fe0lMfS1cYmFye1h9X3tjfX17U0RfXHRleHR7cG9vbGVkfSBcdGltZXMgXHNxcnR7XGZyYWN7MX17bl8xfSArIFxmcmFjezF9e25fMn19fSA9IFxmcmFje1xoYXRcYmV0YV8xfXtcdGV4dHtTRX1fe1xoYXRcYmV0YV8xfX0KJCQKLSAkXGhhdCBcYmV0YV8xJCBpcyBlZW4gb252ZXJ0ZWtlbmRlIHNjaGF0dGVyIHZhbiBoZXQgd2Vya2VsaWprIGdld2ljaHRzdmVyc2NoaWwgKCRcZGVsdGEgPVxtdV97SUx9LVxtdV97Y30gPSBcYmV0YV8xJCkgZGF0IHpvdSB2b29ya29tZW4gaW4gZGUgcG9wdWxhdGllIHZhbiBtdWl6ZW4gZ2V2b2VkIG1ldCBIRkQgdnMgbXVpemVuIGdldm9lZCBtZXQgSEZEICsgSUwuICAKCiMjIyBQb3dlcj8gCgokJApQW3AgPCBcYWxwaGEgXHZlcnQgXGJldGFfMSBcbmVxIDBdCiQkCgoKRGUga3JhY2h0IChwb3dlcikgemFsIGR1cyBhZmhhbmdlbiB2YW4gCgotIEhldCB3ZXJrZWxpamtlIGdlbWlkZGVsZGUgZ2V3aWNodHN2ZXJzY2hpbCAkXGJldGFfMSQgaW4gZGUgcG9wdWxhdGllLgotIERlIHZhcmlhYmlsaXRlaXQgdmFuIGRlIGdld2ljaHRzbWV0aW5nZW4KLSBoZXQgc2lnbmlmaWNhbnRpZS1uaXZlYXUgJFxhbHBoYSQKLSBzdGVla3Byb2VmZ3Jvb3R0ZSAkbl97SUx9JCBlbiAkbl9jJCBpbiBiZWlkZSBncm9lcGVuIAoKCldlIGt1bm5lbiBkZSBwb3dlciBzY2hhdHRlbiBhbHMgCgoxLiB2b2xkYWFuIGlzIGFhbiBkZSAgYWFubmFtZW5zIHZhbiBoZXQgbW9kZWw6IGdld2ljaHQgaW4gYmVpZGUgZ3JvZXBlbiBpcyBub3JtYWFsIHZlcmRlZWxkIG1ldCBnZWxpamtlIHZhcmlhbnRpZQoKZW4gYWxzIHdlIGRlIAoKMi4gc3RhbmRhYXJkIGRldmlhdGllIGtlbm5lbiB2YW4gZ2V3aWNodHNtZXRpbmdlbiByb25kIGh1biBncm9lcHNnZW1pZGRlbGRlIHZvb3IgbXVpemVuIGRpZSBlZW4gSEZEIGRpZXQga3JpamdlbgoKMy4gZGUgZWNodGUgZWZmZWN0Z3Jvb3R0ZSBpbiBkZSBwb3B1bGF0aWUKNC4gJG5fMSQgZW4gJG5fMiQgCgojIyMgR2VicnVpayBkYXRhIHVpdCB2b3JpZyBleHBlcmltZW50IG9tIGluemljaHQgdGUga3JpamdlbiBpbiBkZSBnZXdpY2h0c2RhdGEgdmFuIG11aXplbgoKU3RlbCBkYXQgd2UgdG9lZ2FuZyBoZWJiZW4gdG90IGRhdGEgdmFuIGVlbiB2b3JpZyBleHBlcmltZW50IChoaWVyIGRhdCB2YW4gS2FyZW4gU3ZlbnNvbiBlbiBEYW4gR2F0dGksIGdlZmluYW5jaWVyZCBkb29yIFA1MCBHTTA3MDY4MyBlbiBiZXNjaGlrYmFhciBvcCBbUEg1MjV4XShodHRwOi8vZ2Vub21pY3NjbGFzcy5naXRodWIuaW8vYm9vay9wYWdlcy9yYW5kb21fdmFyaWFibGVzLmh0bWwpKQoKYGBge3J9Cm1pY2UgPC0gcmVhZC5jc3YoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9nZW5vbWljc2NsYXNzL2RhZ2RhdGEvbWFzdGVyL2luc3QvZXh0ZGF0YS9mZW1hbGVNaWNlV2VpZ2h0cy5jc3YiKQoKbWljZSAlPiUgCiAgZ2dwbG90KGFlcyh4PURpZXQseT1Cb2R5d2VpZ2h0KSkgKwogIGdlb21fYm94cGxvdChvdXRsaWVyLnNoYXBlPUZBTFNFKSArCiAgZ2VvbV9qaXR0ZXIoKQoKbWljZSAlPiUgCiAgZ2dwbG90KGFlcyhzYW1wbGU9Qm9keXdlaWdodCkpICsKICBnZW9tX3FxKCkgKyAKICBnZW9tX3FxX2xpbmUoKSArCiAgZmFjZXRfd3JhcCh+RGlldCkKYGBgCgpgYGB7cn0KbWljZSA8LSBtaWNlICU+JSBtdXRhdGUoRGlldCA9IGFzLmZhY3RvcihEaWV0KSkKbWljZVN1bSA8LSBtaWNlICU+JSAKICBncm91cF9ieShEaWV0KSAgJT4lCiAgc3VtbWFyaXplX2F0KCJCb2R5d2VpZ2h0IixsaXN0KG1lYW49fm1lYW4oLixuYS5ybT1UUlVFKSwKICAgICAgICAgICAgICAgICAgICBzZD1+c2QoLixuYS5ybT1UUlVFKSwKICAgICAgICAgICAgICAgICAgICBuPWZ1bmN0aW9uKHgpIHglPiVpcy5uYSU+JWAhYCU+JXN1bSkpICU+JQogIG11dGF0ZShzZT1zZC9zcXJ0KG4pKQptaWNlU3VtIApgYGAKCkluIGhldCBleHBlcmltZW50IHdlcmRlbiB0d2VlIGRpw6t0ZW4gZ2VicnVpa3Q6IAoKLSBnZXdvb24gZGlldCBvLmIudi4gZ3JhbmVuIChDaG93KSAKLSBIZWVsIHZldCBkaWVldCAoaGlnaCBmYXQ6IGhmKQoKV2Uga3VubmVuIGRlIGRhdGEgdmFuIGRlIGhmIG11aXplbiBnZWJydWlrZW4gYWxzIGlucHV0IHZvb3Igb256ZSBwb3dlciBhbmFseXNlLiAKCi0gRGUgZGF0YSB2YW4gaGYgbXVpemVuIGxpamsgbm9ybWFhbCB2ZXJkZWVsZCB0ZSB6aWpuLiAgCi0gSGV0IGdlbWlkZGVsZGUgZ2V3aWNodCB2YW4gZWVuIGhmIG11aXMgaXMgYHIgbWljZVN1bSAlPiUgZmlsdGVyKERpZXQgPT0gImhmIikgJT4lIHB1bGwoIm1lYW4iKSAlPiUgcm91bmQoLiwxKWBnIAotIERlIHN0YW5kYWFyZCBkZXZpYXRpZSAoU0QpIHZhbiBoZXQgZ2V3aWNodCB2YW4gaGYgbXVpemVuIGlzIGByIG1pY2VTdW0gJT4lIGZpbHRlcihEaWV0ID09ICJoZiIpICU+JSBwdWxsKCJzZCIpICU+JSByb3VuZCguLDEpYGcgCgpFZmZlY3Rncm9vdGU/IAoKLSBEZSBhbHRlcm5hdGl2ZSBoeXBvdGhlc2UgaXMgY29tcGxleC4gCi0gT212YXQgYWxsZSBtb2dlbGlqa2UgZWZmZWN0ZW4hIAotIE9tIGVlbiBwb3dlciBhbmFseXNlIHRlIGRvZW4ga2llemVuIHdlIGRhYXJvbSBlZW4gbWluaW1hbGUgZWZmZWN0Z3Jvb3R0ZSBkaWUgd2Ugd2Vuc2VuIG9wIHRlIHBpa2tlbiBpbiBoZXQgbmlldXdlIGV4cGVyaW1lbnQuIAotIFZlcm9uZGVyc3RlbCBkYXQgd2UgZWVuIGdld2ljaHRzdmVyc2NoaWwgd2lsbGVuIG9wcGlra2VuIHZhbiBtaW5pbWFhbCAxMCUuIAoKYGBge3J9CmRlbHRhIDwtIC0gcm91bmQobWljZVN1bSRtZWFuWzJdICouMSwxKQpkZWx0YQpgYGAKCk1lcmsgb3AgZGF0IGhldCBnZW1pZGRlbGQgZ2V3aWNodCBkYW4gZGljaHQga29tdCBiaWogZGF0IHZhbiBtdWl6ZW4gaW4gaGV0IHBpbG9vdGV4cGVyaW1lbnQgZGllIHdlcmRlbiBnZXZvZWQgbWV0IGhldCBub3JtYWxlIGRpZWV0LiAKCldlIGt1bm5lbiBudSBlZW4gc2ltdWxhdGllIHN0dWRpZSBvcHpldHRlbiBvbSBkZSBwb3dlciB0ZSBiZXJla2VuZW4gdm9vciBlZW4gZXhwZXJpbWVudCBtZXQgOCBtdWl6ZW4gaW4gZWxrZSBncm9lcC4gCgojIyMjIEXDqW4gc2ltdWxhdGllCgpgYGB7cn0Kc2V0LnNlZWQoMTQyMykKbjEgPC0gbjIgPC0gOApiMCA8LSByb3VuZChtaWNlU3VtJG1lYW5bMl0sMSkKYjEgPC0gLSBkZWx0YQpzZCA8LSByb3VuZChtaWNlU3VtJHNkWzJdLDEpCmFscGhhIDwtIDAuMDUKCnggPC0gcmVwKDA6MSxjKG4xLG4yKSkKeSA8LSBiMCArIGIxICogeCArIHJub3JtKG4xK24yLDAsIHNkID0gc2QpCmZpdCA8LSBsbSh5fngpCmJoYXQgPC0gZml0JGNvZWYgCnN0YXQgPC0gc3VtbWFyeShmaXQpCnN1bW1hcnkoZml0KSRjb2VmWzIsXQpgYGAKClZvb3IgaGV0IGdlc2ltdWxlZXJkZSBleHBlcmltZW50IGtvbmRlbiB3ZSBoZXQgZWZmZWN0IHZhbiBkZSBiZWhhbmRlbGluZyBgciBpZmVsc2Uoc3VtbWFyeShmaXQpJGNvZWZbMiwiUHIoPnx0fCkiXSA8IGFscGhhLCIiLCJuaWV0IilgIG9wcGlra2VuIGJpaiBoZXQgICRcYWxwaGEkPWByIGFscGhhYCAocCA9IGByYCByb3VuZChzdW1tYXJ5KGZpdCkkY29lZlsyLCJQcig+fHR8KSJdLDIpYCkgc2lnbmlmaWNhbnRpZS1uaXZlYXUhIAoKLSBXZSBtb2V0ZW4gaGV0IGV4cGVyaW1lbnQgaGVyaGFsZW4gb20gZGUgcG93ZXIgdGUgc2NoYXR0ZW4uIAotIFdlIHp1bGxlbiBkZSBzaW11bGF0aWUgZGFhcm9tIGNvZGVyZW4gaW4gZWVuIGZ1bmN0aWUgZGllIHdlIGt1bm5lbiBoZXJnZWJydWlrZW4uIAoKIyMjIyBTaW11bGF0aWUgdmFuIGhlcmhhYWxkZSBleHBlcmltZW50ZW4gKHJlcGVhdGVkIGV4cGVyaW1lbnRzKQoKYGBge3J9CmxpYnJhcnkobXVsdGNvbXApCm4xIDwtIG4yIDwtIDgKCmIwIDwtIHJvdW5kKG1pY2VTdW0kbWVhblsyXSwxKQpiMSA8LSAtIGRlbHRhCgpzZCA8LSByb3VuZChtaWNlU3VtJHNkWzJdLDEpCnByZWRpY3RvckRhdGEgPC0gZGF0YS5mcmFtZShEaWV0ID0gcmVwKGMoImMiLCJoZiIpLGMobjEsbjIpKSAlPiUgYXMuZmFjdG9yKQoKYWxwaGEgPC0gMC4wNQoKc2ltTG0gPC0gZnVuY3Rpb24oZm9ybSwgZGF0YSwgYmV0YXMsIHNkLCBjb250cmFzdHMsIHNpbUluZGV4ID0gTkEpCnsKICBkYXRhU2ltIDwtIGRhdGEKICBYIDwtIG1vZGVsLm1hdHJpeChmb3JtLGRhdGFTaW0pCiAgZGF0YVNpbSR5U2ltIDwtIFglKiViZXRhcyArIHJub3JtKG5yb3coZGF0YVNpbSksMCxzZCkKICBmb3JtIDwtIGZvcm11bGEocGFzdGUoInlTaW0gfiIsZm9ybVtbMl1dKSkKICBmaXRTaW0gPC0gbG0oZm9ybSxkYXRhU2ltKQogIG1jcCA8LSBnbGh0KGZpdFNpbSxsaW5mY3QgPSBjb250cmFzdHMpCiAgcmV0dXJuKHN1bW1hcnkobWNwKSR0ZXN0W2MoImNvZWZmaWNpZW50cyIsInNpZ21hIiwidHN0YXQiLCJwdmFsdWVzIildJT4lIHVubGlzdCkKfQoKc2ltTG0oCiAgZm9ybSA9IH5EaWV0LAogIGRhdGEgPSBwcmVkaWN0b3JEYXRhLAogIGJldGFzID0gYyhiMCxiMSksCiAgc2QgPSBzZCwKICBjb250cmFzdHMgPSAiRGlldGhmID0gMCIpCmBgYAoKV2UgaGViYmVuIG51IGVlbiBnZW5lcmllayBmdW5jdGllIHdhYXJtZWUgd2UgZGF0YSBrdW5uZW4gc2ltdWxlcmVuIGRpZSBub3JtYWFsIHZlcmRlZWxkIHppam4gdm9vciBlbGsgbW9nZWxpamsgZGVzaWduIGRpZSB3ZSBtZXQgaGV0IGxpbmVhaXIgbW9kZWwga3VubmVuIGFuYWx5c2VyZW4uIAoKRGUgZnVuY3RpZSBoZWVmdCB2b2xnZW5kZSBhcmd1bWVudGVuOiAKCi0gYGZvcm1gOiBPbmUgc2lkZWQgZm9ybXVsYSBpbmNsdWRpbmcgdGhlIHN0cnVjdHVyZSBvZiB0aGUgcHJlZGljdG9ycyBpbiB0aGUgbW9kZWwgCi0gYGRhdGFgOiBEYXRhIGZyYW1lIHdpdGggdGhlIHByZWRpY3RvciB2YWx1ZXMgZm9yIHRoZSBkZXNpZ24KLSBgYmV0YXNgOiBBIHZlY3RvciB3aXRoIHZhbHVlcyBmb3IgYWxsIG1lYW4gbW9kZWwgcGFyYW1ldGVycwotIGBzZGA6IFRoZSBzdGFuZGFyZCBkZXZpYXRpb24gb2YgdGhlIGVycm9yIAotIGBjb250cmFzdHNgOiBhIHNjYWxhciBvciBhIHZlY3RvciB3aXRoIHRoZSBudWxsIGh5cG90aGVzZXMgdGhhdCB3ZSB3b3VsZCBsaWtlIHRvIGFzc2Vzcy4gCi0gYHNpbUluZGV4YDogYW4gYXJiaXRyYXJ5IGFyZ3VtZW50IHRoYXQgaXMgbm90IHVzZWQgYnkgdGhlICBmdW5jdGlvbiBidXQgdGhhdCB3aWxsIGFsbG93IGl0IHRvIGJlIHVzZWQgaW4gYW4gc2FwcGx5IGxvb3AgdGhhdCBydW5zIGZyb20gMSB1cCB0byB0aGUgbnVtYmVyIG9mIHNpbXVsYXRpb25zLiAKClNpbXVsZWVyIG5TaW0gPSAxMDAwIGhlcmhhYWxkZSBleHBlcmltZW50ZW46IAoKYGBge3J9CnNldC5zZWVkKDE0MjUpCm5TaW0gPC0gMTAwMAoKc2ltUmVzdWx0cyAgPC0gdChzYXBwbHkoMTpuU2ltLHNpbUxtLGZvcm0gPSB+RGlldCxkYXRhID0gcHJlZGljdG9yRGF0YSxiZXRhcyA9IGMoYjAsYjEpLHNkID0gc2QsY29udHJhc3RzID0gIkRpZXRoZiA9IDAiKSkKcG93ZXIgPC0gbWVhbihzaW1SZXN1bHRzWyw0XSA8IGFscGhhKQpwb3dlcgpgYGAKCldlIGhlYmJlbiBlZW4gcG93ZXIgdmFuIGByIHBvd2VyKjEwMGAlIG9tIGhldCBiZWhhbmRlbGluZ3NlZmZlY3Qgb3AgdGUgcGlra2VuIG1ldCA4IGJpb2xvZ2lzY2hlIGhlcmhhbGluZ2VuIGluIGVsa2UgYmVoYW5kZWxpbmdzZ3JvZXAuIAoKTWVyayBvcCBkYXQgZGUgcG93ZXIgdmFuIGVlbiBleHBlcmltZW50IG9vayBoZXQgaG9vZ3N0ZSBpcyBhbHMgaGV0IGFhbnRhbCBvYnNlcnZhdGllcyBnZWJhbGFuY2VlcmQgaXMsIG0uYS53LiAkbl8xPW5fMiQuIAoKIyMjIyBQb3dlciB2b29yIHZlcnNjaGlsbGVuZGUgc3RlZWtwcm9lZmdyb290dGVzIAoKV2Uga3VubmVuIGRlIHBvd2VyIG51IGJlcmVrZW5lbiB2b29yIG1lZXJkZXJlIHN0ZWVrcHJvZWZncm9vdGVzLiAKCmBgYHtyfQpwb3dlciA8LSBkYXRhLmZyYW1lKG49YygzLDUsMTAsMjUsNTAsNzUsMTAwKSxwb3dlcj1OQSkKCmZvciAoaSBpbiAxOm5yb3cocG93ZXIpKQp7CiAgbjEgPC0gbjIgPC0gcG93ZXIkbltpXQogIHByZWRpY3RvckRhdGEgPC0gZGF0YS5mcmFtZShEaWV0ID0gcmVwKGMoImMiLCJoZiIpLGMobjEsbjIpKSAlPiUgYXMuZmFjdG9yKQogIHNpbVJlc3VsdHMgIDwtIHQoc2FwcGx5KDE6blNpbSxzaW1MbSxmb3JtID0gfkRpZXQsZGF0YSA9IHByZWRpY3RvckRhdGEsYmV0YXMgPSBjKGIwLGIxKSxzZCA9IHNkLGNvbnRyYXN0cyA9ICJEaWV0aGYgPSAwIikpCiAgcG93ZXIkcG93ZXJbaV0gPC0gbWVhbihzaW1SZXN1bHRzWywicHZhbHVlcyJdIDwgYWxwaGEpCn0KcG93ZXIKYGBgCgpgYGB7cn0KcG93ZXIgJT4lIAogIGdncGxvdChhZXMoeD1uLHk9cG93ZXIpKSArCiAgZ2VvbV9saW5lKCkKYGBgCgojIyMjIEJlc3R1ZGVlciBwb3dlciBpbiBmdW5jdGllIHZhbiBzdGVla3Byb2VmZ3Jvb3R0ZSBlbiBlZmZlY3Rncm9vdHRlIAoKTWVyayBvcCBkYXQgCgotIGhldCB0ZWtlbiB2YW4gZGVsdGEgYXJiaXRyYWlyIGlzIG9tZGF0IHdlIHR3ZWV6aWpkaWcgdGVzdGVuLgotIGhldCBpbnRlcmNlcHQgYXJiaXRyYWlyIGlzIG9tZGF0IHdlIGFsbGVlbiB0ZXN0ZW4gb3AgJFxiZXRhXzEkCi0gV2UgbmVtZW4gZGFhcm9tIHR5cGlzY2ggJFxiZXRhXzAgPSAwJAoKYGBge3J9Cm5TaW0gPC0gMTAwMApiMCA8LSAwCmRlbHRhcyA8LSBjKDEsMiwzLDUsMTApCnNkIDwtIHJvdW5kKG1pY2VTdW0kc2RbMl0sMSkKbnMgPC0gIGMoMyw1LDEwLDIwLDI1LDUwLDc1LDEwMCkgIAoKcG93ZXIgPC0gZGF0YS5mcmFtZShiMT1yZXAoZGVsdGFzLGVhY2g9bGVuZ3RoKG5zKSksCiAgICAgICAgICAgICAgICAgICAgbj1yZXAobnMsbGVuZ3RoKGRlbHRhcykpLAogICAgICAgICAgICAgICAgICAgIHBvd2VyPU5BKQoKZm9yIChpIGluIDE6bnJvdyhwb3dlcikpCnsKICBiMSA8LXBvd2VyJGIxW2ldCiAgbjEgPC0gbjIgPC0gIHBvd2VyJG5baV0KICBwcmVkaWN0b3JEYXRhIDwtIGRhdGEuZnJhbWUoRGlldCA9IHJlcChjKCJjIiwiaGYiKSxjKG4xLG4yKSkgJT4lIGFzLmZhY3RvcikKICBzaW1SZXN1bHRzICA8LSB0KHNhcHBseSgxOm5TaW0sc2ltTG0sZm9ybSA9IH5EaWV0LGRhdGEgPSBwcmVkaWN0b3JEYXRhLGJldGFzID0gYyhiMCxiMSksc2QgPSBzZCxjb250cmFzdHMgPSAiRGlldGhmID0gMCIpKQogIHBvd2VyJHBvd2VyW2ldIDwtIG1lYW4oc2ltUmVzdWx0c1ssInB2YWx1ZXMiXSA8IGFscGhhKQp9CmBgYAoKYGBge3J9CnBvd2VyICU+JSAKICBnZ3Bsb3QoYWVzKHg9bix5PXBvd2VyLGNvbD1iMSU+JWFzLmZhY3RvcikpICsKICBnZW9tX2xpbmUoKQpgYGAKCk1lcmsgb3AgZGF0IGRlIHBvd2VyIGN1cnZlcyB3YXQgc2Nob2trZXJpZyB6aWpuIG9tZGF0IHdlIG1hYXIgZWVuIGJlcGVya3QgYWFudGFsIHN0ZWVrcHJvZWZncm9vdHRlcyBlbiBlZW4gYmVwZXJrdCBhYW50YWwgc2ltdWxhdGllcyB1aXR2b2VyZGVuLiAKVm9vciBkZSBsYWdlIHBvd2VycyBpcyBoZXQgYWFudGFsIHNpbXVsYXRpZXMgemVrZXIgb252b2xkb2VuZGUgb20gaGVlbCBiZXRyb3V3YmFyZSBzY2hhdHRpbmdlbiB2YW4gZGUgcG93ZXIgdGUgYmVrb21lbi4gCgojIE9wbWVya2luZ2VuCgotIERlIGNvZGUga2FuIGVlbnZvdWRpZyBhYW5nZXBhc3Qgd29yZGVuIG5hYXIgYW5kZXJlIGRlc2lnbnMgKHppZSBvZWZlbmluZ2VuKQogICAgCiAgICAtIHByZWRpY3RvciBkYXRhIAogICAgLSBmb3JtdWxhCiAgICAtIGNvbnRyYXN0CgotIERlIHNpbXVsYXRpZXMga3VubmVuIGxhbmcgZHVyZW4gd2FubmVlciBqZSB2ZWVsIHNjZW5hcmlvJ3MgZXZhbHVlZXJ0LiAgCiAgICAKICAgIC0gTWVlciBlZmZpY2nDq250ZSBjb2RlIG1ldCBtYXRyaWNlcwogICAgLSBWb29yIHR3byBncm91cCBjb21wYXJpc29uIGJlc3RhYXQgZWVuIGFuYWx5dGlzY2hlIG9wbG9zc2luZy4gCiAgICAKCgoKIyMgIE1lZXIgZWZmaWNpw6tudGUgY29kZSBtZXQgbWF0cmljZXMKCkNvZGUgaXMgdmVlbCBzbmVsbGVyLiBXZSBzaW11bGFsZXJlbiBudSAyMCBrZWVyIG1lZXIgZXhwZXJpbWVudGVuIGluIGVlbiB2ZWVsIGtvcnRlcmUgdGlqZCEgCgpgYGB7cn0KblNpbSA8LSAyMDAwMApiMCA8LSAwCnNkIDwtIHJvdW5kKG1pY2VTdW0kc2RbMl0sMSkKbnMgPC0gIGMoMyw1LDEwLDIwLDI1LDUwLDc1LDEwMCkgIApkZWx0YXMgPC0gYygxLDIsMyw1LDEwKQoKCnBvd2VyRmFzdCA8LSBtYXRyaXgoTkEsbnJvdz1sZW5ndGgobnMpKmxlbmd0aChkZWx0YXMpLG5jb2w9MykgJT4lIGFzLmRhdGEuZnJhbWUKbmFtZXMocG93ZXJGYXN0KSA8LSBjKCJiMSIsIm4iLCJwb3dlciIpCgppIDwtIDAKCmZvciAobiBpbiBucykKewogIG4xIDwtIG4yIDwtICBuCiAgCiAgIyMjIFNpbXVsYXRpb24KICBwcmVkaWN0b3JEYXRhIDwtIGRhdGEuZnJhbWUoRGlldCA9IHJlcChjKCJjIiwiaGYiKSxjKG4xLG4yKSkgJT4lIGFzLmZhY3RvcikKICBkZXNpZ24gPC0gbW9kZWwubWF0cml4KH5EaWV0LHByZWRpY3RvckRhdGEpCiAgTCA8LSBsaW1tYTo6bWFrZUNvbnRyYXN0cygiRGlldGhmIixsZXZlbHMgPSBjb2xuYW1lcyhkZXNpZ24pKQoKICAKICBmb3IgKGIxIGluIGRlbHRhcykKICB7CiAgICB5U2ltIDwtIHJub3JtKG5yb3cocHJlZGljdG9yRGF0YSkqblNpbSxzZD1zZCkKICAgIGRpbSh5U2ltKSA8LWMobnJvdyhwcmVkaWN0b3JEYXRhKSxuU2ltKQogICAgeVNpbSA8LSB5U2ltICsgYyhkZXNpZ24gJSolYyhiMCxiMSkpCiAgICB5U2ltIDwtIHQoeVNpbSkKICAKICAgICMjIyBGaXR0aW5nCiAgICBmaXRBbGwgPC0gbGltbWE6OmxtRml0KHlTaW0sZGVzaWduKQogIAogICAgIyMjIEluZmVyZW5jZQogICAgdmFyVW5zY2FsZWQgPC0gYyh0KEwpJSolZml0QWxsJGNvdi5jb2VmZmljaWVudHMlKiVMKQogICAgY29udHJhc3RzIDwtIGZpdEFsbCRjb2VmZmljaWVudHMgJSolTAogICAgc2VDb250cmFzdHMgPC0gdmFyVW5zY2FsZWReLjUqZml0QWxsJHNpZ21hCiAgICB0c3RhdHMgPC0gY29udHJhc3RzL3NlQ29udHJhc3RzCiAgICBwdmFscyA8LSBwdChhYnModHN0YXRzKSxmaXRBbGwkZGYucmVzaWR1YWwsbG93ZXIudGFpbCA9IEZBTFNFKSoyCiAgICAKICAgIGkgPC0gaSsxCiAgICBwb3dlckZhc3RbaSxdIDwtIGMoYjEsbixtZWFuKHB2YWxzIDwgYWxwaGEpKQogIH0KfQpgYGAKCmBgYHtyfQpwb3dlckZhc3QgJT4lIAogIGdncGxvdChhZXMoeD1uLHk9cG93ZXIsY29sPWIxJT4lYXMuZmFjdG9yKSkgKwogIGdlb21fbGluZSgpCmBgYAoKIyMgTWVlciBlZmZpY2nDq250ZSBjb2RlIGdlYmFzZWVyZCBvcCBkZSBhbmFseXRpc2NoZSBvcGxvc3Npbmcgdm9vciBlZW4gdHdvIGdyb3VwIGNvbXBhcmlzb24KCi0gVm9vciBkZSB0d28gc2FtcGxlIHQtdGVzdCBiZXN0YWF0IGVyIGVlbiBhbmFseXRpc2NoZSBvcGxvc3Npbmcgb20gZGUgcG93ZXIgdGUgYmVyZWtlbmVuLiAKCi0gSW4gZGV6ZSBjb250ZXh0IG1hYWt0IG1lbiB0eXBpc2NoIGdlYnJ1aWsgdmFuIGRlICJDb2hlbidzIGVmZmVjdCBzaXplIjogCgokRCA9IFxmcmFje1xkZWx0YX17U0R9JAoKCmBgYHtyfQpEIDwtIGRlbHRhL3NkCmxpYnJhcnkocHdyKQpwd3IudC50ZXN0KG49OCwgZD1ELCB0eXBlPSd0d28uc2FtcGxlJykKYGBgCgpNZXJrIG9wIGRhdCBkZSBwb3dlciBvdmVyZWVua29tdCBtZXQgZGVnZW5lIGRpZSB3ZSB2aWEgc2ltdWxhdGllcyBoZWJiZW4gZ2VzY2hhdCEgCgpgYGB7cn0KYjAgPC0gMApzZCA8LSByb3VuZChtaWNlU3VtJHNkWzJdLDEpCm5zIDwtICBjKDMsNSwxMCwyMCwyNSw1MCw3NSwxMDApICAKRHMgPC0gYygxLDIsMyw1LDEwKS9zZAoKCnBvd2VyVGhlbyA8LSBkYXRhLmZyYW1lKERzPXJlcChEcyxlYWNoPWxlbmd0aChucykpLAogICAgICAgICAgICAgICAgICAgIG49cmVwKG5zLGxlbmd0aChEcykpLAogICAgICAgICAgICAgICAgICAgIHBvd2VyPU5BKQoKcG93ZXJUaGVvJHBvd2VyIDwtIGFwcGx5KHBvd2VyVGhlb1ssMToyXSwxLGZ1bmN0aW9uKHgpIHB3ci50LnRlc3QoZD14WzFdLG49eFsyXSx0eXBlPSJ0d28uc2FtcGxlIikkcG93ZXIpCmBgYAoKCmBgYHtyfQpwb3dlclRoZW8gJT4lIAogIGdncGxvdChhZXMoeD1uLHk9cG93ZXIsY29sPURzJT4lYXMuZmFjdG9yKSkgKwogIGdlb21fbGluZSgpCmBgYAoK</div>
 <div class="footer">
     <hr>
     This work is licensed under the <a href= "https://creativecommons.org/licenses/by-nc-sa/4.0">
