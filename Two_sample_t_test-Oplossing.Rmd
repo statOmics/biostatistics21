@@ -34,7 +34,6 @@ suppressPackageStartupMessages({
 })
 ```
 
-
 ## Data inlezen
 ```{r}
 data("PlantGrowth")
