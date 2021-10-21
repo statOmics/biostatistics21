@@ -1,5 +1,5 @@
 ---
-title: "Practicum 1: Oefening 4"
+title: "Practicum 1: Oplossing two-sample t-test"
 author: "Alexandre Segers & Lieven Clement"
 date: "statOmics, Ghent University (https://statomics.github.io)"
 output:
