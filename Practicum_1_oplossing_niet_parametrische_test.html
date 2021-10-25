@@ -12,7 +12,7 @@
 <meta name="author" content="Alexandre Segers &amp; Lieven Clement" />
 
 
-<title>Practicum 1: Oefening 4</title>
+<title>Practicum 1: Niet-parametrische test</title>
 
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -521,7 +521,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Practicum 1: Oefening 4</h1>
+<h1 class="title toc-ignore">Practicum 1: Niet-parametrische test</h1>
 <h4 class="author">Alexandre Segers &amp; Lieven Clement</h4>
 <h4 class="date">statOmics, Ghent University (<a href="https://statomics.github.io" class="uri">https://statomics.github.io</a>)</h4>
 
@@ -529,31 +529,73 @@ div.tocify {
 
 
 <p><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></p>
-<div id="invloed-concentratie-op-reactiesnelheid" class="section level1">
-<h1><span class="header-section-number">1</span> Invloed concentratie op reactiesnelheid</h1>
-<p>De reactiesnelheid van een proces met een enzyme als katalysator wordt opgemeten door het aantal radioactieve reactieproducten te tellen in functie van de substraatconcentratie. Dat wordt gedaan voor een reactiemengsel met Puromycine en zonder Puromycine.</p>
-<p>We willen nagaan of er een lineair verband is tussen de gemiddelde reactiesnelheid en de substraatconcentratie voor zowel de groep die behandeld is met Puromycine als voor de controlegroep zonder Puromicine. Aangezien we de data zouden moeten analyseren met een meervoudige lineaire regressiemodel die het effect van de concentratie en de behandeling kan modelleren, beperken we ons voorlopig tot de data van de groep die behandeld is met Puromycine.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.3.5     ✔ purrr   0.3.4
-## ✔ tibble  3.1.4     ✔ dplyr   1.0.7
-## ✔ tidyr   1.1.3     ✔ stringr 1.4.0
-## ✔ readr   1.4.0     ✔ forcats 0.5.1</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">data</span>(Puromycin)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>Puromycin &lt;-<span class="st"> </span>Puromycin <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(state<span class="op">==</span><span class="st">&quot;treated&quot;</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a>Puromycin</span></code></pre></div>
+<div id="eetgedrag-knaagdieren" class="section level1">
+<h1><span class="header-section-number">1</span> Eetgedrag knaagdieren:</h1>
+<p>Een bioloog onderzocht het effect van schimmelinfecties in voeding op het eetgedrag van knaagdieren. Geïnfecteerde appels werden gegeven aan een groep van 8 knaagdieren, steriele appels aan een groep van 4 knaagdieren. De hoeveelheid gegeten appel (gram) per lichaamsgewicht (kilogram) werden gemeten. De data is beschikbaar in dataset “knaagdieren”. We willen weten of er een verschil is in hoeveelheid gegeten appel per kilogram lichaamsgewicht.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">suppressPackageStartupMessages</span>({</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(ggplot2)})</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>knaagdieren &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">weight=</span><span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">33</span>,<span class="dv">48</span>,<span class="dv">34</span>,<span class="dv">112</span>,<span class="dv">369</span>,<span class="dv">64</span>,<span class="dv">44</span>,<span class="dv">177</span>,<span class="dv">80</span>,<span class="dv">141</span>,<span class="dv">332</span>),<span class="dt">group=</span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;treat&quot;</span>,<span class="dv">8</span>),<span class="kw">rep</span>(<span class="st">&quot;ctrl&quot;</span>,<span class="dv">4</span>))))</span></code></pre></div>
+</div>
+<div id="data-exploratie" class="section level1">
+<h1><span class="header-section-number">2</span> Data exploratie</h1>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">head</span>(knaagdieren)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["conc"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["rate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["state"],"name":[3],"type":["fct"],"align":["left"]}],"data":[{"1":"0.02","2":"76","3":"treated"},{"1":"0.02","2":"47","3":"treated"},{"1":"0.06","2":"97","3":"treated"},{"1":"0.06","2":"107","3":"treated"},{"1":"0.11","2":"123","3":"treated"},{"1":"0.11","2":"139","3":"treated"},{"1":"0.22","2":"159","3":"treated"},{"1":"0.22","2":"152","3":"treated"},{"1":"0.56","2":"191","3":"treated"},{"1":"0.56","2":"201","3":"treated"},{"1":"1.10","2":"207","3":"treated"},{"1":"1.10","2":"200","3":"treated"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["weight"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["group"],"name":[2],"type":["fct"],"align":["left"]}],"data":[{"1":"11","2":"treat","_rn_":"1"},{"1":"33","2":"treat","_rn_":"2"},{"1":"48","2":"treat","_rn_":"3"},{"1":"34","2":"treat","_rn_":"4"},{"1":"112","2":"treat","_rn_":"5"},{"1":"369","2":"treat","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
+</div>
+<p>We maken een boxplot voor zowel de beschimmelde appels als de steriele appels het gewicht gegeten aan appels per gewicht van het knaagdier.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>knaagdieren <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>group,<span class="dt">y=</span>weight)) <span class="op">+</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>) <span class="op">+</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Groep&quot;</span>) <span class="op">+</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Gewicht aan appels gegeten per lichaamsgewicht (g/kg)&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Gewicht steriele of beschimmelde appels gegeten per lichaamsgewicht (g/kg)&quot;</span>)</span></code></pre></div>
+<p><img src="Practicum_1_oplossing_niet_parametrische_test_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Indien we een two-sample t-test zouden willen uitvoeren wordt verondersteld dat de data in elke groep normaal verdeeld zijn. De groep van steriele appels heeft echter te weinig observaties (4) om normaliteit na te gaan. Bovendien zien we ook een aanwijzing voor outliers. Daarom zullen we gebruik maken van een niet-parametrische test.</p>
+<p>Ook gelijkheid van variantie kan niet worden nagegaan gezien het beperkt aantal observaties in de controlegroep.</p>
+</div>
+<div id="wilcoxon-mann-withney-rank-sum-test-wmw-test" class="section level1">
+<h1><span class="header-section-number">3</span> Wilcoxon-Mann-Withney rank sum test (WMW test)</h1>
+<div id="nul-en-alternatieve-hypothese" class="section level2">
+<h2><span class="header-section-number">3.1</span> Nul-en alternatieve hypothese</h2>
+<p>De nulhypothese stelt dus dat beide distributies dezelfde zijn.</p>
+<p>De alternatieve hypothese stelt dat de kans dat een willekeurige observatie van groep 1 groter of gelijk is aan de waarde van een willekeurige observatie van de andere groep afwijkt van 50%. In één van de twee groepen zal er dus een verhoogde kans zijn om hogere waarden te observeren dan in de andere groep.</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(F_1(y) = F_2(y)\)</span></p>
+<p><span class="math inline">\(H_a\)</span>: <span class="math inline">\(P(Y_1 \ge Y_2) \ne \frac{1}{2}\)</span></p>
+</div>
+<div id="assumpties" class="section level2">
+<h2><span class="header-section-number">3.2</span> Assumpties</h2>
+<p>Voor de Wilcoxon-Mann-Withney rank sum test moeten geen distributionele aannames worden gemaakt. Van de observaties wordt wel verondersteld dat ze onafhankelijk zijn van elkaar.</p>
+</div>
+<div id="test-uitvoeren" class="section level2">
+<h2><span class="header-section-number">3.3</span> Test uitvoeren</h2>
+<p>We kunnen toetsen tegen afwijkingen van de nulhypothese in de richting van de alternatieve hypothese a.d.h.v. de Wilcoxon-Mann-Withney rank sum test.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>wilcox &lt;-<span class="st"> </span><span class="kw">wilcox.test</span>(weight <span class="op">~</span><span class="st"> </span>group, <span class="dt">data =</span> knaagdieren)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>wilcox</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum exact test
+## 
+## data:  weight by group
+## W = 27, p-value = 0.07273
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>We kunnen de nulhypothese van gelijke distributies niet verwerpen op het 5% significantieniveau (p = 0.073). Dit wil dus zeggen dat we besluiten dat er op het 5% significantieniveau geen significant verschil is in de distributies van het gewicht van de appels die worden gegeten per kilogram lichaamsgewicht door ratten die met beschimmelde appels worden gevoederd en ratten die met steriele appels worden gevoederd.</p>
+<p>Hoewel de test niet significant is, gaan we omwille van didactische redenen toch de probabilistische index, de effectgrootte, berekenen. De probabilistische index is de kans om een waarde te vinden voor een willekeurige observatie in de eerste groep (ctrl, steriele appels) die hoger is dan een willekeurige observatie in de tweede groep (treat, beschimmelde appels). Merk op dat de ctrl groep de referentiegroep is in R omdat de groepen alfabetisch worden gerangschikt in R.</p>
+<p>Dit kunnen we berekenen aan de hand van de geobserveerde teststatistiek en de hoeveelheid observaties per groep.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>n1 &lt;-<span class="st"> </span><span class="dv">4</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>n2 &lt;-<span class="st"> </span><span class="dv">8</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>WObs &lt;-<span class="st"> </span><span class="kw">wilcox.test</span>(weight <span class="op">~</span><span class="st"> </span>group, <span class="dt">data =</span> knaagdieren)<span class="op">$</span>statistic <span class="co">#geobserveerde teststatistiek</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>WObs<span class="op">/</span>(n1<span class="op">*</span>n2)</span></code></pre></div>
+<pre><code>##       W 
+## 0.84375</code></pre>
+<p>In de steekproef zal een willekeurig knaagdier met een kans van 84.4% meer eten van steriele appels per kilogram lichaamsgewicht dan dat een ander knaagdier eet van beschimmelde appels. We kunnen het verschil die we zien tussen de twee groepen in de steekproef echter niet veralgemenen naar de populatie omdat deze kans niet significant verschillend is van 50% op het 5% significantie-niveau.</p>
+<p>Merk op dat de puntschatter sterk lijkt af te wijken van 50% in de steekproef, maar dat we het verschil niet op kunnen pikken met de WMW test op het 5% significantieniveau, wat mogelijks zou kunnen wijzen op een gebrek aan power van de proefopzet. We hebben inderdaad maar 4 observaties in de controle groep…</p>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUHJhY3RpY3VtIDE6IE9lZmVuaW5nIDQiCmF1dGhvcjogIkFsZXhhbmRyZSBTZWdlcnMgJiBMaWV2ZW4gQ2xlbWVudCIKZGF0ZTogInN0YXRPbWljcywgR2hlbnQgVW5pdmVyc2l0eSAoaHR0cHM6Ly9zdGF0b21pY3MuZ2l0aHViLmlvKSIKb3V0cHV0OgogICAgaHRtbF9kb2N1bWVudDoKICAgICAgY29kZV9kb3dubG9hZDogdHJ1ZQogICAgICB0aGVtZTogY29zbW8KICAgICAgdG9jOiB0cnVlCiAgICAgIHRvY19mbG9hdDogdHJ1ZQogICAgICBoaWdobGlnaHQ6IHRhbmdvCiAgICAgIG51bWJlcl9zZWN0aW9uczogdHJ1ZQogICAgcGRmX2RvY3VtZW50OgogICAgICB0b2M6IHRydWUKICAgICAgbnVtYmVyX3NlY3Rpb25zOiB0cnVlCmxpbmtjb2xvcjogYmx1ZQp1cmxjb2xvcjogYmx1ZQpjaXRlY29sb3I6IGJsdWUKCi0tLQoKPGEgcmVsPSJsaWNlbnNlIiBocmVmPSJodHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnktbmMtc2EvNC4wIj48aW1nIGFsdD0iQ3JlYXRpdmUgQ29tbW9ucyBMaWNlbnNlIiBzdHlsZT0iYm9yZGVyLXdpZHRoOjAiIHNyYz0iaHR0cHM6Ly9pLmNyZWF0aXZlY29tbW9ucy5vcmcvbC9ieS1uYy1zYS80LjAvODh4MzEucG5nIiAvPjwvYT4KCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQpgYGAKCiMgSW52bG9lZCBjb25jZW50cmF0aWUgb3AgcmVhY3RpZXNuZWxoZWlkIAoKRGUgcmVhY3RpZXNuZWxoZWlkIHZhbiBlZW4gcHJvY2VzIG1ldCBlZW4gZW56eW1lIGFscyBrYXRhbHlzYXRvciB3b3JkdCBvcGdlbWV0ZW4gZG9vciBoZXQgYWFudGFsIHJhZGlvYWN0aWV2ZSByZWFjdGllcHJvZHVjdGVuIHRlIHRlbGxlbiBpbiBmdW5jdGllIHZhbiBkZSBzdWJzdHJhYXRjb25jZW50cmF0aWUuIERhdCB3b3JkdCBnZWRhYW4gdm9vciBlZW4gcmVhY3RpZW1lbmdzZWwgbWV0IFB1cm9teWNpbmUgZW4gem9uZGVyIFB1cm9teWNpbmUuCgpXZSB3aWxsZW4gbmFnYWFuIG9mIGVyIGVlbiBsaW5lYWlyIHZlcmJhbmQgaXMgdHVzc2VuIGRlIGdlbWlkZGVsZGUgcmVhY3RpZXNuZWxoZWlkIGVuIGRlIHN1YnN0cmFhdGNvbmNlbnRyYXRpZSB2b29yIHpvd2VsIGRlIGdyb2VwIGRpZSBiZWhhbmRlbGQgaXMgbWV0IFB1cm9teWNpbmUgYWxzIHZvb3IgZGUgY29udHJvbGVncm9lcCB6b25kZXIgUHVyb21pY2luZS4gQWFuZ2V6aWVuIHdlIGRlIGRhdGEgem91ZGVuIG1vZXRlbiBhbmFseXNlcmVuIG1ldCBlZW4gbWVlcnZvdWRpZ2UgbGluZWFpcmUgcmVncmVzc2llbW9kZWwgZGllIGhldCBlZmZlY3QgdmFuIGRlIGNvbmNlbnRyYXRpZSBlbiBkZSBiZWhhbmRlbGluZyBrYW4gbW9kZWxsZXJlbiwgYmVwZXJrZW4gd2Ugb25zIHZvb3Jsb3BpZyB0b3QgZGUgZGF0YSB2YW4gZGUgZ3JvZXAgZGllIGJlaGFuZGVsZCBpcyBtZXQgUHVyb215Y2luZS4KCmBgYHtyfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShnZ3Bsb3QyKQpgYGAKCmBgYHtyfQpkYXRhKFB1cm9teWNpbikKUHVyb215Y2luIDwtIFB1cm9teWNpbiAlPiUgZmlsdGVyKHN0YXRlPT0idHJlYXRlZCIpClB1cm9teWNpbgpgYGAKCgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUHJhY3RpY3VtIDE6IE5pZXQtcGFyYW1ldHJpc2NoZSB0ZXN0IgphdXRob3I6ICJBbGV4YW5kcmUgU2VnZXJzICYgTGlldmVuIENsZW1lbnQiCmRhdGU6ICJzdGF0T21pY3MsIEdoZW50IFVuaXZlcnNpdHkgKGh0dHBzOi8vc3RhdG9taWNzLmdpdGh1Yi5pbykiCm91dHB1dDoKICAgIGh0bWxfZG9jdW1lbnQ6CiAgICAgIGNvZGVfZG93bmxvYWQ6IHRydWUKICAgICAgdGhlbWU6IGNvc21vCiAgICAgIHRvYzogdHJ1ZQogICAgICB0b2NfZmxvYXQ6IHRydWUKICAgICAgaGlnaGxpZ2h0OiB0YW5nbwogICAgICBudW1iZXJfc2VjdGlvbnM6IHRydWUKICAgIHBkZl9kb2N1bWVudDoKICAgICAgdG9jOiB0cnVlCiAgICAgIG51bWJlcl9zZWN0aW9uczogdHJ1ZQpsaW5rY29sb3I6IGJsdWUKdXJsY29sb3I6IGJsdWUKY2l0ZWNvbG9yOiBibHVlCgotLS0KCjxhIHJlbD0ibGljZW5zZSIgaHJlZj0iaHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMCI+PGltZyBhbHQ9IkNyZWF0aXZlIENvbW1vbnMgTGljZW5zZSIgc3R5bGU9ImJvcmRlci13aWR0aDowIiBzcmM9Imh0dHBzOi8vaS5jcmVhdGl2ZWNvbW1vbnMub3JnL2wvYnktbmMtc2EvNC4wLzg4eDMxLnBuZyIgLz48L2E+CgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQpgYGAKCgojIEVldGdlZHJhZyBrbmFhZ2RpZXJlbjoKCkVlbiBiaW9sb29nIG9uZGVyem9jaHQgaGV0IGVmZmVjdCB2YW4gc2NoaW1tZWxpbmZlY3RpZXMgaW4gdm9lZGluZyBvcCBoZXQgZWV0Z2VkcmFnIHZhbiBrbmFhZ2RpZXJlbi4gR2XDr25mZWN0ZWVyZGUgYXBwZWxzIHdlcmRlbiBnZWdldmVuIGFhbiBlZW4gZ3JvZXAgdmFuIDgga25hYWdkaWVyZW4sIHN0ZXJpZWxlIGFwcGVscyBhYW4gZWVuIGdyb2VwIHZhbiA0IGtuYWFnZGllcmVuLiBEZSBob2V2ZWVsaGVpZCBnZWdldGVuIGFwcGVsIChncmFtKSBwZXIgbGljaGFhbXNnZXdpY2h0IChraWxvZ3JhbSkgd2VyZGVuIGdlbWV0ZW4uIERlIGRhdGEgaXMgYmVzY2hpa2JhYXIgaW4gZGF0YXNldCAia25hYWdkaWVyZW4iLiBXZSB3aWxsZW4gd2V0ZW4gb2YgZXIgZWVuIHZlcnNjaGlsIGlzIGluIGhvZXZlZWxoZWlkIGdlZ2V0ZW4gYXBwZWwgcGVyIGtpbG9ncmFtIGxpY2hhYW1zZ2V3aWNodC4KCmBgYHtyfQpzdXBwcmVzc1BhY2thZ2VTdGFydHVwTWVzc2FnZXMoewpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShnZ3Bsb3QyKX0pCmBgYAoKYGBge3J9CmtuYWFnZGllcmVuIDwtIGRhdGEuZnJhbWUod2VpZ2h0PWMoMTEsMzMsNDgsMzQsMTEyLDM2OSw2NCw0NCwxNzcsODAsMTQxLDMzMiksZ3JvdXA9YXMuZmFjdG9yKGMocmVwKCJ0cmVhdCIsOCkscmVwKCJjdHJsIiw0KSkpKQpgYGAKCiMgRGF0YSBleHBsb3JhdGllCmBgYHtyfQpoZWFkKGtuYWFnZGllcmVuKQpgYGAKCgpXZSBtYWtlbiBlZW4gYm94cGxvdCB2b29yIHpvd2VsIGRlIGJlc2NoaW1tZWxkZSBhcHBlbHMgYWxzIGRlIHN0ZXJpZWxlIGFwcGVscyBoZXQgZ2V3aWNodCBnZWdldGVuIGFhbiBhcHBlbHMgcGVyIGdld2ljaHQgdmFuIGhldCBrbmFhZ2RpZXIuCgpgYGB7cn0KCmtuYWFnZGllcmVuICU+JSAKICBnZ3Bsb3QoYWVzKHg9Z3JvdXAseT13ZWlnaHQpKSArCiAgZ2VvbV9ib3hwbG90KG91dGxpZXIuc2hhcGUgPSBOQSkgKwogIGdlb21faml0dGVyKCkgKwogIHhsYWIoIkdyb2VwIikgKwogIHlsYWIoIkdld2ljaHQgYWFuIGFwcGVscyBnZWdldGVuIHBlciBsaWNoYWFtc2dld2ljaHQgKGcva2cpIikgKyAKICBnZ3RpdGxlKCJHZXdpY2h0IHN0ZXJpZWxlIG9mIGJlc2NoaW1tZWxkZSBhcHBlbHMgZ2VnZXRlbiBwZXIgbGljaGFhbXNnZXdpY2h0IChnL2tnKSIpCgpgYGAKCkluZGllbiB3ZSBlZW4gdHdvLXNhbXBsZSB0LXRlc3Qgem91ZGVuIHdpbGxlbiB1aXR2b2VyZW4gd29yZHQgdmVyb25kZXJzdGVsZCBkYXQgZGUgZGF0YSBpbiBlbGtlIGdyb2VwIG5vcm1hYWwgdmVyZGVlbGQgemlqbi4gRGUgZ3JvZXAgdmFuIHN0ZXJpZWxlIGFwcGVscyBoZWVmdCBlY2h0ZXIgdGUgd2VpbmlnIG9ic2VydmF0aWVzICg0KSBvbSBub3JtYWxpdGVpdCBuYSB0ZSBnYWFuLiBCb3ZlbmRpZW4gemllbiB3ZSBvb2sgZWVuIGFhbndpanppbmcgdm9vciBvdXRsaWVycy4gRGFhcm9tIHp1bGxlbiB3ZSBnZWJydWlrIG1ha2VuIHZhbiBlZW4gbmlldC1wYXJhbWV0cmlzY2hlIHRlc3QuCgpPb2sgZ2VsaWpraGVpZCB2YW4gdmFyaWFudGllIGthbiBuaWV0IHdvcmRlbiBuYWdlZ2FhbiBnZXppZW4gaGV0IGJlcGVya3QgYWFudGFsIG9ic2VydmF0aWVzIGluIGRlIGNvbnRyb2xlZ3JvZXAuIAoKCiMgV2lsY294b24tTWFubi1XaXRobmV5IHJhbmsgc3VtIHRlc3QgKFdNVyB0ZXN0KQojIyBOdWwtZW4gYWx0ZXJuYXRpZXZlIGh5cG90aGVzZQoKRGUgbnVsaHlwb3RoZXNlIHN0ZWx0IGR1cyBkYXQgYmVpZGUgZGlzdHJpYnV0aWVzIGRlemVsZmRlIHppam4uCgpEZSBhbHRlcm5hdGlldmUgaHlwb3RoZXNlIHN0ZWx0IGRhdCBkZSBrYW5zIGRhdCBlZW4gd2lsbGVrZXVyaWdlIG9ic2VydmF0aWUgdmFuIGdyb2VwIDEgZ3JvdGVyIG9mIGdlbGlqayBpcyBhYW4gZGUgd2FhcmRlIHZhbiBlZW4gd2lsbGVrZXVyaWdlIG9ic2VydmF0aWUgdmFuIGRlIGFuZGVyZSBncm9lcCBhZndpamt0IHZhbiA1MCUuIEluIMOpw6luIHZhbiBkZSB0d2VlIGdyb2VwZW4gemFsIGVyIGR1cyBlZW4gdmVyaG9vZ2RlIGthbnMgemlqbiBvbSBob2dlcmUgd2FhcmRlbiB0ZSBvYnNlcnZlcmVuIGRhbiBpbiBkZSBhbmRlcmUgZ3JvZXAuIAoKJEhfMCQ6ICRGXzEoeSkgPSBGXzIoeSkkCgokSF9hJDogJFAoWV8xIFxnZSBZXzIpIFxuZSBcZnJhY3sxfXsyfSQKCgoKCiMjIEFzc3VtcHRpZXMKVm9vciBkZSBXaWxjb3hvbi1NYW5uLVdpdGhuZXkgcmFuayBzdW0gdGVzdCBtb2V0ZW4gZ2VlbiBkaXN0cmlidXRpb25lbGUgYWFubmFtZXMgd29yZGVuIGdlbWFha3QuIFZhbiBkZSBvYnNlcnZhdGllcyB3b3JkdCB3ZWwgdmVyb25kZXJzdGVsZCBkYXQgemUgb25hZmhhbmtlbGlqayB6aWpuIHZhbiBlbGthYXIuCgojIyBUZXN0IHVpdHZvZXJlbgoKV2Uga3VubmVuIHRvZXRzZW4gdGVnZW4gYWZ3aWpraW5nZW4gdmFuIGRlIG51bGh5cG90aGVzZSBpbiBkZSByaWNodGluZyB2YW4gZGUgYWx0ZXJuYXRpZXZlIGh5cG90aGVzZSBhLmQuaC52LiBkZSBXaWxjb3hvbi1NYW5uLVdpdGhuZXkgcmFuayBzdW0gdGVzdC4gCgpgYGB7cn0Kd2lsY294IDwtIHdpbGNveC50ZXN0KHdlaWdodCB+IGdyb3VwLCBkYXRhID0ga25hYWdkaWVyZW4pCndpbGNveApgYGAKCgoKV2Uga3VubmVuIGRlIG51bGh5cG90aGVzZSB2YW4gZ2VsaWprZSBkaXN0cmlidXRpZXMgbmlldCB2ZXJ3ZXJwZW4gb3AgaGV0IDUlIHNpZ25pZmljYW50aWVuaXZlYXUgKHAgPSBgciByb3VuZCh3aWxjb3gkcC52YWx1ZSwzKWApLiBEaXQgd2lsIGR1cyB6ZWdnZW4gZGF0IHdlIGJlc2x1aXRlbiBkYXQgZXIgb3AgaGV0IDUlIHNpZ25pZmljYW50aWVuaXZlYXUgZ2VlbiBzaWduaWZpY2FudCB2ZXJzY2hpbCBpcyBpbiBkZSBkaXN0cmlidXRpZXMgdmFuIGhldCBnZXdpY2h0IHZhbiBkZSBhcHBlbHMgZGllIHdvcmRlbiBnZWdldGVuIHBlciBraWxvZ3JhbSBsaWNoYWFtc2dld2ljaHQgZG9vciByYXR0ZW4gZGllIG1ldCBiZXNjaGltbWVsZGUgYXBwZWxzIHdvcmRlbiBnZXZvZWRlcmQgZW4gcmF0dGVuIGRpZSBtZXQgc3RlcmllbGUgYXBwZWxzIHdvcmRlbiBnZXZvZWRlcmQuCgpIb2V3ZWwgZGUgdGVzdCBuaWV0IHNpZ25pZmljYW50IGlzLCBnYWFuIHdlIG9td2lsbGUgdmFuIGRpZGFjdGlzY2hlIHJlZGVuZW4gdG9jaCBkZSBwcm9iYWJpbGlzdGlzY2hlIGluZGV4LCBkZSBlZmZlY3Rncm9vdHRlLCBiZXJla2VuZW4uIERlIHByb2JhYmlsaXN0aXNjaGUgaW5kZXggaXMgZGUga2FucyBvbSBlZW4gd2FhcmRlIHRlIHZpbmRlbiB2b29yIGVlbiB3aWxsZWtldXJpZ2Ugb2JzZXJ2YXRpZSBpbiBkZSBlZXJzdGUgZ3JvZXAgKGN0cmwsIHN0ZXJpZWxlIGFwcGVscykgZGllIGhvZ2VyIGlzIGRhbiBlZW4gd2lsbGVrZXVyaWdlIG9ic2VydmF0aWUgaW4gZGUgdHdlZWRlIGdyb2VwICh0cmVhdCwgYmVzY2hpbW1lbGRlIGFwcGVscykuIE1lcmsgb3AgZGF0IGRlIGN0cmwgZ3JvZXAgZGUgcmVmZXJlbnRpZWdyb2VwIGlzIGluIFIgb21kYXQgZGUgZ3JvZXBlbiBhbGZhYmV0aXNjaCB3b3JkZW4gZ2VyYW5nc2NoaWt0IGluIFIuIAoKRGl0IGt1bm5lbiB3ZSBiZXJla2VuZW4gYWFuIGRlIGhhbmQgdmFuIGRlIGdlb2JzZXJ2ZWVyZGUgdGVzdHN0YXRpc3RpZWsgZW4gZGUgaG9ldmVlbGhlaWQgb2JzZXJ2YXRpZXMgcGVyIGdyb2VwLgoKYGBge3J9Cm4xIDwtIDQKbjIgPC0gOApXT2JzIDwtIHdpbGNveC50ZXN0KHdlaWdodCB+IGdyb3VwLCBkYXRhID0ga25hYWdkaWVyZW4pJHN0YXRpc3RpYyAjZ2VvYnNlcnZlZXJkZSB0ZXN0c3RhdGlzdGllawpXT2JzLyhuMSpuMikKYGBgCgpJbiBkZSBzdGVla3Byb2VmIHphbCBlZW4gd2lsbGVrZXVyaWcga25hYWdkaWVyIG1ldCBlZW4ga2FucyB2YW4gYHIgcm91bmQoV09icy8objEqbjIpLDMpKjEwMGAlIG1lZXIgZXRlbiB2YW4gc3RlcmllbGUgYXBwZWxzIHBlciBraWxvZ3JhbSBsaWNoYWFtc2dld2ljaHQgZGFuIGRhdCBlZW4gYW5kZXIga25hYWdkaWVyIGVldCB2YW4gYmVzY2hpbW1lbGRlIGFwcGVscy4gV2Uga3VubmVuIGhldCB2ZXJzY2hpbCBkaWUgd2UgemllbiB0dXNzZW4gZGUgdHdlZSBncm9lcGVuIGluIGRlIHN0ZWVrcHJvZWYgZWNodGVyIG5pZXQgdmVyYWxnZW1lbmVuIG5hYXIgZGUgcG9wdWxhdGllIG9tZGF0IGRlemUga2FucyBuaWV0IHNpZ25pZmljYW50IHZlcnNjaGlsbGVuZCBpcyB2YW4gNTAlIG9wIGhldCA1JSBzaWduaWZpY2FudGllLW5pdmVhdS4gCgpNZXJrIG9wIGRhdCBkZSBwdW50c2NoYXR0ZXIgc3RlcmsgbGlqa3QgYWYgdGUgd2lqa2VuIHZhbiA1MCUgaW4gZGUgc3RlZWtwcm9lZiwgbWFhciBkYXQgd2UgaGV0IHZlcnNjaGlsIG5pZXQgb3Aga3VubmVuIHBpa2tlbiBtZXQgZGUgV01XIHRlc3Qgb3AgaGV0IDUlIHNpZ25pZmljYW50aWVuaXZlYXUsIHdhdCBtb2dlbGlqa3Mgem91IGt1bm5lbiB3aWp6ZW4gb3AgZWVuIGdlYnJlayBhYW4gcG93ZXIgdmFuIGRlIHByb2Vmb3B6ZXQuIFdlIGhlYmJlbiBpbmRlcmRhYWQgbWFhciA0IG9ic2VydmF0aWVzIGluIGRlIGNvbnRyb2xlIGdyb2VwLi4uIAo=</div>
 <div class="footer">
     <hr>
     This work is licensed under the <a href= "https://creativecommons.org/licenses/by-nc-sa/4.0">
@@ -596,7 +638,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("Practicum_1_oefening_4.Rmd");
+  window.initializeSourceEmbed("Practicum_1_oplossing_niet_parametrische_test.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
