@@ -1,5 +1,5 @@
 ---
-title: "Practicum 1: Oplossing two-sample t-test"
+title: "Practicum 1: Oefening Two-sample t-test"
 author: "Alexandre Segers & Lieven Clement"
 date: "statOmics, Ghent University (https://statomics.github.io)"
 output:
@@ -33,6 +33,7 @@ suppressPackageStartupMessages({
   library(gridExtra)
 })
 ```
+
 
 ## Data inlezen
 ```{r}
