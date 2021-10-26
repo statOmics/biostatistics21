@@ -85,8 +85,9 @@ mouse %>%
 
 
 De plots tonen evidentie voor 
-- een upregulatie van proteïne expressie in regulatorische T-cells en 
-- er is vrij veel variabiliteit in de expressie tussen de proefdieren! 
+
+- opregulatie van proteïne expressie in regulatorische T-cells en 
+- veel variabiliteit in de expressie tussen de proefdieren! 
 
 ## Gepaarde analyse
 
@@ -165,7 +166,7 @@ deltaSum
 ```
 
 - De standarddeviatie van het verschil is veel kleiner door de sterke correlatie in expressie in beide celtypes. 
-- Merk op, dat get gepaarde design ons toelaat om de log2 FC te berekenen tussen beide celtypes voor elk proefdier. 
+- Merk op, dat het gepaarde design ons toelaat om de log2 FC te berekenen tussen beide celtypes voor elk proefdier. 
 
 ## RCB analyse
 
@@ -202,7 +203,7 @@ for (i in 1:9)
 
 De deviaties die we in de residuplot zien voor ons experiment zijn vergelijkbaar met afwijkingen die we kunnen observeren uit gesimuleerde data uit een gelijkaardige proef waarbij aan alle aannames van het model is voldaan. 
 
-Inferentie: 
+### Inferentie 
 
 ```{r}
 anovaRCB <- car::Anova(lmRCB, type = "III")
@@ -260,7 +261,7 @@ $$
 dat het RCB een impact heeft op 
 
 - $\left(\mathbf{X}^T\mathbf{X}\right)^{-1}$ alsook op
--  $\sigma^2$ van de residuen!
+-  $\hat\sigma^2$ van de residuen!
 
 $\rightarrow$ We kunnen de variantie in de expressie tussen de proefdieren/blokken isoleren uit onze analyse! 
 
@@ -278,6 +279,8 @@ $$
 Verder heeft het verlies in vrijheidsgraden ook een impact op de t-verdeling die zal worden gebruikt voor inferentie, die hierdoor bredere staarten zal hebben. 
 
 # Vergelijking van de power tussen een CRD en RCB 
+
+## Voorbeelden van de twee designs
 
 Hier gaan we de data gebruiken om twee experimenten te simuleren:
 
@@ -334,6 +337,8 @@ Merk op dat
 - we de opregulatie van het proteïne in regulatorische T-cellen op kunnen pikken met het RCB maar niet met het CRD. 
 - de standarderror van de $\log_2\text{FC}_\text{Treg-Tcon}$ schatting is een factor `r round(summary(lmCRDSmall)$coef["celltypeTreg","Std. Error"]/summary(lmRCBSmall)$coef["celltypeTreg","Std. Error"],1)` kleiner voor het RCB design! 
 
+
+
 Een slechte data analyst die in zijn analyse vergeet om rekening te houden met het blokeffect is terug naar af:
 
 ```{r}
@@ -342,9 +347,9 @@ anova(wrongRcb)
 summary(wrongRcb)
 ```
 
-In deze analyse wordt de variabiliteit tussen de blokken geabsorbeerd in de variantieschatter voor de residuele variabiliteit. 
+- In deze analyse wordt de variabiliteit tussen de blokken geabsorbeerd in de variantieschatter voor de residuele variabiliteit. 
 
-Uiteraard mogen we een RCB design nooit analyseren zonder de blokfactor op te nemen in het model omdat het design een randomisatierestrictie impliceert. 
+- Uiteraard mogen we een RCB design nooit analyseren zonder de blokfactor op te nemen in het model omdat het design een randomisatierestrictie impliceert. 
 
 ## Winst in power door blokking? 
 
@@ -472,7 +477,7 @@ Merk op dat de power iets anders is omdat we met de power.t.test functie hebben 
 
 ## Impact van de hoeveelheid variabiliteit dat het blokeffect verklaart op de power?
 
-We variëren de hoeveelheid variabiliteit die het blokeffect verklaard:  
+We variëren de hoeveelheid variabiliteit die het blokeffect verklaart:  
 $$
 \frac{\sigma^2_\text{between}}{\sigma^2_\text{between}+\sigma^2_\text{within}}=1-\frac{\sigma^2_\text{within}}{\sigma^2_\text{between}+\sigma^2_\text{within}}
 $$
@@ -567,7 +572,7 @@ powerFastBlockingLow %>%
   xlim(0,1)
 ```
 
-- ALs de variantie die wordt verklaard door het blokeffect klein is dan verlies je power in vergelijking met het CRD design. Inderdaad,  
+- Als de variantie die wordt verklaard door het blokeffect klein is dan verlies je power in vergelijking met het CRD design. Inderdaad,  
     
     - SSR verkleint dan niet veel en
     - n$_\text{blocks}$-1 vrijheidsgraden werden opgeofferd. 
@@ -576,16 +581,17 @@ powerFastBlockingLow %>%
 
 - Merk op dat hetzelfde aantal MS runs nodig zijn voor beide designs. Maar voor het RCB hebben we maar de helft van de ratten nodig. 
 
-# Peniline voorbeeld 
+# Penicilline voorbeeld 
 
-Voor de  productie van piniciline wordt corn steep liquor (CSL) gebruikt. CSL wordt in batches geproduceerd en er is een behoorlijk grote variabiliteit van batch tot batch. 
+Voor de  productie van piniciline wordt corn steep liquor (CSL) gebruikt. CSL wordt in blends geproduceerd en er is een behoorlijk grote variabiliteit van blend tot blend. 
 
 Stel dat 
-- vier methoden moeten worden geëvalueerd om penicile te produceren (A-D),
-- één batch voldoende is voor 4 runs met een peniciline reactor en 
+
+- vier methoden moeten worden geëvalueerd om penicilline te produceren (A-D),
+- één blend voldoende is voor 4 runs met een penicilline reactor en 
 - dat 20 runs worden voorzien voor het experiment. 
 
-Hoe zou je de methoden toekennen aan de CSL batches. 
+Hoe zou je de methoden toekennen aan de CSL blends. 
 
 
 ```{r}
@@ -618,7 +624,7 @@ penicillin %>%
 
 We analyseren de opbrengst met
 
-- een factor voor batch (blend) en  
+- een factor voor blend en  
 - een factor voor de behandeling. 
 
 ```{r}
@@ -627,10 +633,10 @@ plot(lmPen)
 car::Anova(lmPen,type="III")
 ```
 
-We kunnen besluiten dat het effect van de behandeling op de peniciline opbrengst niet significant is op het 5% significantieniveau. (p = `r car::Anova(lmPen,type="III")["treat","Pr(>F)"] %>% round(.,2)`.
+We kunnen besluiten dat het effect van de behandeling op de penicilline opbrengst niet significant is op het 5% significantieniveau. (p = `r car::Anova(lmPen,type="III")["treat","Pr(>F)"] %>% round(.,2)`.
 
-We observeren een groot effect van de "blend" op de opbrengst.  
-Blend verklaart `r round(car::Anova(lmPen,type="III")["blend","Sum Sq"]/sum(car::Anova(lmPen,type="III")[-1,"Sum Sq"])*100,1)`% van de variabiliteit in de peniciline opbrengst.
+We observeren een groot effect van de blend op de opbrengst.  
+Blend verklaart `r round(car::Anova(lmPen,type="III")["blend","Sum Sq"]/sum(car::Anova(lmPen,type="III")[-1,"Sum Sq"])*100,1)`% van de variabiliteit in de penicilline opbrengst.
 
 
 # Pseudo-replicatie
@@ -638,14 +644,14 @@ Blend verklaart `r round(car::Anova(lmPen,type="III")["blend","Sum Sq"]/sum(car:
 Een studie op de pathogeen Francisella tularensis werd door Ramond et al. (2015) uitgevoerd. 
 
 - F. tularensis besmet de cellen van de gastheer via fagocytosis. 
-- De auteurs toonden aan dat tularensis deficiënt is aan arginine. Het importeert arginine actief van uit de cellen van de gastheer via een arginine transporter, ArgP. 
+- De auteurs toonden aan dat tularensis deficiënt is aan arginine. Het importeert arginine actief uit de cellen van de gastheer via een arginine transporter, ArgP. 
 - Zonder de transporter is de fagosome escape en multiplicatie in het cytoplasma vertraagd. 
 
 - In de  studie vergeleken ze het proteome van wild type F. tularensis (WT) met dat van ArgP-gene deleted F. tularensis (knock-out, D8). 
 
 - Elk bio-rep werd in technisch triplicaat gerund op de mass-spectrometer. 
 
-- We gebruike de data voor het 50S ribosomaal proteïne L5 [A0Q4J5](https://www.uniprot.org/uniprot/A0Q4J5)
+- We gebruiken de data voor het 50S ribosomaal proteïne L5 [A0Q4J5](https://www.uniprot.org/uniprot/A0Q4J5)
 
 ## Data exploratie
 
@@ -674,7 +680,7 @@ Als we hetzelfde aantal technische replicaten hebben voor elke bio-rep:
 
 - kunnen we de technische replicaten eerst uitmiddelen over elke biorep om onafhankelijke metingen te bekomen
 - deze gemiddelden zullen dan eenzelfde precisie hebben 
-- we kunnen dan het effect van de behandeling scahtten op de samengevatte waarden per bio-rep. 
+- we kunnen dan het effect van de behandeling schatten op de samengevatte waarden per bio-rep. 
 
 - **LET OP: middel nooit uit over de bio-reps/experimentele eenheden**
 
@@ -701,9 +707,9 @@ lmWrong <- lm(intensityLog2 ~ genotype, franc)
 summary(lmWrong)
 ```
 
-Merk op dat we in de verkeerde analyse geen rekening hebben gehouden dat we meerdere technische replicaten hebben voor elke bio-repeat waardoor we een artificieel significant resultaat bekomen omdat het voor deze analyse lijkt alsof we 3 keer zoveel onafhankelijke metingen hebben.   
+Merk op dat de verkeerde analyse geen rekening houdt dat er meerdere technische replicaten zijn voor elke bio-repeat waardoor er een artificieel significant resultaat wordt bekomen omdat het voor deze analyse lijkt alsof er 3 drie zoveel onafhankelijke metingen zijn.   
 
-### Geen controle van de Type I fout!
+### Type I fout!
 
 ```{r}
 sigmaWithin <- sigma(lmBiorep)
@@ -749,13 +755,15 @@ qplot(resWrong$pvalue,geom = "histogram",boundary=c(0,1)) +
 
 - De analyse waarbij we eerst uitmiddellen over de technische replicaten geeft correcte p-waarden en een juiste controle van de type I fout! 
 
-- Wat als we een ongelijk aantal technische herhalingen hebben? 
+## Verschillend aantal technische herhalingen? 
 
 1. subsampelen tot we een gelijk aantal technische herhalingen hebben en dan uitmiddelen (suboptimaal $\rightarrow$ verlies aan informatie) 
+
 2. Meer geavanceerde methoden zijn noodzakelijk: 
   
-  - e.g. mixed models 
-  - het mixed model framework kan de correlatiestructuur van de data modelleren. 
+    - e.g. mixed models 
+    - het mixed model framework kan de correlatiestructuur van de data modelleren. 
+    
 - Mixed models kunnen ook worden gebruikt voor de analyse van designs waarbij men is geïnteresseerd in effecten die zowel binnen als tussen blokken dienen te worden geschat, e.g.  split-plot designs. 
 
 - Mixed models vallen buiten het bestek van deze cursus maar worden behandeld in het opleidingsonderdeel geavanceerde biostatistiek in de master opleiding
