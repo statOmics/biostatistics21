@@ -76,8 +76,9 @@ Na de introductie van het algemene lineaire model zullen we dieper ingaan op bel
 
 - Algemeen lineair model: 
     
-    - Lecture 2-3 : [html](./10-MultipleRegression.html), [[PDF](./10-MultipleRegression.pdf)]
-    - Lecture 4 factoriële designs: [html](./10-MultipleRegression-FactorialDesigns.html), [[PDF](10-MultipleRegression-FactorialDesigns.pdf)]
+    - Lecture 2-3 : [html](./10-MultipleRegression.html)
+    - Lecture 4 factoriële designs: [html](./10-MultipleRegression-FactorialDesigns.html)
+    - Booster Sessie: [additief model](./10-Recap-AlgemeenLineairModel-AdditiefModel.html); [interacties - diagnostiek - contrasten - factoriële designs](./	10-Recap-AlgemeenLineairModel-OverigeConcepten.html)
 
 ### Werkcolleges
     
