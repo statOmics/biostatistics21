@@ -19,6 +19,55 @@ output:
 library(tidyverse)
 ```
 
+
+```{r pop2Samp2Pop,fig.asp=.8, fig.align='center',echo=FALSE}
+if ("pi"%in%ls()) rm("pi")
+kopvoeter<-function(x,y,angle=0,l=.2,cex.dot=.5,pch=19,col="black")
+{
+angle=angle/180*pi
+points(x,y,cex=cex.dot,pch=pch,col=col)
+lines(c(x,x+l*cos(-pi/2+angle)),c(y,y+l*sin(-pi/2+angle)),col=col)
+lines(c(x+l/2*cos(-pi/2+angle),x+l/2*cos(-pi/2+angle)+l/4*cos(angle)),c(y+l/2*sin(-pi/2+angle),y+l/2*sin(-pi/2+angle)+l/4*sin(angle)),col=col)
+lines(c(x+l/2*cos(-pi/2+angle),x+l/2*cos(-pi/2+angle)+l/4*cos(pi+angle)),c(y+l/2*sin(-pi/2+angle),y+l/2*sin(-pi/2+angle)+l/4*sin(pi+angle)),col=col)
+lines(c(x+l*cos(-pi/2+angle),x+l*cos(-pi/2+angle)+l/2*cos(-pi/2+pi/4+angle)),c(y+l*sin(-pi/2+angle),y+l*sin(-pi/2+angle)+l/2*sin(-pi/2+pi/4+angle)),col=col)
+lines(c(x+l*cos(-pi/2+angle),x+l*cos(-pi/2+angle)+l/2*cos(-pi/2-pi/4+angle)),c(y+l*sin(-pi/2+angle),y+l*sin(-pi/2+angle)+l/2*sin(-pi/2-pi/4+angle)),col=col)
+}
+
+par(mar=c(0,0,0,0),mai=c(0,0,0,0))
+plot(0,0,xlab="",ylab="",xlim=c(0,10),ylim=c(0,10),col=0,xaxt="none",yaxt="none",axes=FALSE)
+rect(0,6,10,10,border="red",lwd=2)
+text(.5,8,"populatie",srt=90,col="red",cex=2)
+symbols (3, 8, circles=1.5, col="red",add=TRUE,fg="red",inches=FALSE,lwd=2)
+grid=seq(0,1.3,.01)
+
+for (i in 1:50)
+{
+	angle1=runif(n=1,min=0,max=360)
+	angle2=runif(n=1,min=0,max=360)
+	radius=sample(grid,prob=grid^2*pi/sum(grid^2*pi),size=1)
+	kopvoeter(3+radius*cos(angle1/180*pi),8+radius*sin(angle1/180*pi),angle=angle2)
+}
+text(7.5,8,"Effect van roken in populatie",col="red",cex=1.2)
+
+rect(0,0,10,4,border="blue",lwd=2)
+text(.5,2,"sample",srt=90,col="blue",cex=2)
+symbols (3, 2, circles=1.5, col="red",add=TRUE,fg="blue",inches=FALSE,lwd=2)
+for (i in 0:2)
+	for (j in 0:4)
+{
+
+	kopvoeter(2.1+j*(3.9-2.1)/4,1.1+i)
+}
+text(7.5,2,"Effect van roken in steekproef",col="blue",cex=1.2)
+
+arrows(3,5.9,3,4.1,col="black",lwd=3)
+arrows(7,4.1,7,5.9,col="black",lwd=3)
+text(1.5,5,"EXP. DESIGN (1)",col="black",cex=1.2)
+text(8.5,5,"SCHATTEN &\nINFERENTIE (3)",col="black",cex=1.2)
+text(7.5,.5,"DATA EXPLORATIE &\nBESCHRIJVENDE STATISTIEK (2)",col="black",cex=1.2)
+```
+
+
 # Concepten
 
 - Experimentele eenheden zijn representatief voor populatie: Randomisatie
@@ -52,7 +101,7 @@ TABLE 1 NATURE METHODS | VOL.11 NO.9 | SEPTEMBER 2014 | 879 - 880
 | | | |
 | | Organs from sacrificed animals | B |
 | | Methods for dissociating cells from tissue | T |
-| Sample prepamuision | Dissociation runs from given tissue sample | T |
+| Sample preparation | Dissociation runs from given tissue sample | T |
 | | Individual cells | B |
 | | | |
 | | RNA-seq library construction | T |
@@ -73,8 +122,8 @@ TABLE 1 NATURE METHODS | VOL.11 NO.9 | SEPTEMBER 2014 | 879 - 880
 ![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnmeth.3091/MediaObjects/41592_2014_Article_BFnmeth3091_Fig1_HTML.jpg)
 Figure 1 NATURE METHODS | VOL.11 NO.9 | SEPTEMBER 2014 | 879 - 880
 
-(a) Three levels of replication (two biological, one technical) with animal, cell and measurement replicates normally distributed with a mean across animals of 10 and muisio of variances 1:2:0.5. Solid green (biological) and blue (technical) dots show how a measurement of the expression (X = 12) samples from all three sources of variation. Distribution s.d. is shown as horizontal lines. 
-(b) Expression variance, Var(X), and variance of expression mean, Var($\bar X$), computed across 10,000 simulations of nAnCnM = 48 measurements for unique combinations of the number of animals (nA = 1 to 48), cells per animal (nC = 1 to 48) and technical replicate measurements per cell (nM = 1 and 3). The muisio of Var(X) and Var($\bar X$) is the effective sample size, n, which corresponds to the equivalent number of statistically independent measurements. Horizontal dashed lines correspond to biological and total variation. Error bars on Var(X) show s.d. from the 10,000 simulated samples (nM = 1).
+(a) Three levels of replication (two biological, one technical) with animal, cell and measurement replicates normally distributed with a mean across animals of 10 and ratio of variances 1:2:0.5. Solid green (biological) and blue (technical) dots show how a measurement of the expression (X = 12) samples from all three sources of variation. Distribution s.d. is shown as horizontal lines. 
+(b) Expression variance, Var(X), and variance of expression mean, Var($\bar X$), computed across 10,000 simulations of nAnCnM = 48 measurements for unique combinations of the number of animals (nA = 1 to 48), cells per animal (nC = 1 to 48) and technical replicate measurements per cell (nM = 1 and 3). The ratio of Var(X) and Var($\bar X$) is the effective sample size, n, which corresponds to the equivalent number of statistically independent measurements. Horizontal dashed lines correspond to biological and total variation. Error bars on Var(X) show s.d. from the 10,000 simulated samples (nM = 1).
 
 ---
 
@@ -569,31 +618,29 @@ $D = \frac{\delta}{SD}$
 
 
 ```{r}
-D <- delta/sd
-library(pwr)
-pwr.t.test(n=8, d=D, type='two.sample')
+power.t.test(n=8, delta = delta, sd = sd, type='two.sample')
 ```
 
 Merk op dat de power overeenkomt met degene die we via simulaties hebben geschat! 
+
 
 ```{r}
 b0 <- 0
 sd <- round(miceSum$sd[2],1)
 ns <-  c(3,5,10,20,25,50,75,100)  
-Ds <- c(1,2,3,5,10)/sd
+deltas <- c(1,2,3,5,10)
 
 
-powerTheo <- data.frame(Ds=rep(Ds,each=length(ns)),
-                    n=rep(ns,length(Ds)),
+powerTheo <- data.frame(deltas=rep(deltas,each=length(ns)),
+                    n=rep(ns,length(deltas)),
                     power=NA)
 
-powerTheo$power <- apply(powerTheo[,1:2],1,function(x) pwr.t.test(d=x[1],n=x[2],type="two.sample")$power)
+powerTheo$power <- apply(powerTheo[,1:2],1,function(x) power.t.test(delta=x[1],n=x[2],sd=sd,type="two.sample")$power)
 ```
 
 
 ```{r}
 powerTheo %>% 
-  ggplot(aes(x=n,y=power,col=Ds%>%as.factor)) +
+  ggplot(aes(x=n,y=power,col=deltas%>%as.factor)) +
   geom_line()
 ```
-
