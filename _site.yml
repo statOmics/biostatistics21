@@ -13,6 +13,10 @@ navbar:
           href: 10-MultipleRegression.html
         - text: "Factoriële Designs"
           href: 10-MultipleRegression-FactorialDesigns.html
+        - text: "Experimental Design I"
+          href: experimentalDesignI.html
+        - text: "Experimental Design II"
+          href:  experimentalDesignII.html 
     - text: "Labs"
       icon: fa-laptop
       menu:
