@@ -177,9 +177,9 @@ $\mathbf{\epsilon}=\left[\begin{array}{c} \epsilon_1 \\ \vdots \\ \epsilon_n\end
 
 ---
 
-## kleinste kwadmuisen techniek/Least Squares (LS)
+## kleinste kwadraten techniek/Least Squares (LS)
 
-- Minimimaliseer de  residuele kwadmuisensom
+- Minimimaliseer de  residuele kwadratensom
 \begin{eqnarray*}
 RSS(\boldsymbol{\beta})&=&\sum\limits_{i=1}^n e^2_i\\
 &=&\sum\limits_{i=1}^n \left(y_i-\beta_0-\sum\limits_{j=1}^p x_{ij}\beta_j\right)^2
