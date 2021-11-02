@@ -72,15 +72,15 @@ Na de introductie van het algemene lineaire model zullen we dieper ingaan op bel
 
 ### Hoorcolleges
 
-- Introductie: [html](./introduction.html)
+- Introductie: [html](./introduction.html), [[PDF](./introduction.pdf)]
 
 - Algemeen lineair model: 
     
     - Lecture 2-3 : [html](./10-MultipleRegression.html)
     - Lecture 4 factoriële designs: [html](./10-MultipleRegression-FactorialDesigns.html)
     - Lecture 5, Booster Sessie: [additief model](./10-Recap-AlgemeenLineairModel-AdditiefModel.html); [interacties - diagnostiek - contrasten - factoriële designs](./	10-Recap-AlgemeenLineairModel-OverigeConcepten.html)
-    - Lecture 6: [Experimental Design I](experimentalDesignI.html), [[PDF](experimentalDesignI.pdf)]
-    - Lecture 7: [Experimental Design II](experimentalDesignII.html), [[PDF](experimentalDesignII.pdf)]
+    - Lecture 6: [Experimental Design I](experimentalDesignI.html)
+    - Lecture 7: [Experimental Design II](experimentalDesignII.html)
 
 ### Werkcolleges
     

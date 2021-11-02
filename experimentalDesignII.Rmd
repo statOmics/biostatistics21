@@ -3,10 +3,6 @@ title: "Experimenteel Design II: Randomized Complete Block Designs en Pseudo-rep
 author: "Lieven Clement"
 date: "statOmics, Ghent University (https://statomics.github.io)"
 output:
-  pdf_document:
-    toc: true
-    number_sections: true
-    latex_engine: xelatex
   html_document:
     code_download: yes
     theme: cosmo
