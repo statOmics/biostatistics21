@@ -289,7 +289,7 @@ We kunnen dit evalueren aan de hand van simulaties.
 
 
 - $H_0$: Er is geen verschil in het gewicht van muizen die een dieet met IL krijgen en muizen die het controle dieet krijgen.
-- $H-0$: Het gewicht is gemiddelde verschillend tussen muizen die het IL dieet krijgen en muizen die het controle dieet krijgen.
+- $H_1$: Het gewicht is gemiddelde verschillend tussen muizen die het IL dieet krijgen en muizen die het controle dieet krijgen.
 
 - Two sample t-test of een t-test op de helling van het lineaire model met 1 dummy variabele
 
@@ -373,7 +373,7 @@ In het experiment werden twee diëten gebruikt:
 
 We kunnen de data van de hf muizen gebruiken als input voor onze power analyse. 
 
-- De data van hf muizen lijk normaal verdeeld te zijn.  
+- De data van hf muizen lijken normaal verdeeld te zijn.  
 - Het gemiddelde gewicht van een hf muis is `r miceSum %>% filter(Diet == "hf") %>% pull("mean") %>% round(.,1)`g 
 - De standaard deviatie (SD) van het gewicht van hf muizen is `r miceSum %>% filter(Diet == "hf") %>% pull("sd") %>% round(.,1)`g 
 
@@ -411,7 +411,7 @@ stat <- summary(fit)
 summary(fit)$coef[2,]
 ```
 
-Voor het gesimuleerde experiment konden we het effect van de behandeling `r ifelse(summary(fit)$coef[2,"Pr(>|t|)"] < alpha,"","niet")` oppikken bij het  $\alpha$=`r alpha` (p = `r` round(summary(fit)$coef[2,"Pr(>|t|)"],2)`) significantie-niveau! 
+Voor het gesimuleerde experiment konden we het effect van de behandeling `r ifelse(summary(fit)$coef[2,"Pr(>|t|)"] < alpha,"","niet")` oppikken bij het  $\alpha$=`r alpha` (p = `r round(summary(fit)$coef[2,"Pr(>|t|)"],2)`) significantie-niveau! 
 
 - We moeten het experiment herhalen om de power te schatten. 
 - We zullen de simulatie daarom coderen in een functie die we kunnen hergebruiken. 
