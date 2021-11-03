@@ -3,13 +3,17 @@ title: "Experimenteel Design I: replicatie en power"
 author: "Lieven Clement"
 date: "statOmics, Ghent University (https://statomics.github.io)"
 output:
-  html_document:
-    code_download: yes
-    theme: cosmo
-    toc: yes
-    toc_float: yes
-    highlight: tango
-    number_sections: yes
+    pdf_document:
+      toc: true
+      number_sections: true
+      latex_engine: xelatex
+    html_document:
+      code_download: yes
+      theme: cosmo
+      toc: yes
+      toc_float: yes
+      highlight: tango
+      number_sections: yes
 ---
 
 
@@ -77,7 +81,6 @@ text(7.5,.5,"DATA EXPLORATIE &\nBESCHRIJVENDE STATISTIEK (2)",col="black",cex=1.
 # Replicatie 
 
 Paper over replicatie in Nature Methods (2 pagina's) [[PDF](https://www.nature.com/articles/nmeth.3091.pdf)]
-![](https://www.nature.com/articles/nmeth.3091.pdf){ width=100% }
 
 ## Voorbeeld
 

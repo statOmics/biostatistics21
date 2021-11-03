@@ -10,6 +10,11 @@ output:
     toc_float: yes
     highlight: tango
     number_sections: yes
+    output:
+  pdf_document:
+    toc: true
+    number_sections: true
+    latex_engine: xelatex
 ---
 
 
@@ -27,6 +32,7 @@ library(tidyverse)
 - Technisch: kooi-effect, lab effect, week effect, plasma extractie, MS-run, ...
 
 # Nature methods: Points of significance - Blocking 
+
 [https://www.nature.com/articles/nmeth.3005.pdf](https://www.nature.com/articles/nmeth.3005.pdf)
 
 - Oneway anova is een speciaal geval van een "completely randomized design" (CRD):
