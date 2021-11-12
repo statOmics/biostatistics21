@@ -495,6 +495,15 @@ div.tocify {
     <li>
       <a href="Practicum_1_oplossing_lineair_model.html">Practicum 1: Oplossing lineaire regressie</a>
     </li>
+    <li>
+      <a href="Exp_design_fast_1_ex.html">Practicum 4: Experimenteel design: krachtanalyse oefening 1</a>
+    </li>
+    <li>
+      <a href="Exp_design_fast_2_ex.html">Practicum 4: Experimenteel design: krachtanalyse oefening 2</a>
+    </li>
+    <li>
+      <a href="Exp_design_fast_3_ex.html">Practicum 4: Experimenteel design: krachtanalyse oefening 3</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -704,15 +713,15 @@ Fit: lm(formula = 1/time ~ poison + treat, data = rats)
 
 Linear Hypotheses:
                       Estimate Std. Error t value Pr(&gt;|t|)    
-poison: II - I == 0    0.04686    0.01744   2.688  0.07350 .  
+poison: II - I == 0    0.04686    0.01744   2.688  0.07356 .  
 poison: III - I == 0   0.19964    0.01744  11.451  &lt; 0.001 ***
 poison: III - II == 0  0.15278    0.01744   8.763  &lt; 0.001 ***
 treat: B - A == 0     -0.16574    0.02013  -8.233  &lt; 0.001 ***
-treat: C - A == 0     -0.05721    0.02013  -2.842  0.05095 .  
+treat: C - A == 0     -0.05721    0.02013  -2.842  0.05091 .  
 treat: D - A == 0     -0.13583    0.02013  -6.747  &lt; 0.001 ***
 treat: C - B == 0      0.10853    0.02013   5.391  &lt; 0.001 ***
 treat: D - B == 0      0.02991    0.02013   1.485  0.61546    
-treat: D - C == 0     -0.07862    0.02013  -3.905  0.00281 ** 
+treat: D - C == 0     -0.07862    0.02013  -3.905  0.00283 ** 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 (Adjusted p values reported -- single-step method)</code></pre>
@@ -725,21 +734,21 @@ Multiple Comparisons of Means: Tukey Contrasts
 
 Fit: lm(formula = 1/time ~ poison + treat, data = rats)
 
-Quantile = 2.8496
+Quantile = 2.8495
 95% family-wise confidence level
  
 
 Linear Hypotheses:
                       Estimate   lwr        upr       
-poison: II - I == 0    0.0468641 -0.0028188  0.0965470
-poison: III - I == 0   0.1996425  0.1499596  0.2493254
-poison: III - II == 0  0.1527784  0.1030955  0.2024612
-treat: B - A == 0     -0.1657402 -0.2231091 -0.1083714
-treat: C - A == 0     -0.0572135 -0.1145824  0.0001553
-treat: D - A == 0     -0.1358338 -0.1932027 -0.0784650
-treat: C - B == 0      0.1085267  0.0511578  0.1658955
-treat: D - B == 0      0.0299064 -0.0274624  0.0872753
-treat: D - C == 0     -0.0786203 -0.1359891 -0.0212514</code></pre>
+poison: II - I == 0    0.0468641 -0.0028180  0.0965462
+poison: III - I == 0   0.1996425  0.1499604  0.2493246
+poison: III - II == 0  0.1527784  0.1030963  0.2024605
+treat: B - A == 0     -0.1657402 -0.2231082 -0.1083723
+treat: C - A == 0     -0.0572135 -0.1145815  0.0001544
+treat: D - A == 0     -0.1358338 -0.1932018 -0.0784659
+treat: C - B == 0      0.1085267  0.0511587  0.1658947
+treat: D - B == 0      0.0299064 -0.0274615  0.0872744
+treat: D - C == 0     -0.0786203 -0.1359882 -0.0212523</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">plot</span>(comparisons,<span class="dt">yaxt=</span><span class="st">&quot;none&quot;</span>)</span>
 <span id="cb17-2"><a href="#cb17-2"></a>contrastNames &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;II-I&quot;</span>,<span class="st">&quot;III-I&quot;</span>,<span class="st">&quot;III-II&quot;</span>,<span class="st">&quot;B-A&quot;</span>,<span class="st">&quot;C-A&quot;</span>,<span class="st">&quot;D-A&quot;</span>,<span class="st">&quot;C-B&quot;</span>,<span class="st">&quot;D-B&quot;</span>,<span class="st">&quot;D-C&quot;</span>)</span>
 <span id="cb17-3"><a href="#cb17-3"></a><span class="kw">axis</span>(<span class="dv">2</span>,<span class="dt">at=</span><span class="kw">c</span>(<span class="kw">length</span>(contrastNames)<span class="op">:</span><span class="dv">1</span>), <span class="dt">labels=</span>contrastNames,<span class="dt">las=</span><span class="dv">2</span>)</span></code></pre></div>
