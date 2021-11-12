@@ -95,7 +95,10 @@ Na de introductie van het algemene lineaire model zullen we dieper ingaan op bel
     - Oplossing anova: [html](./Practicum_1_oplossing_anova.html)
     - Oplossing niet-parametrische test: [html](./Practicum_1_oplossing_niet_parametrische_test.html)
     - Oplossing lineaire regressie: [html](./Practicum_1_oplossing_lineair_model.html)
-
+    
+- Practicum 3:
+    - Oplossing Oefening 2: [html](./oefening_vissen_volledig_uitgewerkt.html)
+    
 - Practicum 4:
     - Oefening 1: [html](./Exp_design_fast_1_ex.html)
     - Oefening 2: [html](./Exp_design_fast_2_ex.html)
