@@ -105,8 +105,8 @@ Without going into the full code details, this function allows us to simulate
 data similar to that of our experiment under our model assumptions, given the 
 following inputs:
 
-- `form`: model formula for the experiment we want to simulate (e.g. "~ gewicht + dosis + gewicht:dosis")
-- `data`: the target dataset on which we want to base our simulations on (dataframe with colnames equal to the variable names, values equal to the design points chosen, e.g dataframe(gewicht = rep(c(1,2), each = 4), dosis = rep(c(1,2), times = 4))
+- `form`: model formula for the experiment we want to simulate (e.g. "~ gewicht + dosis")
+- `data`: the target dataset on which we want to base our simulations on (dataframe with colnames equal to the variable names, values equal to the design points chosen, e.g dataframe(gewicht = rep(c(1,2), each = 4), dosis = rep(c(1,2), times = 4)) )
 - `betas`: the linear regression coefficients for the target dataset
 - `sd`: the residual standard errors from the linear regression model fit on 
 the target dataset
