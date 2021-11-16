@@ -10,6 +10,11 @@ output:
     toc_float: yes
     highlight: tango
     number_sections: yes
+    output:
+  pdf_document:
+    toc: true
+    number_sections: true
+    latex_engine: xelatex
 ---
 
 
@@ -27,6 +32,7 @@ library(tidyverse)
 - Technisch: kooi-effect, lab effect, week effect, plasma extractie, MS-run, ...
 
 # Nature methods: Points of significance - Blocking 
+
 [https://www.nature.com/articles/nmeth.3005.pdf](https://www.nature.com/articles/nmeth.3005.pdf)
 
 - Oneway anova is een speciaal geval van een "completely randomized design" (CRD):
@@ -59,7 +65,7 @@ We focussen op één proteïne
 
   - De gemeten intensiteiten zijn reeds log2 getransformeerd. Verschillen in de intensiteiten kunnen dus als log2 FC (fold changes) worden geïnterpreteerd. 
   - P16045 or Galectin-1. 
-  - Functie: "Lectin that binds beta-galactoside and a wide array of complex carbohydmousees. Plays a role in regulating apoptosis, cell prolifemouseion and cell differentiation. Inhibits CD45 protein phosphatase activity and therefore the dephosphorylation of Lyn kinase. Strong inducer of T-cell apoptosis." (source: [uniprot](https://www.uniprot.org/uniprot/P16045))
+  - Functie: "Lectin that binds beta-galactoside and a wide array of complex carbohydmousees. Plays a role in regulating apoptosis, cell proliferation and cell differentiation. Inhibits CD45 protein phosphatase activity and therefore the dephosphorylation of Lyn kinase. Strong inducer of T-cell apoptosis." (source: [uniprot](https://www.uniprot.org/uniprot/P16045))
 
 ## Data Exploratie 
 
@@ -147,6 +153,8 @@ var(mouseWide[,c("Tcon","Treg")]) %>%
 
 $$
 \begin{array}{lcl}
+\text{sd}_{ax_r + bx_c} &=& \sqrt{a^2\hat \sigma_r^2 + b^2 \hat \sigma_c^2 + 2ab \hat\sigma_{r,c}} \\
+
 \text{sd}_{x_r - x_c} &=& \sqrt{1^2\hat \sigma_r^2 + (-1)^2 \hat \sigma_c^2 + 2 \times 1 
 \times -1 
 \times \hat\sigma_{r,c}}\\
@@ -220,7 +228,7 @@ Merk op dat
 
 $$
 \begin{array}{lcl}
-\text{SSTot} &=& \text{SSCT} + \text{SSM} + \text{SSR}\\
+\text{SSTot} &=& \text{SSCT} + \text{SSM} + \text{SSE}\\
 `r round(anovaRCB[-1,"Sum Sq"] %>% sum(),1)` &=& `r round(anovaRCB["celltype","Sum Sq"],1)` + `r round(anovaRCB["mouse","Sum Sq"],1)` + `r round(anovaRCB["Residuals","Sum Sq"],1)`
 \end{array}
 $$
@@ -237,7 +245,7 @@ $$
 percent van de variabiliteit in log2 proteïne-intensiteiten en
 
 $$ 
-\frac{\text{RSS}}{\text{SSTot}} \times 100 = `r round(anovaRCB["Residuals","Sum Sq"]/sum(anovaRCB[-1,"Sum Sq"])*100,1)`
+\frac{\text{SSE}}{\text{SSTot}} \times 100 = `r round(anovaRCB["Residuals","Sum Sq"]/sum(anovaRCB[-1,"Sum Sq"])*100,1)`
 $$
 percent kan niet worden verklaard: residuele variabiliteit. 
 
@@ -270,10 +278,10 @@ $\rightarrow$ Dat reduceert de variantie van de residuen en leidt tot een toenam
 Merk op dat, 
 
 $$
-\hat\sigma^2 = \frac{\text{SSR}}{n-p} = \frac{SSTot - SSM - SSCT}{n-p} 
+\hat\sigma^2 = \frac{\text{SSE}}{n-p} = \frac{SSTot - SSM - SSCT}{n-p} 
 $$ 
 
-- Blokken is dus nuttig als de reductie in SSR groot is in vergelijking met het verlies in vrijheidsgraden. 
+- Blokken is dus nuttig als de reductie in SSE groot is in vergelijking met het verlies in vrijheidsgraden. 
 - Dus als SSM een groot deel in van de totale variabiliteit kan verklaren. 
 
 Verder heeft het verlies in vrijheidsgraden ook een impact op de t-verdeling die zal worden gebruikt voor inferentie, die hierdoor bredere staarten zal hebben. 
@@ -574,7 +582,7 @@ powerFastBlockingLow %>%
 
 - Als de variantie die wordt verklaard door het blokeffect klein is dan verlies je power in vergelijking met het CRD design. Inderdaad,  
     
-    - SSR verkleint dan niet veel en
+    - SSE verkleint dan niet veel en
     - n$_\text{blocks}$-1 vrijheidsgraden werden opgeofferd. 
     
 - Van zodra dat het blokeffect een behoorlijk aandeel van de variabiliteit verklaart is het RCB heel erg nuttig! 
