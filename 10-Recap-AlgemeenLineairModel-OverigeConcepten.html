@@ -496,6 +496,9 @@ div.tocify {
       <a href="Practicum_1_oplossing_lineair_model.html">Practicum 1: Oplossing lineaire regressie</a>
     </li>
     <li>
+      <a href="oefening_vissen_volledig_uitgewerkt.html">Practicum 3: Algemeen Lineair model: Oplossing oefening 2</a>
+    </li>
+    <li>
       <a href="Exp_design_fast_1_ex.html">Practicum 4: Experimenteel design: krachtanalyse oefening 1</a>
     </li>
     <li>
@@ -854,9 +857,9 @@ H_0: \beta_\text{Age} = \beta_\text{Age:Gendermale} = 0
 ## 
 ## Linear Hypotheses:
 ##                           Estimate Std. Error t value Pr(&gt;|t|)    
-## Age == 0                   0.43999    0.01511  29.127   &lt;1e-10 ***
-## Age + Age:Gendermale == 0  0.24840    0.01879  13.217   &lt;1e-10 ***
-## Age:Gendermale == 0       -0.19159    0.02411  -7.946   &lt;1e-10 ***
+## Age == 0                   0.43999    0.01511  29.127  &lt; 2e-16 ***
+## Age + Age:Gendermale == 0  0.24840    0.01879  13.217  &lt; 2e-16 ***
+## Age:Gendermale == 0       -0.19159    0.02411  -7.946 2.89e-15 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)</code></pre>
@@ -867,7 +870,7 @@ H_0: \beta_\text{Age} = \beta_\text{Age:Gendermale} = 0
 ## 
 ## Fit: lm(formula = BPSysAve ~ Age * Gender, data = bpData, weights = 1/mSd$fitted^2)
 ## 
-## Quantile = 2.3159
+## Quantile = 2.3166
 ## 95% family-wise confidence level
 ##  
 ## 
@@ -875,11 +878,11 @@ H_0: \beta_\text{Age} = \beta_\text{Age:Gendermale} = 0
 ##                           Estimate lwr     upr    
 ## Age == 0                   0.4400   0.4050  0.4750
 ## Age + Age:Gendermale == 0  0.2484   0.2049  0.2919
-## Age:Gendermale == 0       -0.1916  -0.2474 -0.1358</code></pre>
+## Age:Gendermale == 0       -0.1916  -0.2475 -0.1357</code></pre>
 </div>
 <div id="conclusie" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Conclusie</h3>
-<p>We kunnen besluiten dat er een extreem significante associatie is tussen leeftijd en de bloeddruk (p &lt;&lt; 0.001). De bloeddruk bij twee vrouwen die in leeftijd verschillen is gemiddeld 0.44 mm Hg hoger per jaar leeftijdsverschil bij de oudste vrouw en dat verschil is extreem significant (p &lt;&lt; 0.001, 95% BI [0.41, 0.47]). De bloeddruk bij mannen die in leeftijd verschillen is gemiddeld 0.25 mm Hg hoger per jaar leeftijdsverschil bij de oudere man. (p &lt;&lt; 0.001, 95% BI [0.2, 0.29]). Het gemiddelde bloeddrukverschil tussen personen in leeftijd verschillen is gemiddeld 0.19 mm Hg/jaar lager bij mannen dan vrouwen (p &lt;&lt; 0.001, 95% BI [-0.25, -0.14]).</p>
+<p>We kunnen besluiten dat er een extreem significante associatie is tussen leeftijd en de bloeddruk (p &lt;&lt; 0.001). De bloeddruk bij twee vrouwen die in leeftijd verschillen is gemiddeld 0.44 mm Hg hoger per jaar leeftijdsverschil bij de oudste vrouw en dat verschil is extreem significant (p &lt;&lt; 0.001, 95% BI [0.4, 0.47]). De bloeddruk bij mannen die in leeftijd verschillen is gemiddeld 0.25 mm Hg hoger per jaar leeftijdsverschil bij de oudere man. (p &lt;&lt; 0.001, 95% BI [0.2, 0.29]). Het gemiddelde bloeddrukverschil tussen personen in leeftijd verschillen is gemiddeld 0.19 mm Hg/jaar lager bij mannen dan vrouwen (p &lt;&lt; 0.001, 95% BI [-0.25, -0.14]).</p>
 </div>
 </div>
 <div id="marginale-effecten" class="section level2">

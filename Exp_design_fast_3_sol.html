@@ -496,6 +496,9 @@ div.tocify {
       <a href="Practicum_1_oplossing_lineair_model.html">Practicum 1: Oplossing lineaire regressie</a>
     </li>
     <li>
+      <a href="oefening_vissen_volledig_uitgewerkt.html">Practicum 3: Algemeen Lineair model: Oplossing oefening 2</a>
+    </li>
+    <li>
       <a href="Exp_design_fast_1_ex.html">Practicum 4: Experimenteel design: krachtanalyse oefening 1</a>
     </li>
     <li>
@@ -691,9 +694,9 @@ div.tocify {
 ##                            Estimate Std. Error t value Pr(&gt;|t|)    
 ## grade3 == 0                  1.6675     0.1827   9.127  &lt; 0.001 ***
 ## grade3 + grade3:node1 == 0   0.8928     0.1827   4.886  &lt; 0.001 ***
-## node1 == 0                   0.6577     0.1827   3.600  0.00708 ** 
+## node1 == 0                   0.6577     0.1827   3.600  0.00724 ** 
 ## node1 + grade3:node1 == 0   -0.1170     0.1827  -0.640  0.89816    
-## grade3:node1 == 0           -0.7748     0.2584  -2.998  0.02683 *  
+## grade3:node1 == 0           -0.7748     0.2584  -2.998  0.02669 *  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)</code></pre>
@@ -744,7 +747,7 @@ div.tocify {
 <span id="cb32-13"><a href="#cb32-13"></a>power1 &lt;-<span class="st"> </span><span class="kw">simFastMultipleContrasts</span>(form, kpna2, betas, sd, contrasts, <span class="dt">nSim =</span> nSim)</span>
 <span id="cb32-14"><a href="#cb32-14"></a>power1</span></code></pre></div>
 <pre><code>##     graden0     graden1      nodeg1      nodeg3 interaction 
-##     1.00000     0.97070     0.77160     0.02365     0.56930</code></pre>
+##     1.00000     0.97205     0.76605     0.02475     0.56750</code></pre>
 <p>We observe large powers for all contrasts, except for contrast nodeg3, which has a small effect size.</p>
 </div>
 <div id="power-for-increasing-sample-size" class="section level2">
@@ -777,15 +780,15 @@ div.tocify {
 <span id="cb34-26"><a href="#cb34-26"></a>}</span>
 <span id="cb34-27"><a href="#cb34-27"></a>powers</span></code></pre></div>
 <pre><code>##        n graden0 graden1  nodeg1  nodeg3 interaction
-##  [1,]  2 0.70540 0.21945 0.10815 0.01380     0.07535
-##  [2,]  3 0.99165 0.56795 0.29265 0.01380     0.19110
-##  [3,]  4 0.99995 0.80050 0.48080 0.01945     0.32290
-##  [4,]  5 1.00000 0.91865 0.64445 0.02130     0.45310
-##  [5,]  6 1.00000 0.96870 0.76350 0.02490     0.57245
-##  [6,]  7 1.00000 0.99140 0.85485 0.02720     0.66845
-##  [7,]  8 1.00000 0.99705 0.90795 0.03095     0.74965
-##  [8,]  9 1.00000 0.99850 0.94825 0.03250     0.82130
-##  [9,] 10 1.00000 0.99985 0.96830 0.03745     0.87055</code></pre>
+##  [1,]  2 0.70880 0.21970 0.11325 0.01295     0.07720
+##  [2,]  3 0.99210 0.56215 0.29350 0.01515     0.18985
+##  [3,]  4 0.99995 0.80285 0.48765 0.01855     0.32390
+##  [4,]  5 1.00000 0.92325 0.63625 0.02140     0.44725
+##  [5,]  6 1.00000 0.97150 0.76400 0.02185     0.57090
+##  [6,]  7 1.00000 0.98965 0.85230 0.02815     0.66720
+##  [7,]  8 1.00000 0.99730 0.90900 0.03145     0.74990
+##  [8,]  9 1.00000 0.99880 0.94570 0.03395     0.81685
+##  [9,] 10 1.00000 0.99980 0.96755 0.03820     0.86520</code></pre>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>powers <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb36-2"><a href="#cb36-2"></a><span class="st">  </span>as.data.frame <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb36-3"><a href="#cb36-3"></a><span class="st">  </span><span class="kw">gather</span>(contrast, power, <span class="op">-</span>n) <span class="op">%&gt;%</span><span class="st"> </span></span>
@@ -811,7 +814,7 @@ div.tocify {
 <span id="cb37-14"><a href="#cb37-14"></a>power3 &lt;-<span class="st"> </span><span class="kw">simFastMultipleContrasts</span>(form, kpna2, betas2, sd, contrasts,<span class="dt">nSim =</span> nSim)</span>
 <span id="cb37-15"><a href="#cb37-15"></a>power3</span></code></pre></div>
 <pre><code>##     graden0     graden1      nodeg1      nodeg3 interaction 
-##     0.63770     0.05110     0.76265     0.02185     0.56235</code></pre>
+##     0.64040     0.05180     0.76280     0.02495     0.56950</code></pre>
 <p>It is clear that only the power of the contrasts containing <span class="math inline">\(\beta_g\)</span> change when the effect size of <span class="math inline">\(\beta_g\)</span> changes.</p>
 </div>
 </div>

@@ -496,6 +496,9 @@ div.tocify {
       <a href="Practicum_1_oplossing_lineair_model.html">Practicum 1: Oplossing lineaire regressie</a>
     </li>
     <li>
+      <a href="oefening_vissen_volledig_uitgewerkt.html">Practicum 3: Algemeen Lineair model: Oplossing oefening 2</a>
+    </li>
+    <li>
       <a href="Exp_design_fast_1_ex.html">Practicum 4: Experimenteel design: krachtanalyse oefening 1</a>
     </li>
     <li>
@@ -640,8 +643,8 @@ The number of counts per minute of radioactive product from the reaction was mea
 <span id="cb11-10"><a href="#cb11-10"></a></span>
 <span id="cb11-11"><a href="#cb11-11"></a>power &lt;-<span class="st"> </span><span class="kw">simFast</span>(form, Puromycin, betas, sd, <span class="dt">contrasts =</span> contrast, <span class="dt">alpha =</span> alpha, <span class="dt">nSim =</span> nSim)</span>
 <span id="cb11-12"><a href="#cb11-12"></a>power</span></code></pre></div>
-<pre><code>## [1] 0.416</code></pre>
-<p>The power to pick up a slope of <span class="math inline">\(\beta_1=10\)</span> for this experiment is only 41.6%.</p>
+<pre><code>## [1] 0.4175</code></pre>
+<p>The power to pick up a slope of <span class="math inline">\(\beta_1=10\)</span> for this experiment is only 41.8%.</p>
 </div>
 <div id="calculate-the-number-of-repeats-needed-per-concentration-to-obtain-a-power-of-90-to-pick-up-an-effect-of-beta_110." class="section level2">
 <h2><span class="header-section-number">1.4</span> Calculate the number of repeats needed per concentration to obtain a power of 90% to pick up an effect of <span class="math inline">\(\beta_1=10\)</span>.</h2>
@@ -697,7 +700,7 @@ The number of counts per minute of radioactive product from the reaction was mea
 </div>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>powerOpt &lt;-<span class="st"> </span><span class="kw">simFast</span>(form, simData, betas, sd, <span class="dt">contrasts =</span> contrast, <span class="dt">alpha =</span> alpha, <span class="dt">nSim =</span> nSim)</span>
 <span id="cb15-2"><a href="#cb15-2"></a>powerOpt</span></code></pre></div>
-<pre><code>## [1] 0.6129</code></pre>
+<pre><code>## [1] 0.6016</code></pre>
 <p>Note that the power for a design where we repeat each concentration 1 time and the minimum and maximum concentration 4 times is considerably higher than that for the designs where we repeat all data points.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>powers <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(n,power)) <span class="op">+</span></span>
