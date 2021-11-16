@@ -146,16 +146,18 @@ var(mouseWide[,c("Tcon","Treg")]) %>%
 
 - Standarddeviatie van verschil? 
 
+
 $$
 \begin{array}{lcl}
 \text{sd}_{ax_r + bx_c} &=& \sqrt{a^2\hat \sigma_r^2 + b^2 \hat \sigma_c^2 + 2ab \hat\sigma_{r,c}} \\
-
-\text{sd}_{x_r - x_c} &=& \sqrt{1^2\hat \sigma_r^2 + (-1)^2 \hat \sigma_c^2 + 2 \times 1 
+\text{sd}_{x_r - x_c} &=&\sqrt{1^2\hat \sigma_r^2 + (-1)^2 \hat \sigma_c^2 + 2 \times 1
 \times -1 
 \times \hat\sigma_{r,c}}\\
 &=&\sqrt{\hat \sigma_r^2 + \hat \sigma_c^2 - 2 \times \hat\sigma_{r,c}}
 \end{array}
 $$
+
+
 
 ```{r}
 sdDelta2 <- (c(-1,1) %*% var(mouseWide[,c("Tcon","Treg")]) %*% c(-1,1)) %>%
