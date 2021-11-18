@@ -44,7 +44,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Examenvorm Partim Univariate
 
-- Openboek examen met open vragen
+- Open vragen die kunnen worden opgelost door gebruik te maken van overzichtsdocument die zal worden voorzien door de lesgever op het examen
 - Test op inzicht en logisch redeneren
 - Kritische analyse van de statistische output en resultaten in een wetenschappelijke publicatie
 - Grotere klemtoon op interpretatie dan berekening
