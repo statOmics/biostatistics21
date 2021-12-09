@@ -115,6 +115,12 @@ Na de introductie van het algemene lineaire model zullen we dieper ingaan op bel
     - Oplossing oefening 2: [html](./fishtank_sol.html)
     - Oplossing oefening 3: [html](./Rats_02.html)
     
+- Examenvoorbeeld:
+    - Oefening 1: [html](./Examenvoorbeeld_oefening_1_opgave.html)
+    - Oefening 2: [html](./Examenvoorbeeld_oefening_2_opgave.html)
+    - Oplossing oefening 1: [html](./Examenvoorbeeld_oefening_1.html)
+    - Oplossing oefening 2: [html](./Examenvoorbeeld_oefening_2.html)
+    
 ## Licentie 
 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 
