@@ -38,7 +38,7 @@ In dit examen zijn we vooral geïnteresseerd in het proteïne Myosin light chain
 Merk op dat de intensiteiten nog niet log2 getranformeerd zijn!!! 
 
 ```{r}
-hart <- read.csv(file = "https://raw.githubusercontent.com/statOmics/biostatistics21/alex_examenvoorbeeld/hearthproteine.csv")
+hart <- read.csv(file = "https://raw.githubusercontent.com/statOmics/biostatistics21/master/hearthproteine.csv")
 
 ```
 

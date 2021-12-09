@@ -16,7 +16,7 @@ Onderzoekers bestuderen of er een associatie tussen het de dikte van de speklaag
 # Data exploratie
 We lezen de data in, en filteren de data aangezien we het gewicht niet als variabele zullen gebruiken.
 ```{r}
-pigs <- read.csv(file = "https://raw.githubusercontent.com/statOmics/biostatistics21/alex_examenvoorbeeld/pigs.csv")
+pigs <- read.csv(file = "https://raw.githubusercontent.com/statOmics/biostatistics21/master/pigs.csv")
 pigs <- pigs %>% subset(select = -weight)
 ```
 
