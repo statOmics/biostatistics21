@@ -712,9 +712,9 @@ div.tocify {
 ##                            Estimate Std. Error t value Pr(&gt;|t|)    
 ## grade3 == 0                  1.6675     0.1827   9.127  &lt; 0.001 ***
 ## grade3 + grade3:node1 == 0   0.8928     0.1827   4.886  &lt; 0.001 ***
-## node1 == 0                   0.6577     0.1827   3.600  0.00701 ** 
+## node1 == 0                   0.6577     0.1827   3.600  0.00714 ** 
 ## node1 + grade3:node1 == 0   -0.1170     0.1827  -0.640  0.89819    
-## grade3:node1 == 0           -0.7748     0.2584  -2.998  0.02659 *  
+## grade3:node1 == 0           -0.7748     0.2584  -2.998  0.02649 *  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)</code></pre>
@@ -765,7 +765,7 @@ div.tocify {
 <span id="cb32-13"><a href="#cb32-13"></a>power1 &lt;-<span class="st"> </span><span class="kw">simFastMultipleContrasts</span>(form, kpna2, betas, sd, contrasts, <span class="dt">nSim =</span> nSim)</span>
 <span id="cb32-14"><a href="#cb32-14"></a>power1</span></code></pre></div>
 <pre><code>##     graden0     graden1      nodeg1      nodeg3 interaction 
-##     1.00000     0.97175     0.76810     0.02385     0.57075</code></pre>
+##     1.00000     0.96970     0.76345     0.02530     0.57240</code></pre>
 <p>We observe large powers for all contrasts, except for contrast nodeg3, which has a small effect size.</p>
 </div>
 <div id="power-for-increasing-sample-size" class="section level2">
@@ -798,15 +798,15 @@ div.tocify {
 <span id="cb34-26"><a href="#cb34-26"></a>}</span>
 <span id="cb34-27"><a href="#cb34-27"></a>powers</span></code></pre></div>
 <pre><code>##        n graden0 graden1  nodeg1  nodeg3 interaction
-##  [1,]  2 0.70170 0.22055 0.10680 0.01350     0.07525
-##  [2,]  3 0.99150 0.56645 0.29230 0.01750     0.19325
-##  [3,]  4 0.99985 0.79910 0.48455 0.01885     0.32970
-##  [4,]  5 1.00000 0.92170 0.64625 0.02130     0.45325
-##  [5,]  6 1.00000 0.97020 0.76170 0.02295     0.56285
-##  [6,]  7 1.00000 0.98935 0.84595 0.02825     0.66735
-##  [7,]  8 1.00000 0.99695 0.90525 0.02995     0.75085
-##  [8,]  9 1.00000 0.99850 0.94510 0.03325     0.82185
-##  [9,] 10 1.00000 0.99985 0.96710 0.03735     0.86280</code></pre>
+##  [1,]  2 0.70305 0.21405 0.11065 0.01205     0.07520
+##  [2,]  3 0.99185 0.56790 0.29975 0.01590     0.19660
+##  [3,]  4 1.00000 0.80460 0.47710 0.01765     0.32055
+##  [4,]  5 1.00000 0.92285 0.63875 0.02075     0.44755
+##  [5,]  6 1.00000 0.97080 0.76115 0.02365     0.56930
+##  [6,]  7 1.00000 0.99010 0.85175 0.02830     0.67500
+##  [7,]  8 1.00000 0.99670 0.90430 0.03030     0.74780
+##  [8,]  9 1.00000 0.99910 0.94745 0.03375     0.81480
+##  [9,] 10 1.00000 0.99970 0.96680 0.03790     0.86610</code></pre>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>powers <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb36-2"><a href="#cb36-2"></a><span class="st">  </span>as.data.frame <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb36-3"><a href="#cb36-3"></a><span class="st">  </span><span class="kw">gather</span>(contrast, power, <span class="op">-</span>n) <span class="op">%&gt;%</span><span class="st"> </span></span>
@@ -832,7 +832,7 @@ div.tocify {
 <span id="cb37-14"><a href="#cb37-14"></a>power3 &lt;-<span class="st"> </span><span class="kw">simFastMultipleContrasts</span>(form, kpna2, betas2, sd, contrasts,<span class="dt">nSim =</span> nSim)</span>
 <span id="cb37-15"><a href="#cb37-15"></a>power3</span></code></pre></div>
 <pre><code>##     graden0     graden1      nodeg1      nodeg3 interaction 
-##     0.63835     0.05250     0.76720     0.02245     0.57050</code></pre>
+##     0.64265     0.05305     0.76695     0.02355     0.57135</code></pre>
 <p>It is clear that only the power of the contrasts containing <span class="math inline">\(\beta_g\)</span> change when the effect size of <span class="math inline">\(\beta_g\)</span> changes.</p>
 </div>
 </div>
