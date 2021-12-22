@@ -1,8 +1,19 @@
 ---
 title: "Examenvoorbeeld vraag 1"
 author: "Lieven Clement, Alexandre Segers"
-date: "02/12/2021"
-output: html_document
+date: "statOmics, Ghent University (https://statomics.github.io)"
+output:
+  html_document:
+    code_download: yes
+    theme: cosmo
+    toc: yes
+    toc_float: yes
+    highlight: tango
+    number_sections: yes
+  pdf_document:
+    toc: true
+    number_sections: true
+    latex_engine: xelatex
 ---
 
 
