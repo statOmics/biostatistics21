@@ -3,8 +3,6 @@ title: '10. Recap: Algemeen Lineair Model - Additief Model'
 author: "Lieven Clement"
 date: "statOmics, Ghent University (https://statomics.github.io)"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     code_download: yes
     theme: cosmo
