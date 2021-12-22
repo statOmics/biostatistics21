@@ -12,6 +12,10 @@ output:
     toc_float: yes
     highlight: tango
     number_sections: yes
+  pdf_document:
+    toc: true
+    number_sections: true
+    latex_engine: xelatex
 ---
 
 ```{r setup, include=FALSE}

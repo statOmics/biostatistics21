@@ -9,7 +9,9 @@ output:
     toc: yes
     toc_float: yes
   pdf_document:
-    toc: yes
+      toc: true
+      number_sections: true
+      latex_engine: xelatex
   word_document:
     toc: yes
 ---

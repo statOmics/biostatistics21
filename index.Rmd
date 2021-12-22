@@ -76,11 +76,11 @@ Na de introductie van het algemene lineaire model zullen we dieper ingaan op bel
 
 - Algemeen lineair model: 
     
-    - Lecture 2-3 : [html](./10-MultipleRegression.html)
-    - Lecture 4 factoriële designs: [html](./10-MultipleRegression-FactorialDesigns.html)
-    - Lecture 5, Booster Sessie: [additief model](./10-Recap-AlgemeenLineairModel-AdditiefModel.html); [interacties - diagnostiek - contrasten - factoriële designs](./10-Recap-AlgemeenLineairModel-OverigeConcepten.html)
-    - Lecture 6: [Experimental Design I](experimentalDesignI.html)
-    - Lecture 7: [Experimental Design II](experimentalDesignII.html)
+    - Lecture 2-3 : [html](./10-MultipleRegression.html), [[PDF](./10-MultipleRegression.pdf)]
+    - Lecture 4 factoriële designs: [html](./10-MultipleRegression-FactorialDesigns.html), [[PDF](./10-MultipleRegression-FactorialDesigns.pdf)]
+    - Lecture 5, Booster Sessie: [additief model html](./10-Recap-AlgemeenLineairModel-AdditiefModel.html), [[PDF](./10-Recap-AlgemeenLineairModel-AdditiefModel.pdf)]; [interacties - diagnostiek - contrasten - factoriële designs](./10-Recap-AlgemeenLineairModel-OverigeConcepten.html), [[PDF](./10-Recap-AlgemeenLineairModel-OverigeConcepten.pdf)]
+    - Lecture 6: [Experimental Design I](experimentalDesignI.html), [[PDF](experimentalDesignI.pdf)]
+    - Lecture 7: [Experimental Design II](experimentalDesignII.html), [[PDF](experimentalDesignII.pdf)]
 
 ### Werkcolleges
     
@@ -91,35 +91,35 @@ Na de introductie van het algemene lineaire model zullen we dieper ingaan op bel
     - Voorbereiding 2: [html](./Practicum_1_Voorbereiding_2.html)
     - Voorbereiding 3: [html](./Practicum_1_Voorbereiding_3.html)
     - Oefening lineair model: [html](./Practicum_1_oefening_4.html)
-    - Oplossing two-sample t-test: [html](./Practicum_1_oplossing_Two_sample_t_test.html)
-    - Oplossing anova: [html](./Practicum_1_oplossing_anova.html)
-    - Oplossing niet-parametrische test: [html](./Practicum_1_oplossing_niet_parametrische_test.html)
-    - Oplossing lineaire regressie: [html](./Practicum_1_oplossing_lineair_model.html)
+    - Oplossing two-sample t-test: [html](./Practicum_1_oplossing_Two_sample_t_test.html), [[PDF](./Practicum_1_oplossing_Two_sample_t_test.pdf)]
+    - Oplossing anova: [html](./Practicum_1_oplossing_anova.html), [[PDF](./Practicum_1_oplossing_anova.pdf)]
+    - Oplossing niet-parametrische test: [html](./Practicum_1_oplossing_niet_parametrische_test.html), [[PDF](./Practicum_1_oplossing_niet_parametrische_test.pdf)]
+    - Oplossing lineaire regressie: [html](./Practicum_1_oplossing_lineair_model.html), [[PDF](./Practicum_1_oplossing_lineair_model.pdf)]
     
 - Practicum 3:
-    - Oplossing Oefening 2: [html](./oefening_vissen_volledig_uitgewerkt.html)
+    - Oplossing Oefening 2: [html](./oefening_vissen_volledig_uitgewerkt.html), [[PDF](./oefening_vissen_volledig_uitgewerkt.pdf)]
     
 - Practicum 4: Poweranalyse
     - Oefening 1: [html](./Exp_design_fast_1_ex.html)
     - Oefening 2: [html](./Exp_design_fast_2_ex.html)
     - Oefening 3: [html](./Exp_design_fast_3_ex.html)
-    - Oplossing Oefening 1: [html](./Exp_design_fast_1_sol.html)
-    - Oplossing Oefening 2: [html](./Exp_design_fast_2_sol.html)
-    - Oplossing Oefening 3: [html](./Exp_design_fast_3_sol.html)
+    - Oplossing Oefening 1: [html](./Exp_design_fast_1_sol.html), [[PDF](./Exp_design_fast_1_sol.pdf)]
+    - Oplossing Oefening 2: [html](./Exp_design_fast_2_sol.html), [[PDF](./Exp_design_fast_2_sol.pdf)]
+    - Oplossing Oefening 3: [html](./Exp_design_fast_3_sol.html), [[PDF](./Exp_design_fast_3_sol.pdf)]
     
 - Practicum 5: Blocking
     - Oefening 1: [html](./Rats_01_ex.html)
     - Oefening 2: [html](./fishtank.html)
     - Oefening 3: [html](./Rats02_ex.html)
-    - Oplossing oefening 1: [html](./Rats_01.html)
+    - Oplossing oefening 1: [html](./Rats_01.html), [[PDF](./Rats_01.pdf)]
     - Oplossing oefening 2: [html](./fishtank_sol.html), [[PDF](./fishtank_sol.pdf)]
-    - Oplossing oefening 3: [html](./Rats_02.html)
+    - Oplossing oefening 3: [html](./Rats_02.html), [[PDF](./Rats_02.pdf)]
     
 - Examenvoorbeeld:
     - Oefening 1: [html](./Examenvoorbeeld_oefening_1_opgave.html)
     - Oefening 2: [html](./Examenvoorbeeld_oefening_2_opgave.html)
-    - Oplossing oefening 1: [html](./Examenvoorbeeld_oefening_1.html)
-    - Oplossing oefening 2: [html](./Examenvoorbeeld_oefening_2.html)
+    - Oplossing oefening 1: [html](./Examenvoorbeeld_oefening_1.html), [[PDF](./Examenvoorbeeld_oefening_1.pdf)]
+    - Oplossing oefening 2: [html](./Examenvoorbeeld_oefening_2.html), [[PDF](./Examenvoorbeeld_oefening_2.pdf)]
     
 ## Licentie 
 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
