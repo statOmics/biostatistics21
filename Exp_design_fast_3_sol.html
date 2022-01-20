@@ -724,9 +724,9 @@ div.tocify {
 ##                            Estimate Std. Error t value Pr(&gt;|t|)    
 ## grade3 == 0                  1.6675     0.1827   9.127  &lt; 0.001 ***
 ## grade3 + grade3:node1 == 0   0.8928     0.1827   4.886  &lt; 0.001 ***
-## node1 == 0                   0.6577     0.1827   3.600  0.00705 ** 
-## node1 + grade3:node1 == 0   -0.1170     0.1827  -0.640  0.89813    
-## grade3:node1 == 0           -0.7748     0.2584  -2.998  0.02669 *  
+## node1 == 0                   0.6577     0.1827   3.600  0.00711 ** 
+## node1 + grade3:node1 == 0   -0.1170     0.1827  -0.640  0.89817    
+## grade3:node1 == 0           -0.7748     0.2584  -2.998  0.02658 *  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)</code></pre>
@@ -777,7 +777,7 @@ div.tocify {
 <span id="cb32-13"><a href="#cb32-13"></a>power1 &lt;-<span class="st"> </span><span class="kw">simFastMultipleContrasts</span>(form, kpna2, betas, sd, contrasts, <span class="dt">nSim =</span> nSim)</span>
 <span id="cb32-14"><a href="#cb32-14"></a>power1</span></code></pre></div>
 <pre><code>##     graden0     graden1      nodeg1      nodeg3 interaction 
-##     1.00000     0.97070     0.76525     0.02335     0.56930</code></pre>
+##     1.00000     0.97005     0.76715     0.02380     0.57315</code></pre>
 <p>We observe large powers for all contrasts, except for contrast nodeg3, which has a small effect size.</p>
 </div>
 <div id="power-for-increasing-sample-size" class="section level2">
@@ -810,15 +810,15 @@ div.tocify {
 <span id="cb34-26"><a href="#cb34-26"></a>}</span>
 <span id="cb34-27"><a href="#cb34-27"></a>powers</span></code></pre></div>
 <pre><code>##        n graden0 graden1  nodeg1  nodeg3 interaction
-##  [1,]  2 0.70730 0.21945 0.11200 0.01165     0.07445
-##  [2,]  3 0.99275 0.56780 0.29360 0.01535     0.18790
-##  [3,]  4 1.00000 0.80440 0.48400 0.01810     0.31715
-##  [4,]  5 1.00000 0.91945 0.64745 0.02155     0.45530
-##  [5,]  6 1.00000 0.96860 0.76765 0.02310     0.56820
-##  [6,]  7 1.00000 0.98870 0.84845 0.02555     0.67075
-##  [7,]  8 1.00000 0.99630 0.91095 0.03040     0.75180
-##  [8,]  9 1.00000 0.99930 0.94965 0.03505     0.82475
-##  [9,] 10 1.00000 0.99965 0.96840 0.03950     0.86630</code></pre>
+##  [1,]  2 0.69955 0.20985 0.10980 0.01210     0.07100
+##  [2,]  3 0.99265 0.56885 0.29765 0.01505     0.19005
+##  [3,]  4 0.99990 0.80425 0.48150 0.01825     0.32385
+##  [4,]  5 1.00000 0.92205 0.64395 0.02090     0.45290
+##  [5,]  6 1.00000 0.96985 0.76520 0.02460     0.56785
+##  [6,]  7 1.00000 0.99105 0.85340 0.02775     0.66360
+##  [7,]  8 1.00000 0.99640 0.90625 0.03030     0.75270
+##  [8,]  9 1.00000 0.99905 0.94405 0.03495     0.81640
+##  [9,] 10 1.00000 0.99960 0.96950 0.03805     0.87120</code></pre>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>powers <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb36-2"><a href="#cb36-2"></a><span class="st">  </span>as.data.frame <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb36-3"><a href="#cb36-3"></a><span class="st">  </span><span class="kw">gather</span>(contrast, power, <span class="op">-</span>n) <span class="op">%&gt;%</span><span class="st"> </span></span>
@@ -844,7 +844,7 @@ div.tocify {
 <span id="cb37-14"><a href="#cb37-14"></a>power3 &lt;-<span class="st"> </span><span class="kw">simFastMultipleContrasts</span>(form, kpna2, betas2, sd, contrasts,<span class="dt">nSim =</span> nSim)</span>
 <span id="cb37-15"><a href="#cb37-15"></a>power3</span></code></pre></div>
 <pre><code>##     graden0     graden1      nodeg1      nodeg3 interaction 
-##     0.63965     0.05185     0.76310     0.02345     0.56885</code></pre>
+##     0.64100     0.05465     0.76170     0.02465     0.56510</code></pre>
 <p>It is clear that only the power of the contrasts containing <span class="math inline">\(\beta_g\)</span> change when the effect size of <span class="math inline">\(\beta_g\)</span> changes.</p>
 </div>
 </div>
